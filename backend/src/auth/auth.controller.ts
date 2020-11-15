@@ -1,0 +1,23 @@
+import { Body, Controller, Get, Post, ValidationPipe } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import { AuthService } from './auth.service';
+import { AuthCredentialDto } from './dto/auth-credential.dto';
+
+@Controller('auth')
+export class AuthController {
+
+    constructor(
+        private authService: AuthService,
+        private configService: ConfigService){}
+
+    @Post('/signup')
+    signUp(@Body(ValidationPipe) authCredentialDto: AuthCredentialDto):Promise<void>{
+        return this.authService.signUp(authCredentialDto);
+    }
+
+    @Post('/signin')
+    signIn(@Body() authCredentialDto: AuthCredentialDto):Promise<{accessToken:string}>{
+        return this.authService.signIn(authCredentialDto);
+    }
+
+}
