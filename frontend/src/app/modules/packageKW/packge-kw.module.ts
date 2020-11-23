@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PackagekwComponent } from './packagekw.component';
 import { AccountModule } from './account/account.module';
 import { SiteModule } from './site/site.module';
+import { RouterModule } from '@angular/router';
+import { PackagekwComponent } from './packagekw.component';
+import { PackageRoutingModule } from './package-routing.module';
+
 
 
 
@@ -11,7 +14,8 @@ import { SiteModule } from './site/site.module';
   imports: [
     CommonModule,
     AccountModule,
-    SiteModule
+    SiteModule,
+   PackageRoutingModule
   ]
 })
 export class PackgeKWModule { }

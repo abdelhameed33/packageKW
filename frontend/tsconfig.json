@@ -19,7 +19,9 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "noUnusedParameters": true,
+    "allowUnusedLabels": true
   },
   "angularCompilerOptions": {
     "strictInjectionParameters": true,
