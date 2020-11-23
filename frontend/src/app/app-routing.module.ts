@@ -1,22 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AdminComponent } from './modules/admin/admin.component';
-import { SiteComponent } from './modules/packageKW/site/site.component';
-import { SiteModule } from './modules/packageKW/site/site.module';
 
 const routes: Routes = [
   {
     path: 'admin',
-    component: AdminComponent
+    loadChildren: './modules/admin/admin.module#AdminModule'
   },
   {
-    path: '',
-    component: SiteComponent,
+    path: 'packagekw',
+    loadChildren: './modules/packageKW/packge-kw.module#PackgeKWModule'
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { enableTracing: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

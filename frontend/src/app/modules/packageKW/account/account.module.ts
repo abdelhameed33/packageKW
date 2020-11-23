@@ -11,7 +11,6 @@ import { AccountRoutes } from './accout.route';
   declarations: [LoginComponent, RegisterComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(AccountRoutes)
   ]
 })
 export class AccountModule { }
