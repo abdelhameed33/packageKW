@@ -1,8 +1,8 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { Category } from './category.entity';
-import { CategoryService } from './category.service';
-import { CreateCategoryDto } from './dto/create-category.dto';
+import { Category } from '../entities/category.entity';
+import { CategoryService } from '../service/category.service';
+import { CreateCategoryDto } from '../dto/create-category.dto';
 
 @Controller('category')
 @UseGuards(AuthGuard())

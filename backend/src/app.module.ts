@@ -4,6 +4,9 @@ import {typeOrmConfig} from './config/typeorm.config'
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { CategoryModule } from './category/category.module';
+import { MulterModule } from '@nestjs/platform-express';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -11,7 +14,11 @@ import { CategoryModule } from './category/category.module';
     ConfigModule.forRoot(),
     ConfigModule.forRoot(),
     AuthModule,
-    CategoryModule],
+    CategoryModule,
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'uploads'),
+    }),
+  ],
   controllers: [],
   providers: [],
 })
