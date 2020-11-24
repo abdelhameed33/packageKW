@@ -4,26 +4,25 @@ import { Product } from '../entities/product.entity';
 import { ProductService } from '../service/product.service';
 import { CreateProductDto } from '../dto/create-product.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
-import {diskStorage} from 'multer'
+import { diskStorage } from 'multer'
 import { Observable, of } from 'rxjs';
 import { ProductValidationPipe } from '../pipes/product-create-validation.pipe';
 const path = require('path')
 export const storage = {
     storage: diskStorage({
-        destination : './uploads',
-        filename: (req, file, cb)=>{
-            const filename: string= path.parse(file.originalname).name.replace(/\s/g,'')+Date.now();
-            const extension: string= path.parse(file.originalname).ext;
-            cb(null,`${filename}${extension}`)
+        destination: './uploads',
+        filename: (req, file, cb) => {
+            const filename: string = path.parse(file.originalname).name.replace(/\s/g, '') + Date.now();
+            const extension: string = path.parse(file.originalname).ext;
+            cb(null, `${filename}${extension}`)
         }
     })
 }
 
 @Controller('category')
-@UseGuards(AuthGuard())
 export class ProductController {
 
-    
+
     constructor(
         private productService: ProductService
     ) { }
@@ -34,14 +33,17 @@ export class ProductController {
         return this.productService.getProducts(id);
     }
 
+
     @Post('/upload')
-    @UseInterceptors(FileInterceptor('file',storage))
-    uploadFile(@UploadedFile() file):Observable<Object> {
-        return of({imagePath: file.filename});
+    @UseGuards(AuthGuard())
+    @UseInterceptors(FileInterceptor('file', storage))
+    uploadFile(@UploadedFile() file): Observable<Object> {
+        return of({ imagePath: file.filename });
     }
 
     @Post('/:categoryId/products')
-    @UsePipes(new ValidationPipe({transform: true}))
+    @UseGuards(AuthGuard())
+    @UsePipes(new ValidationPipe({ transform: true }))
     createProduct(
         @Param('categoryId', ParseIntPipe) categoryId: number,
         @Body(ProductValidationPipe) createProductDto: CreateProductDto): Promise<Product> {
@@ -49,6 +51,7 @@ export class ProductController {
     }
 
     @Delete('/:id')
+    @UseGuards(AuthGuard())
     deleteProduct(@Param('id', ParseIntPipe) id: number) {
         return this.productService.deleteProduct(id);
     }

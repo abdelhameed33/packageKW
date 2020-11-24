@@ -16,7 +16,7 @@ import { ImageService } from './service/image.service';
 @Module({
   imports:[
     AuthModule,
-    TypeOrmModule.forFeature([Category,Product,Image]),
+    TypeOrmModule.forFeature([Category,Product,Image,ProductRepository,CategoryRepository]),
     MulterModule.register({
       dest: './uploads',
     })

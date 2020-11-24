@@ -1,3 +1,4 @@
+import { Reviews } from "src/reviews/reviews.entity";
 import { BaseEntity, PrimaryGeneratedColumn, CreateDateColumn, Column, Entity, ManyToMany, ManyToOne, UpdateDateColumn, JoinColumn, OneToMany } from "typeorm";
 import { Category } from "./category.entity";
 import { Image } from "./image.entity";
@@ -33,5 +34,8 @@ export class Product extends BaseEntity {
 
     @OneToMany(() => Image, (image: Image) => image.product,{eager:true})
     images: Image[];
+
+    @OneToMany(() => Reviews, (review: Reviews) => review.product,{eager:true})
+    reviews: Reviews[];
 
 }

@@ -5,7 +5,6 @@ import { CategoryService } from '../service/category.service';
 import { CreateCategoryDto } from '../dto/create-category.dto';
 
 @Controller('category')
-@UseGuards(AuthGuard())
 export class CategoryController {
     constructor(
         private categoryService: CategoryService
@@ -23,6 +22,7 @@ export class CategoryController {
 
 
     @Post()
+    @UseGuards(AuthGuard())
     @UsePipes(ValidationPipe)
     createCategory(@Body() createCategoryDto: CreateCategoryDto): Promise<Category> {
         console.log(createCategoryDto)
@@ -30,11 +30,13 @@ export class CategoryController {
     }
 
     @Delete('/:id')
+    @UseGuards(AuthGuard())
     deleteCategory(@Param('id', ParseIntPipe) id: number) {
         return this.categoryService.deleteCategory(id);
     }
 
     @Patch('/:id')
+    @UseGuards(AuthGuard())
     updateCategory(
         @Param('id', ParseIntPipe) id: number,
         @Body() categoryDto: CreateCategoryDto): Promise<Category> {
