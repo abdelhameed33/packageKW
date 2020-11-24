@@ -33,18 +33,18 @@ export class ProductService {
 
     async createProduct(categoryId: number, createProductDto: CreateProductDto): Promise<Product> {
         const { title, price, quantity, description,images} = createProductDto;
-        console.log(images)
         const product = new Product()
         product.title = title;
-        product.price = parseFloat('' + price);
-        product.quantity = parseFloat('' + quantity);
+        product.price =price;
+        product.quantity = quantity;
         product.description = description;
+        console.log(createProductDto)
         
         const category = await this.categoryService.getCategory(categoryId);
         product.category = category;
-        await this.productRepository.save(product);
-        await this.imageService.saveAll(images,product);
-        return product;
+        const savedProduct = await this.productRepository.save(product);
+        await this.imageService.saveAll(images,savedProduct);
+        return savedProduct;
     }
 
     async deleteProduct(id: number) {

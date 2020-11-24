@@ -16,9 +16,9 @@ export class ImageService {
 
     async saveAll(images:string[], product: Product):Promise<Image[]>{
         let savedImages:Image[]=[];
-        for (const imageName in images) {
+        for (let imageName of images) {
             const image = new Image();
-            image.image_name= images[imageName];
+            image.image_name= imageName;
             image.product=product;
             await this.imageRepository.save(image);
             savedImages.push(image);

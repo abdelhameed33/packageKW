@@ -1,4 +1,5 @@
-import { IsNumber, IsString, MaxLength, Min, MinLength } from "class-validator";
+import { Transform } from "class-transformer";
+import { IsNotEmpty, IsNumber, IsString, MaxLength, Min, MinLength } from "class-validator";
 
 export class CreateProductDto{
     @IsString()
@@ -11,12 +12,13 @@ export class CreateProductDto{
     @MaxLength(800)
     description: string;
 
-
+    @IsNotEmpty()
     price: number;
 
-  
+    @IsNotEmpty()
     quantity: number;
 
+    @IsNotEmpty()
     images: string [];
 
 }

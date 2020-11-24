@@ -6,6 +6,7 @@ import { CreateProductDto } from '../dto/create-product.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import {diskStorage} from 'multer'
 import { Observable, of } from 'rxjs';
+import { ProductValidationPipe } from '../pipes/product-create-validation.pipe';
 const path = require('path')
 export const storage = {
     storage: diskStorage({
@@ -40,9 +41,10 @@ export class ProductController {
     }
 
     @Post('/:categoryId/products')
-    @UsePipes(ValidationPipe)
-    createProduct(@Param('categoryId', ParseIntPipe) categoryId: number, @Body() createProductDto: CreateProductDto): Promise<Product> {
-        console.log(createProductDto);
+    @UsePipes(new ValidationPipe({transform: true}))
+    createProduct(
+        @Param('categoryId', ParseIntPipe) categoryId: number,
+        @Body(ProductValidationPipe) createProductDto: CreateProductDto): Promise<Product> {
         return this.productService.createProduct(categoryId, createProductDto);
     }
 
