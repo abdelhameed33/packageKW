@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AdminComponent } from './modules/admin/admin.component';
 import { PackgeKWModule } from './modules/packageKW/packge-kw.module';
 import { AdminModule } from './modules/admin/admin.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AdminModule } from './modules/admin/admin.module';
     BrowserModule,
     AppRoutingModule,
     PackgeKWModule,
-    AdminModule
+    AdminModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

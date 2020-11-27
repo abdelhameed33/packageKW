@@ -7,9 +7,9 @@ import { CategoryController } from './controller/category.controller';
 import { ProductController } from './controller/product.controller';
 import { Category } from './entities/category.entity';
 import { Image } from './entities/image.entity';
-import { Product } from './entities/Product.entity';
+import { Product } from './entities/product.entity';
 import { CategoryRepository } from './repository/category.repository';
-import { ProductRepository } from './repository/Product.repository';
+import { ProductRepository } from './repository/product.repository';
 import { CategoryService } from './service/category.service';
 import { ImageService } from './service/image.service';
 

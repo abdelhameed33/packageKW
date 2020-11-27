@@ -31,7 +31,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/datatables.net-dt/css/jquery.dataTables.css",
+              "node_modules/datatables.net-dt/css/jquery.dataTables.css"
             ],
             "scripts": [
               "./src/assets/plugins/jquery/jquery.min.js",
@@ -42,7 +44,9 @@
               "./src/assets/plugins/sparkline/jquery.sparkline.min.js",
               "./src/assets/js/custom.js",
               "./src/assets/js/pace.min.js",
-              "./src/assets/plugins/styleswitcher/jQuery.style.switcher.js"
+              "./src/assets/plugins/styleswitcher/jQuery.style.switcher.js",
+              "node_modules/datatables.net/js/jquery.dataTables.js",
+              "node_modules/datatables.net/js/jquery.dataTables.js"
             ]
           },
           "configurations": {
