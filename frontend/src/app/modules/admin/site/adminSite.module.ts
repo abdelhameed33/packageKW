@@ -7,15 +7,28 @@ import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { SidebarComponent } from './layouts/sidebar/sidebar.component';
 import { ProductComponent } from './product/product.component';
+import { DataTablesModule } from 'angular-datatables';
+import { CategoryProductComponent } from './category-product/category-product.component';
+import { FormsModule } from '@angular/forms';
 
 
 
 
 @NgModule({
-  declarations: [SiteComponent, MainPageComponent, HeaderComponent, FooterComponent, SidebarComponent, ProductComponent],
+  declarations: [
+    SiteComponent,
+    MainPageComponent,
+    HeaderComponent,
+    FooterComponent,
+    SidebarComponent,
+    ProductComponent,
+    CategoryProductComponent
+  ],
   imports: [
     CommonModule,
-    SiteRoutingModule
+    SiteRoutingModule,
+    DataTablesModule,
+    FormsModule
     //  RouterModule.forChild(SiteRoutes)
   ]
 })

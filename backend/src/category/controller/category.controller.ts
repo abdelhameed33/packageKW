@@ -11,8 +11,16 @@ export class CategoryController {
     ) { }
 
     @Get()
-    getCategories(): Promise<Category[]> {
-        return this.categoryService.getCategories();
+    getCategories(): Promise<any[]> {
+        return this.categoryService.getCategories().then(res => {
+            // res[0].
+            return res.map(category => ({
+                id: category.id,
+                name: category.name,
+                description: category.description,
+                productCount: category.products?.length
+            }));
+        });
     }
 
     @Get('/:id')
@@ -22,7 +30,7 @@ export class CategoryController {
 
 
     @Post()
-    @UseGuards(AuthGuard())
+    // @UseGuards(AuthGuard())
     @UsePipes(ValidationPipe)
     createCategory(@Body() createCategoryDto: CreateCategoryDto): Promise<Category> {
         console.log(createCategoryDto)
@@ -36,7 +44,7 @@ export class CategoryController {
     }
 
     @Patch('/:id')
-    @UseGuards(AuthGuard())
+    // @UseGuards(AuthGuard())
     updateCategory(
         @Param('id', ParseIntPipe) id: number,
         @Body() categoryDto: CreateCategoryDto): Promise<Category> {

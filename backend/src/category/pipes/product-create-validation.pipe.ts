@@ -1,6 +1,6 @@
 import { PipeTransform, BadRequestException } from "@nestjs/common";
 import { isNumber } from "class-validator";
-import { CreateProductDto } from "../dto/create-Product.dto";
+import { CreateProductDto } from "../dto/create-product.dto";
 
 export class ProductValidationPipe implements PipeTransform {
 
