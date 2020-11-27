@@ -10,6 +10,7 @@ import { ProductComponent } from './product/product.component';
 import { DataTablesModule } from 'angular-datatables';
 import { CategoryProductComponent } from './category-product/category-product.component';
 import { FormsModule } from '@angular/forms';
+import { ProductViewComponent } from './product-view/product-view.component';
 
 
 
@@ -22,7 +23,8 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     SidebarComponent,
     ProductComponent,
-    CategoryProductComponent
+    CategoryProductComponent,
+    ProductViewComponent
   ],
   imports: [
     CommonModule,
