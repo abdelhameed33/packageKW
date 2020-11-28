@@ -8,6 +8,8 @@
                     <a class="btn-close" data-action="close"><i class="ti-close"></i></a>
                 </div>
                 <h4 class="card-title m-b-0">{{currentCategory.name}} - Products Overview</h4>
+                <button [routerLink]="['/admin/products-create']" class="btn btn-success waves-effect waves-light m-r-10 my-2"
+                data-toggle="modal" data-target="#add-category">Add Product</button>
             </div>
             <div class="card-block collapse show">
                 <div class="table-responsive">
