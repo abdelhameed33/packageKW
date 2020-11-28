@@ -1,5 +1,5 @@
 import { User } from "src/auth/user.entity";
-import { Product } from "src/category/entities/Product.entity";
+import { Product } from "src/category/product.entity";
 import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()

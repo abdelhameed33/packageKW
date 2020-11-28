@@ -1,7 +1,7 @@
 import { Reviews } from "src/reviews/reviews.entity";
 import { BaseEntity, PrimaryGeneratedColumn, CreateDateColumn, Column, Entity, ManyToMany, ManyToOne, UpdateDateColumn, JoinColumn, OneToMany } from "typeorm";
-import { Category } from "./category.entity";
-import { Image } from "./image.entity";
+import { Category } from "./entities/category.entity";
+import { Image } from "./entities/image.entity";
 
 
 @Entity()
