@@ -2,6 +2,7 @@ import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn, Unique }
 import * as bcrypt from 'bcrypt';
 import { UserRole } from "./user-role.enum";
 import { Order } from "src/order/entities/order.entity";
+import { Address } from "src/address/address.entity";
 
 @Entity()
 @Unique(['email'])
@@ -31,8 +32,11 @@ export class User extends BaseEntity{
     @Column()
     salt: string;
 
-    @OneToMany(() => Order, (order: Order) => order.user,{eager:true})
+    @OneToMany(() => Order, (order: Order) => order.user,{eager:false})
     orders: Order[];
+
+    @OneToMany(() => Address, (address: Address) => address.user,{eager:false})
+    addresss: Address[];
 
 
     async validatePassword(password: string):Promise<boolean>{
