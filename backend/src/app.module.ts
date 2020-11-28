@@ -8,6 +8,7 @@ import { MulterModule } from '@nestjs/platform-express';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { ReviewsModule } from './reviews/reviews.module';
+import { OrderModule } from './order/order.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { ReviewsModule } from './reviews/reviews.module';
       rootPath: join(__dirname, '..', 'uploads'),
     }),
     ReviewsModule,
+    OrderModule,
   ],
   controllers: [],
   providers: [],

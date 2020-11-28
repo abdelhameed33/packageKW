@@ -1,6 +1,7 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, Unique } from "typeorm";
+import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn, Unique } from "typeorm";
 import * as bcrypt from 'bcrypt';
 import { UserRole } from "./user-role.enum";
+import { Order } from "src/order/entities/order.entity";
 
 @Entity()
 @Unique(['email'])
@@ -29,6 +30,10 @@ export class User extends BaseEntity{
 
     @Column()
     salt: string;
+
+    @OneToMany(() => Order, (order: Order) => order.user,{eager:true})
+    orders: Order[];
+
 
     async validatePassword(password: string):Promise<boolean>{
         const hash = await bcrypt.hash(password,this.salt);
