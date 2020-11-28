@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CategoryProductComponent } from './category-product/category-product.component';
 import { MainPageComponent } from './main-page/main-page.component';
+import { OrderViewComponent } from './order-view/order-view.component';
+import { OrdersComponent } from './orders/orders.component';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { ProductComponent } from './product/product.component';
 import { SiteComponent } from './site.component';
@@ -26,6 +28,14 @@ const routes: Routes = [
       {
         path: 'products-create',
         component: ProductComponent
+      },
+      {
+        path: 'orders',
+        component: OrdersComponent
+      },
+      {
+        path: 'orders/:id',
+        component: OrderViewComponent,
       }
     ]
   }

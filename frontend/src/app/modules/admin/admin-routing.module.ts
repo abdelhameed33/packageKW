@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AccountRoutes } from './account/accout.route';
+import { AuthGuard } from './shared/guard/auth.guard';
 
 const routes: Routes = [
   ...AccountRoutes,
   // ...SiteRoutes
   {
-    path: 'dashboard',
-    loadChildren: './site/adminSite.module#SiteModule',
+    path: '',
+    loadChildren: () => import('./site/adminSite.module').then(m => m.SiteModule),
+    canActivate: [AuthGuard]
   }
 ];
 

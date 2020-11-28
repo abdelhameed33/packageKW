@@ -11,6 +11,8 @@ import { DataTablesModule } from 'angular-datatables';
 import { CategoryProductComponent } from './category-product/category-product.component';
 import { FormsModule } from '@angular/forms';
 import { ProductViewComponent } from './product-view/product-view.component';
+import { OrdersComponent } from './orders/orders.component';
+import { OrderViewComponent } from './order-view/order-view.component';
 
 
 
@@ -24,7 +26,9 @@ import { ProductViewComponent } from './product-view/product-view.component';
     SidebarComponent,
     ProductComponent,
     CategoryProductComponent,
-    ProductViewComponent
+    ProductViewComponent,
+    OrdersComponent,
+    OrderViewComponent
   ],
   imports: [
     CommonModule,

@@ -15,30 +15,36 @@ export class AuthController {
 
     constructor(
         private authService: AuthService,
-        private configService: ConfigService){}
+        private configService: ConfigService) { }
 
     @Post('/signup')
-    signUp(@Body(ValidationPipe) createUserDto: CreateUserDto):Promise<void>{
-        return this.authService.signUp(createUserDto,UserRole.CLIENT);
+    signUp(@Body(ValidationPipe) createUserDto: CreateUserDto): Promise<void> {
+        return this.authService.signUp(createUserDto, UserRole.CLIENT);
     }
 
     @Post('/admin-signup')
     @Roles('admin')
-    @UseGuards(AuthGuard(),RolesGuard)
-    adminSignUp(@Body(ValidationPipe) createUserDto: CreateUserDto):Promise<void>{
+    @UseGuards(AuthGuard(), RolesGuard)
+    adminSignUp(@Body(ValidationPipe) createUserDto: CreateUserDto): Promise<void> {
         return this.authService.signUp(createUserDto, UserRole.ADMIN);
     }
 
     @Post('/signin')
-    signIn(@Body() authCredentialDto: AuthCredentialDto):Promise<{accessToken:string}>{
+    signIn(@Body() authCredentialDto: AuthCredentialDto): Promise<{ accessToken: string }> {
         return this.authService.signIn(authCredentialDto);
     }
-    
 
-    @Get('/hello')
+
+    @Get('/users')
+    @Roles('admin')
     @UseGuards(AuthGuard())
-    getHi(@GetUser()user:User){
-        console.log(user)
-        return 'hi';
+    async getAll(): Promise<any> {
+        const users = await this.authService.getAllUser().then(res => {
+            return res.length;
+        });
+
+        return {
+            users
+        };
     }
 }

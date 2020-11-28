@@ -23,6 +23,10 @@ export class ProductService {
         // return category.products;
     }
 
+    async getAllProducts(): Promise<Product[]> {
+        return await this.productRepository.find();
+    }
+
     async getProduct(id: number): Promise<Product> {
         const found = await this.productRepository.findOne({ id });
         if (!found) {
@@ -32,17 +36,17 @@ export class ProductService {
     }
 
     async createProduct(categoryId: number, createProductDto: CreateProductDto): Promise<Product> {
-        const { title, price, quantity, description,images, properties} = createProductDto;
+        const { title, price, quantity, description, images, properties } = createProductDto;
         const product = new Product()
-        product.properties= properties;
+        product.properties = properties;
         product.title = title;
-        product.price =price;
+        product.price = price;
         product.quantity = quantity;
         product.description = description;
         const category = await this.categoryService.getCategory(categoryId);
         product.category = category;
         const savedProduct = await this.productRepository.save(product);
-        await this.imageService.saveAll(images,savedProduct);
+        await this.imageService.saveAll(images, savedProduct);
         return savedProduct;
     }
 
@@ -52,7 +56,7 @@ export class ProductService {
             throw new NotFoundException(`Product with id ${id} not found`)
         }
     }
-    async isExists(id: number):Promise<Product>{
+    async isExists(id: number): Promise<Product> {
         const exist = await this.productRepository.isExists(id);
         return exist;
     }
@@ -67,7 +71,7 @@ export class ProductService {
     //     return Product;
     // }
 
-    private saveImages(imagePaths:string[]){
+    private saveImages(imagePaths: string[]) {
 
     }
 }

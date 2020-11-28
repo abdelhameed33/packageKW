@@ -4,11 +4,16 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: 'admin',
-    loadChildren: './modules/admin/admin.module#AdminModule'
+    loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule),
   },
   {
     path: 'packagekw',
-    loadChildren: './modules/packageKW/packge-kw.module#PackgeKWModule'
+    loadChildren: () => import('./modules/packageKW/packge-kw.module').then(m => m.PackgeKWModule),
+  },
+  {
+    path: '',
+    redirectTo: '',
+    pathMatch: 'full'
   }
 ];
 

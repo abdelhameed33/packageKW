@@ -12,12 +12,12 @@ export class CategoryService {
         private categoryRepository: CategoryRepository) {
     }
 
-    async getCategories():Promise<Category[]>{
-        return await this.categoryRepository.find();
+    async getCategories(): Promise<any[]> {
+        return await this.categoryRepository.getCategoriesWithCount();
     }
 
-    async getCategory(id: number):Promise<Category>{
-        const found = await this.categoryRepository.findOne({id});
+    async getCategory(id: number): Promise<Category> {
+        const found = await this.categoryRepository.findOne({ id });
         if (!found) {
             throw new NotFoundException(`category with id ${id} not found`)
         }
@@ -40,14 +40,14 @@ export class CategoryService {
         }
     }
 
-    async updateCategory(id: number, categoryDto: CreateCategoryDto):Promise<Category>{
-        const category =await this.getCategory(id);
+    async updateCategory(id: number, categoryDto: CreateCategoryDto): Promise<Category> {
+        const category = await this.getCategory(id);
         console.log(categoryDto)
-        const {name , description} = categoryDto;
-        category.name=name;
-        category.description=description;
+        const { name, description } = categoryDto;
+        category.name = name;
+        category.description = description;
         await this.categoryRepository.save(category);
         return category;
     }
-    
+
 }

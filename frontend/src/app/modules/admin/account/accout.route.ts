@@ -12,5 +12,9 @@ export const AccountRoutes: Routes = [
     {
         path: 'signup',
         component: RegisterComponent
+    },
+    {
+        path: 'test',
+        component: RegisterComponent,
     }
 ];

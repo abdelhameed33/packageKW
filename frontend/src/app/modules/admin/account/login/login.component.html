@@ -2,15 +2,28 @@
     <div class="login-register" style="background-image:url(../assets/images/background/login-register.jpg);">
         <div class="login-box card">
             <div class="card-block">
-                <form class="form-horizontal form-material" id="loginform" action="index.html">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-horizontal form-material"
+                    id="loginform" autocomplete="off">
                     <h3 class="box-title m-b-20">Sign In</h3>
                     <div class="form-group ">
                         <div class="col-xs-12">
-                            <input class="form-control" type="text" required="" placeholder="Username"> </div>
+                            <input class="form-control" type="text" required placeholder="email"
+                                formControlName="email">
+                        </div>
+                        <div *ngIf="submitted && f.email.errors">
+                            <small *ngIf="f.email.errors.required" class="form-text text-muted">Email is
+                                required</small>
+                        </div>
                     </div>
                     <div class="form-group">
                         <div class="col-xs-12">
-                            <input class="form-control" type="password" required="" placeholder="Password"> </div>
+                            <input class="form-control" type="password" required placeholder="Password"
+                                formControlName="password">
+                        </div>
+                        <div *ngIf="submitted && f.password.errors">
+                            <small *ngIf="f.password.errors.required" class="form-text text-muted">Password is
+                                required</small>
+                        </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
@@ -27,16 +40,6 @@
                                 type="submit">Log In</button>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 m-t-10 text-center">
-                            <div class="social">
-                                <a href="javascript:void(0)" class="btn  btn-facebook" data-toggle="tooltip"
-                                    title="Login with Facebook"> <i aria-hidden="true" class="fa fa-facebook"></i> </a>
-                                <a href="javascript:void(0)" class="btn btn-googleplus" data-toggle="tooltip"
-                                    title="Login with Google"> <i aria-hidden="true" class="fa fa-google-plus"></i> </a>
-                            </div>
-                        </div>
-                    </div>
                     <div class="form-group m-b-0">
                         <div class="col-sm-12 text-center">
                             <p>Don't have an account? <a [routerLink]="['/admin/signup']"
@@ -44,7 +47,7 @@
                         </div>
                     </div>
                 </form>
-                <form class="form-horizontal" id="recoverform" action="index.html">
+                <form [formGroup]="resetForm" class="form-horizontal" id="recoverform" action="index.html">
                     <div class="form-group ">
                         <div class="col-xs-12">
                             <h3>Recover Password</h3>

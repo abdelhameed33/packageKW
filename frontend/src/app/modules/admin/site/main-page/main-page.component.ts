@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
+import { MainService } from 'src/app/common/service/main.service';
 import { Category } from '../model/category.model';
 import { CategoryService } from '../service/category.service';
 
@@ -11,19 +12,16 @@ import { CategoryService } from '../service/category.service';
 export class MainPageComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
-  persons = [{
-    id: 4,
-    firstName: 'Ahmed',
-    lastName: 'Eldeeb'
-  }];
   categories: Category[] = [];
   currentCategory = new Category('', '');
   // We use this trigger because fetching the list of persons can be quite long,
   // thus we ensure the data is fetched before rendering
   dtTrigger: Subject<any> = new Subject<any>();
+  analytics: any[] = [];
 
   constructor(
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private mainService: MainService
   ) { }
 
   ngOnInit(): void {
@@ -35,6 +33,11 @@ export class MainPageComponent implements OnInit {
       processing: true,
     };
     this.getAllCategories();
+
+    this.mainService.getAnalyticsData().subscribe(res => {
+      console.log(res);
+      this.analytics = res;
+    });
 
   }
 
@@ -55,6 +58,12 @@ export class MainPageComponent implements OnInit {
       result = this.categoryService.save(this.currentCategory);
     }
     result.subscribe(res => {
+      console.log(res);
+    });
+  }
+
+  deleteCategory(): void {
+    this.categoryService.delete(this.currentCategory).subscribe(res => {
       console.log(res);
     });
   }

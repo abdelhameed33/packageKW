@@ -9,8 +9,8 @@ export class CreateUserDto{
     fullname: string;
     
     @IsString()
-    @MinLength(4)
-    @MaxLength(20)
+    @MinLength(10)
+    @MaxLength(50)
     email: string;
 
     @IsString()

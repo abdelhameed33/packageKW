@@ -14,22 +14,26 @@ export class AuthService {
     constructor(
         @InjectRepository(UserRepository)
         private userRepository: UserRepository,
-        private jwtService: JwtService){
+        private jwtService: JwtService) {
 
-        }
+    }
 
-    async signUp(createUserDto: CreateUserDto, userRole: UserRole):Promise<void>{
+    async signUp(createUserDto: CreateUserDto, userRole: UserRole): Promise<void> {
         return this.userRepository.signUp(createUserDto, userRole);
     }
 
-    async signIn(authCredentialDto: AuthCredentialDto):Promise<{accessToken:string}>{
+    async getAllUser(): Promise<any[]> {
+        return this.userRepository.find();
+    }
+
+    async signIn(authCredentialDto: AuthCredentialDto): Promise<{ accessToken: string }> {
         const email = await this.userRepository.validateUserPassword(authCredentialDto);
-        if (!email){
+        if (!email) {
             throw new UnauthorizedException();
         }
         //generating access token
-        const payload:JwtPayload= {email};
+        const payload: JwtPayload = { email };
         const accessToken = await this.jwtService.sign(payload);
-        return {accessToken};
+        return { accessToken };
     }
 }

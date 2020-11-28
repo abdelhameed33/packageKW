@@ -53,7 +53,7 @@
                             <div class="round round-lg align-self-center round-info"><i
                                     class="mdi mdi-cellphone-link"></i></div>
                             <div class="m-l-10 align-self-center">
-                                <h3 class="m-b-0 font-light">100</h3>
+                                <h3 class="m-b-0 font-light">{{analytics[2]?.categories}}</h3>
                                 <h5 class="text-muted m-b-0">Total Categories</h5>
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                             <div class="round round-lg align-self-center round-warning"><i
                                     class="fa fa-product-hunt"></i></div>
                             <div class="m-l-10 align-self-center">
-                                <h3 class="m-b-0 font-lgiht">100</h3>
+                                <h3 class="m-b-0 font-lgiht">{{analytics[2]?.products}}</h3>
                                 <h5 class="text-muted m-b-0">Total Prdoucts</h5>
                             </div>
                         </div>
@@ -85,7 +85,7 @@
                             <div class="round round-lg align-self-center round-primary"><i
                                     class="mdi mdi-cart-outline"></i></div>
                             <div class="m-l-10 align-self-center">
-                                <h3 class="m-b-0 font-lgiht">100</h3>
+                                <h3 class="m-b-0 font-lgiht">{{analytics[1]?.length}}</h3>
                                 <h5 class="text-muted m-b-0">Total Orders</h5>
                             </div>
                         </div>
@@ -98,11 +98,12 @@
                 <div class="card">
                     <div class="card-block">
                         <div class="d-flex flex-row">
-                            <div class="round round-lg align-self-center round-danger"><i class="mdi mdi-bullseye"></i>
+                            <div class="round round-lg align-self-center round-danger"><i
+                                    class="mdi mdi-account-multiple"></i>
                             </div>
                             <div class="m-l-10 align-self-center">
-                                <h3 class="m-b-0 font-lgiht">Value</h3>
-                                <h5 class="text-muted m-b-0">Additional</h5>
+                                <h3 class="m-b-0 font-lgiht">{{analytics[0]?.users}}</h3>
+                                <h5 class="text-muted m-b-0">Active Clients</h5>
                             </div>
                         </div>
                     </div>
@@ -134,12 +135,15 @@
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let category of categories">
-                                        <td><a [routerLink]="['/admin/products/',category.id,'category']">{{ category?.name }}</a>
+                                        <td><a
+                                                [routerLink]="['/admin/products/',category.id,'category']">{{ category?.name }}</a>
                                         </td>
                                         <td>{{category?.productCount}}</td>
                                         <td>
                                             <i data-toggle="modal" role="button" data-target="#add-category"
                                                 (click)="currentCategory=category" class="fa fa-edit"></i>
+                                            <i data-toggle="modal" role="button" data-target="#delete-category"
+                                                (click)="currentCategory=category" class="fa fa-trash mx-2"></i>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -160,7 +164,7 @@
     <!-- ============================================================== -->
 </div>
 <!-- ============================================================== -->
-<!-- satrt of add category module  -->
+<!-- satrt of add category modal  -->
 <!-- ============================================================== -->
 <div id="add-category" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true">
@@ -176,6 +180,15 @@
                         <div class="col-md-12 m-b-20">
                             <input type="text" class="form-control" [(ngModel)]="currentCategory.name" name="name"
                                 placeholder="Type Category Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 m-b-20">
+                            <select class="form-control p-0" id="input6" required>
+                                <option>Parent Category (optional)</option>
+                                <option *ngFor="let category of categories" [value]="category">{{category.name}}
+                                </option>
+                            </select><span class="bar"></span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -197,5 +210,37 @@
     <!-- /.modal-dialog -->
 </div>
 <!-- ============================================================== -->
-<!-- end of add category module  -->
+<!-- end of add category modal  -->
+<!-- ============================================================== -->
+
+<!-- ============================================================== -->
+<!-- satrt of delete category modal  -->
+<!-- ============================================================== -->
+<div id="delete-category" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">Delete Category</h4>
+            </div>
+            <div class="modal-body" [hidden]="currentCategory.productCount> 0">
+                <p> Are you sure you want to delete category <span
+                        class="font-weight-bold">{{currentCategory.name}}</span>?</p>
+            </div>
+            <div class="modal-body" [hidden]="currentCategory.productCount<= 0">
+                <p> Please, make sure to delete all products under this category before dleete it</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" [disabled]="currentCategory.productCount>0" (click)="deleteCategory()"
+                    class="btn btn-info waves-effect" data-dismiss="modal">Delete</button>
+                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- ============================================================== -->
+<!-- end of delete category modal  -->
 <!-- ============================================================== -->
