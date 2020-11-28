@@ -4,16 +4,18 @@ import { AuthCredentialDto } from "./dto/auth-credential.dto";
 import { User } from "./user.entity";
 import { ConflictException, InternalServerErrorException } from "@nestjs/common";
 import { CreateUserDto } from "./dto/create-user.dto";
+import { UserRole } from "./user-role.enum";
 
 @EntityRepository(User)
 export class UserRepository extends Repository<User>{
     
 
-    async signUp(createUserDto: CreateUserDto): Promise<void>{
+    async signUp(createUserDto: CreateUserDto, userRole: UserRole): Promise<void>{
         const {fullname, email,phone, password} = createUserDto;
 
         //make sure that both exist in database
         const user = new User()
+        user.role=userRole;
         user.email= email;
         user.phone=phone;
         user.fullname=fullname;
