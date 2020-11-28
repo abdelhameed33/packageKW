@@ -1,12 +1,14 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, UploadedFile, UploadedFiles, UseGuards, UseInterceptors, UsePipes, ValidationPipe } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { Product } from '../entities/product.entity';
+import { Product } from '../entities/Product.entity';
 import { ProductService } from '../service/product.service';
 import { CreateProductDto } from '../dto/create-product.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer'
 import { Observable, of } from 'rxjs';
 import { ProductValidationPipe } from '../pipes/product-create-validation.pipe';
+import { RolesGuard } from 'src/auth/roles.guard';
+import { Roles } from 'src/auth/decorator/roles.decorator';
 const path = require('path')
 export const storage = {
     storage: diskStorage({
@@ -35,14 +37,16 @@ export class ProductController {
 
 
     @Post('/upload')
-    @UseGuards(AuthGuard())
+    @Roles('admin')
+    @UseGuards(AuthGuard(),RolesGuard)
     @UseInterceptors(FileInterceptor('file', storage))
     uploadFile(@UploadedFile() file): Observable<Object> {
         return of({ imagePath: file.filename });
     }
 
     @Post('/:categoryId/products')
-    @UseGuards(AuthGuard())
+    @Roles('admin')
+    @UseGuards(AuthGuard(),RolesGuard)
     @UsePipes(new ValidationPipe({ transform: true }))
     createProduct(
         @Param('categoryId', ParseIntPipe) categoryId: number,
@@ -51,7 +55,8 @@ export class ProductController {
     }
 
     @Delete('/:id')
-    @UseGuards(AuthGuard())
+    @Roles('admin')
+    @UseGuards(AuthGuard(),RolesGuard)
     deleteProduct(@Param('id', ParseIntPipe) id: number) {
         return this.productService.deleteProduct(id);
     }

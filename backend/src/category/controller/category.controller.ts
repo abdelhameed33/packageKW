@@ -3,6 +3,8 @@ import { AuthGuard } from '@nestjs/passport';
 import { Category } from '../entities/category.entity';
 import { CategoryService } from '../service/category.service';
 import { CreateCategoryDto } from '../dto/create-category.dto';
+import { Roles } from 'src/auth/decorator/roles.decorator';
+import { RolesGuard } from 'src/auth/roles.guard';
 
 @Controller('category')
 export class CategoryController {
@@ -30,7 +32,8 @@ export class CategoryController {
 
 
     @Post()
-    // @UseGuards(AuthGuard())
+    @Roles('admin')
+    @UseGuards(AuthGuard(),RolesGuard)
     @UsePipes(ValidationPipe)
     createCategory(@Body() createCategoryDto: CreateCategoryDto): Promise<Category> {
         console.log(createCategoryDto)
@@ -38,13 +41,15 @@ export class CategoryController {
     }
 
     @Delete('/:id')
-    @UseGuards(AuthGuard())
+    @Roles('admin')
+    @UseGuards(AuthGuard(),RolesGuard)
     deleteCategory(@Param('id', ParseIntPipe) id: number) {
         return this.categoryService.deleteCategory(id);
     }
 
     @Patch('/:id')
-    // @UseGuards(AuthGuard())
+    @Roles('admin')
+    @UseGuards(AuthGuard(),RolesGuard)
     updateCategory(
         @Param('id', ParseIntPipe) id: number,
         @Body() categoryDto: CreateCategoryDto): Promise<Category> {

@@ -18,6 +18,8 @@ export class CreateProductDto{
     @IsNotEmpty()
     quantity: number;
 
+    properties: string;
+
     @IsNotEmpty()
     images: string [];
 

@@ -21,6 +21,9 @@ export class Product extends BaseEntity {
     @Column()
     quantity: number;
 
+    @Column()
+    properties: string;
+
     @CreateDateColumn()
     created_at: Date;
 
