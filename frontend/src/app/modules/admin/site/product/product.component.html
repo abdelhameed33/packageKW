@@ -1,138 +1,131 @@
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-12 mt-4">
         <div class="card card-outline-info">
-            <div class="card-header">
+            <!-- <div class="card-header">
                 <h4 class="m-b-0 text-white">Other Sample form</h4>
-            </div>
+            </div> -->
             <div class="card-block">
-                <form action="#">
+                <form [formGroup]="productForm" (ngSubmit)="onSubmit()" id="productform" autocomplete="off">
                     <div class="form-body">
-                        <h3 class="card-title">Person Info</h3>
+                        <h3 class="card-title">Add New Product</h3>
                         <hr>
                         <div class="row p-t-20">
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label">First Name</label>
-                                    <input type="text" id="firstName" class="form-control" placeholder="John doe">
-                                    <small class="form-control-feedback"> This is inline help </small> </div>
-                            </div>
-                            <!--/span-->
-                            <div class="col-md-6">
-                                <div class="form-group has-danger">
-                                    <label class="control-label">Last Name</label>
-                                    <input type="text" id="lastName" class="form-control form-control-danger"
-                                        placeholder="12n">
-                                    <small class="form-control-feedback"> This field has error. </small> </div>
-                            </div>
-                            <!--/span-->
-                        </div>
-                        <!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group has-success">
-                                    <label class="control-label">Gender</label>
-                                    <select class="form-control custom-select">
-                                        <option value="">Male</option>
-                                        <option value="">Female</option>
-                                    </select>
-                                    <small class="form-control-feedback"> Select your gender </small> </div>
-                            </div>
-                            <!--/span-->
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label">Date of Birth</label>
-                                    <input type="date" class="form-control" placeholder="dd/mm/yyyy">
+                                <div class="form-group" [class.has-danger]="submitted && form.productname.errors">
+                                    <label class="control-label">Product Name</label>
+                                    <input [(ngModel)]="newProduct.title" type="text" id="productname"
+                                        class="form-control" formControlName="productname" required
+                                        placeholder="Product Name">
+                                    <div *ngIf="submitted && form.productname.errors">
+                                        <small *ngIf="form.productname.errors.required" class="form-control-feedback">*
+                                            This
+                                            field is
+                                            required</small>
+                                    </div>
+                                    <!-- <small class="form-control-feedback"> This is inline help </small>  -->
                                 </div>
                             </div>
                             <!--/span-->
-                        </div>
-                        <!--/row-->
-                        <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="form-group " [class.has-danger]="submitted && form.category.errors">
                                     <label class="control-label">Category</label>
-                                    <select class="form-control custom-select" data-placeholder="Choose a Category"
-                                        tabindex="1">
-                                        <option value="Category 1">Category 1</option>
-                                        <option value="Category 2">Category 2</option>
-                                        <option value="Category 3">Category 5</option>
-                                        <option value="Category 4">Category 4</option>
+                                    <select formControlName="category" required class="form-control custom-select">
+                                        <option [ngValue]=null>Select Category</option>
+                                        <option *ngFor="let category of categories" [ngValue]="category.id">
+                                            {{category.name}}</option>
                                     </select>
+                                    <div *ngIf="submitted && form.category.errors">
+                                        <small *ngIf="form.category.errors.required" class="form-control-feedback">*
+                                            This
+                                            field is
+                                            required</small>
+                                    </div>
                                 </div>
                             </div>
+
                             <!--/span-->
+                        </div>
+                        <!--/row-->
+                        <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="control-label">Membership</label>
-                                    <div class="form-check">
-                                        <label class="custom-control custom-radio">
-                                            <input id="radio1" name="radio" type="radio" checked
-                                                class="custom-control-input">
-                                            <span class="custom-control-indicator"></span>
-                                            <span class="custom-control-description">Free</span>
-                                        </label>
-                                        <label class="custom-control custom-radio">
-                                            <input id="radio2" name="radio" type="radio" class="custom-control-input">
-                                            <span class="custom-control-indicator"></span>
-                                            <span class="custom-control-description">Paid</span>
-                                        </label>
+                                <div class="form-group" [class.has-danger]="submitted && form.quantity.errors">
+                                    <label class="control-label">Quantity</label>
+                                    <!-- has-danger > form-control-danger -->
+                                    <input [(ngModel)]="newProduct.quantity" formControlName="quantity" required
+                                        type="number" id="quantity" class="form-control" placeholder="quantity">
+                                    <div *ngIf="submitted && form.quantity.errors">
+                                        <small *ngIf="form.quantity.errors.required" class="form-control-feedback">*
+                                            This
+                                            field is
+                                            required</small>
                                     </div>
                                 </div>
                             </div>
                             <!--/span-->
+                            <div class="col-md-6">
+                                <div class="form-group" [class.has-danger]="submitted && form.price.errors">
+                                    <label class="control-label">Price</label>
+                                    <input [(ngModel)]="newProduct.price" formControlName="price" required type="number"
+                                        id="price" class="form-control" placeholder="Price in dinar">
+                                    <div *ngIf="submitted && form.price.errors">
+                                        <small *ngIf="form.price.errors.required" class="form-control-feedback">*
+                                            This
+                                            field is
+                                            required</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--/span-->
                         </div>
                         <!--/row-->
-                        <h3 class="box-title m-t-40">Address</h3>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group" [class.has-danger]="submitted && form.description.errors">
+
+                                    <textarea [(ngModel)]="newProduct.description" formControlName="description"
+                                        required class="form-control" name="description" rows="3"
+                                        placeholder="Product Description"></textarea>
+                                    <div *ngIf="submitted && form.description.errors">
+                                        <small *ngIf="form.description.errors.required" class="form-control-feedback">*
+                                            This
+                                            field is
+                                            required</small>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="card">
+                                    <div class="card-block">
+                                        <h4 class="card-title"> Product Image</h4>
+                                        <label for="input-file-now">Your so fresh input file — Default
+                                            version</label>
+                                        <input type="file" id="input-file-now" (change)="onFileChanged($event)" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--/row-->
+                        <h3 class="box-title m-t-40">Add Product Attributes</h3>
                         <hr>
-                        <div class="row">
-                            <div class="col-md-12 ">
-                                <div class="form-group">
-                                    <label>Street</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>City</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <!--/span-->
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>State</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <!--/span-->
-                        </div>
                         <!--/row-->
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Post Code</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <!--/span-->
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Country</label>
-                                    <select class="form-control custom-select">
-                                        <option>--Select your Country--</option>
-                                        <option>India</option>
-                                        <option>Sri Lanka</option>
-                                        <option>USA</option>
-                                    </select>
+                                    <button type="submit" class="btn btn-info"> <i class="fa fa-plus"></i> Add
+                                        Property</button>
                                 </div>
                             </div>
                             <!--/span-->
                         </div>
                     </div>
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
+                        <button type="submit" class="btn btn-success mx-3"> <i class="fa fa-check"></i> Save</button>
                         <button type="button" class="btn btn-inverse">Cancel</button>
                     </div>
                 </form>

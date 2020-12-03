@@ -21,7 +21,7 @@ export const storage = {
     })
 }
 
-@Controller('category')
+@Controller('api/products')
 export class ProductController {
 
 
@@ -29,24 +29,31 @@ export class ProductController {
         private productService: ProductService
     ) { }
 
-    @Get('/:id/products')
-    getCategoryProdcuts(@Param('id', ParseIntPipe) id: number): Promise<Product[]> {
+
+    @Get('/:id')
+    getProductById(@Param('id', ParseIntPipe) id: number): Promise<Product> {
         console.log('here')
-        return this.productService.getProducts(id);
+        return this.productService.getProduct(id);
+    }
+
+    @Get('/:categoryId/category')
+    getProduct(
+        @Param('categoryId', ParseIntPipe) categoryId: number): Promise<Product[]> {
+        return this.productService.getProducts(categoryId);
     }
 
 
     @Post('/upload')
-    @Roles('admin')
-    @UseGuards(AuthGuard(),RolesGuard)
+    // @Roles('admin')
+    // @UseGuards(AuthGuard(), RolesGuard)
     @UseInterceptors(FileInterceptor('file', storage))
     uploadFile(@UploadedFile() file): Observable<Object> {
         return of({ imagePath: file.filename });
     }
 
-    @Post('/:categoryId/products')
+    @Post('/:categoryId/category')
     @Roles('admin')
-    @UseGuards(AuthGuard(),RolesGuard)
+    @UseGuards(AuthGuard(), RolesGuard)
     @UsePipes(new ValidationPipe({ transform: true }))
     createProduct(
         @Param('categoryId', ParseIntPipe) categoryId: number,
@@ -56,7 +63,7 @@ export class ProductController {
 
     @Delete('/:id')
     @Roles('admin')
-    @UseGuards(AuthGuard(),RolesGuard)
+    @UseGuards(AuthGuard(), RolesGuard)
     deleteProduct(@Param('id', ParseIntPipe) id: number) {
         return this.productService.deleteProduct(id);
     }

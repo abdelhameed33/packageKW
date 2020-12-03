@@ -9,7 +9,7 @@ import { SidebarComponent } from './layouts/sidebar/sidebar.component';
 import { ProductComponent } from './product/product.component';
 import { DataTablesModule } from 'angular-datatables';
 import { CategoryProductComponent } from './category-product/category-product.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderViewComponent } from './order-view/order-view.component';
@@ -34,7 +34,8 @@ import { OrderViewComponent } from './order-view/order-view.component';
     CommonModule,
     SiteRoutingModule,
     DataTablesModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
     //  RouterModule.forChild(SiteRoutes)
   ]
 })

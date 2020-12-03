@@ -184,6 +184,12 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-12 m-b-20">
+                            <input type="text" class="form-control" [(ngModel)]="currentCategory.ar_name" name="ar_name"
+                                placeholder="ادخل اسم الفئة">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 m-b-20">
                             <select class="form-control p-0" id="input6" required>
                                 <option>Parent Category (optional)</option>
                                 <option *ngFor="let category of categories" [value]="category">{{category.name}}
@@ -195,6 +201,12 @@
                         <div class="col-md-12 m-b-20">
                             <textarea [(ngModel)]="currentCategory.description" class="form-control" name="description"
                                 rows="3" placeholder="Category Description"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 m-b-20">
+                            <textarea [(ngModel)]="currentCategory.description" class="form-control" name="description"
+                                rows="3" placeholder="وصف الفئة"></textarea>
                         </div>
                     </div>
                 </form>

@@ -20,7 +20,7 @@ export class CreateProductDto{
 
     properties: string;
 
-    @IsNotEmpty()
+    // @IsNotEmpty()
     images: string [];
 
 }
