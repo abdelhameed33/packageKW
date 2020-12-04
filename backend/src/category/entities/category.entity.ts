@@ -1,5 +1,5 @@
 import { IsNumber } from "class-validator";
-import { BaseEntity, PrimaryGeneratedColumn, Column, Entity, ManyToMany, ManyToOne, OneToMany } from "typeorm";
+import { BaseEntity, PrimaryGeneratedColumn, Column, Entity, ManyToMany, ManyToOne, OneToMany, OneToOne, JoinColumn } from "typeorm";
 import { Product } from "../product.entity";
 
 
@@ -13,6 +13,10 @@ export class Category extends BaseEntity {
 
     @Column()
     description: string;
+
+    @OneToOne(()=>Category,{eager:false})
+    @JoinColumn({name:'parent_category_id'})
+    parentCategory: Category
 
     @OneToMany(() => Product, (product: Product) => product.category, { eager: false })
     products: Product[];

@@ -33,7 +33,7 @@ export class User extends BaseEntity{
     salt: string;
 
     @OneToMany(() => Order, (order: Order) => order.user,{eager:false})
-    orders: Order[];
+    orders: Promise<Order[]>;
 
     @OneToMany(() => Address, (address: Address) => address.user,{eager:false})
     addresss: Address[];

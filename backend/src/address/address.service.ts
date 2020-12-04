@@ -30,10 +30,8 @@ export class AddressService {
     }
 
     async deleteAddress(user: User ,id: number){
-        const found = await this.addressRepository.findOne({id:id, user});
-        if (!found)
+        const found =await this.addressRepository.delete({id:id, user});
+        if (!found.affected)
         throw new NotFoundException(`address with id ${id} not found`)
-        
-        return this.addressRepository.delete({id});
     }
 }

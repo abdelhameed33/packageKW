@@ -5,11 +5,15 @@ import { OrderRepository } from './repository/order.repository';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { OrderService } from './service/order.service';
 import { AuthModule } from 'src/auth/auth.module';
+import { CategoryModule } from 'src/category/category.module';
+import { OrderProductRepository } from './repository/order-product.repository';
+import { OrderProduct } from './entities/order-products.entity';
 
 @Module({
     imports: [
         AuthModule,
-        TypeOrmModule.forFeature([Order, OrderRepository]),
+        CategoryModule,
+        TypeOrmModule.forFeature([Order,OrderProduct,OrderProductRepository ,OrderRepository]),
     ],
     providers: [OrderService],
     exports: [OrderService],

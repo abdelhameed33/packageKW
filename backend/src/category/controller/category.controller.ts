@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Query, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { Category } from '../entities/category.entity';
 import { CategoryService } from '../service/category.service';
@@ -15,9 +15,9 @@ export class CategoryController {
     ) { }
 
     @Get()
-    getCategories(): Promise<any[]> {
+    getCategories(@Query('parentid') parentId: string): Promise<any[]> {
         console.log('Get all categories');
-        return this.categoryService.getCategories();
+        return this.categoryService.getCategories(parentId);
     }
 
     @Get('/:id')

@@ -1,6 +1,7 @@
 import { User } from "src/auth/user.entity";
 import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { OrderProducts } from "./order-products.entity";
+import { OrderProduct } from "./order-products.entity";
+import { OrderStatus } from "./order-status.enum";
 
 @Entity({name:'orders'})
 export class Order extends BaseEntity{
@@ -11,12 +12,19 @@ export class Order extends BaseEntity{
     @CreateDateColumn()
     created_at: Date;
 
+    @Column({
+        type: "enum",
+        enum: OrderStatus
+    })
+    status: OrderStatus;
+
     @ManyToOne(() => User,
     user => user.orders, { eager: false })
     @JoinColumn({ name: "user_id" })
     user: User;
 
-    @OneToMany(() => OrderProducts, (orderProduct: OrderProducts) => orderProduct.order,{eager:true})
-    orderProducts: OrderProducts[];
+    @OneToMany(() => OrderProduct, 
+    (orderProduct: OrderProduct) => orderProduct.order,{eager:false})
+    orderProducts: Promise<OrderProduct[]>;
 
 }
