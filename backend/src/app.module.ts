@@ -10,6 +10,7 @@ import { join } from 'path';
 import { ReviewsModule } from './reviews/reviews.module';
 import { OrderModule } from './order/order.module';
 import { AddressModule } from './address/address.module';
+import { ImageModule } from './image/image.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { AddressModule } from './address/address.module';
     ReviewsModule,
     OrderModule,
     AddressModule,
+    ImageModule,
   ],
   controllers: [],
   providers: [],

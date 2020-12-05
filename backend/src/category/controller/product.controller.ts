@@ -9,17 +9,6 @@ import { Observable, of } from 'rxjs';
 import { ProductValidationPipe } from '../pipes/product-create-validation.pipe';
 import { RolesGuard } from 'src/auth/roles.guard';
 import { Roles } from 'src/auth/decorator/roles.decorator';
-const path = require('path')
-export const storage = {
-    storage: diskStorage({
-        destination: './uploads',
-        filename: (req, file, cb) => {
-            const filename: string = path.parse(file.originalname).name.replace(/\s/g, '') + Date.now();
-            const extension: string = path.parse(file.originalname).ext;
-            cb(null, `${filename}${extension}`)
-        }
-    })
-}
 
 @Controller('api/products')
 export class ProductController {
@@ -43,13 +32,6 @@ export class ProductController {
     }
 
 
-    @Post('/upload')
-    // @Roles('admin')
-    // @UseGuards(AuthGuard(), RolesGuard)
-    @UseInterceptors(FileInterceptor('file', storage))
-    uploadFile(@UploadedFile() file): Observable<Object> {
-        return of({ imagePath: file.filename });
-    }
 
     @Post('/:categoryId/category')
     @Roles('admin')
