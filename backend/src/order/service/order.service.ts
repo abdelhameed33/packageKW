@@ -1,10 +1,11 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserRole } from 'src/auth/user-role.enum';
 import { User } from 'src/auth/user.entity';
 import { ProductService } from 'src/category/service/product.service';
 import { CreateOrderDto } from '../dto/create-order.dto';
 import { OrderProduct } from '../entities/order-products.entity';
+import { OrderStatus } from '../entities/order-status.enum';
 import { Order } from '../entities/order.entity';
 import { OrderProductRepository } from '../repository/order-product.repository';
 import { OrderRepository } from '../repository/order.repository';
@@ -27,10 +28,15 @@ export class OrderService {
         return await user.orders;
     }
 
-    async findOrderById(id): Promise<Order> {
-        const order=  await this.orderRepository.findOne({ id });
-        await order.orderProducts;
-        return order;
+    async findOrderById(id, loadProducts?: boolean): Promise<Order> {
+        const found=  await this.orderRepository.findOne({ id });
+        if (!found) {
+            throw new NotFoundException(`order with id ${id} not found`)
+        }
+        if (loadProducts){
+            await found.orderProducts;
+        }
+        return found;
     }
 
     async createOrder(user:User, createOrderDto: CreateOrderDto):Promise<any>{
@@ -54,6 +60,14 @@ export class OrderService {
             console.log(saved);
         }
 
+        return order;
+    }
+
+
+    async updateOrderStatus(id: number, status: OrderStatus): Promise<Order> {
+        const order = await this.findOrderById(id, false);
+        order.status = status;
+        await this.orderRepository.save(order);
         return order;
     }
 }
