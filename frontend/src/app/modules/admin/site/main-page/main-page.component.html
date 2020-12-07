@@ -117,142 +117,234 @@
         <!-- Row -->
         <div class="row">
 
-            <div class="col-12" [hidden]="categories.length<=0">
+            <div class="col-12">
                 <div class="card">
-                    <div class="card-block">
-                        <h4 class="card-title">Categories</h4>
+                    <div class="card-body p-2">
                         <button (click)="reInintialize()" class="btn btn-success waves-effect waves-light m-r-10 my-2"
                             data-toggle="modal" data-target="#add-category">Add Category</button>
+                        <h4 class="card-title">Main Categories</h4>
                         <h6 class="card-subtitle"></h6>
-                        <div class="table-responsive">
-                            <table datatable [dtOptions]="dtOptions" class="row-border hover">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Total Products</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let category of categories">
-                                        <td><a
-                                                [routerLink]="['/admin/products/',category.id,'category']">{{ category?.name }}</a>
-                                        </td>
-                                        <td>{{category?.productCount}}</td>
-                                        <td>
-                                            <i data-toggle="modal" role="button" data-target="#add-category"
-                                                (click)="currentCategory=category" class="fa fa-edit"></i>
-                                            <i data-toggle="modal" role="button" data-target="#delete-category"
-                                                (click)="currentCategory=category" class="fa fa-trash mx-2"></i>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Row -->
-        <!-- ============================================================== -->
-        <!-- End PAge Content -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Container fluid  -->
-    <!-- ============================================================== -->
-</div>
-<!-- ============================================================== -->
-<!-- satrt of add category modal  -->
-<!-- ============================================================== -->
-<div id="add-category" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title" id="myModalLabel">Add New Category</h4>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal form-material">
-                    <div class="form-group">
-                        <div class="col-md-12 m-b-20">
-                            <input type="text" class="form-control" [(ngModel)]="currentCategory.name" name="name"
-                                placeholder="Type Category Name">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-12 m-b-20">
-                            <input type="text" class="form-control" [(ngModel)]="currentCategory.ar_name" name="ar_name"
-                                placeholder="ادخل اسم الفئة">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-12 m-b-20">
-                            <select class="form-control p-0" id="input6" required>
-                                <option>Parent Category (optional)</option>
-                                <option *ngFor="let category of categories" [value]="category">{{category.name}}
-                                </option>
-                            </select><span class="bar"></span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-12 m-b-20">
-                            <textarea [(ngModel)]="currentCategory.description" class="form-control" name="description"
-                                rows="3" placeholder="Category Description"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-12 m-b-20">
-                            <textarea [(ngModel)]="currentCategory.description" class="form-control" name="description"
-                                rows="3" placeholder="وصف الفئة"></textarea>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" (click)="saveOrUpdate()" class="btn btn-info waves-effect"
-                    data-dismiss="modal">Save</button>
-                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-<!-- ============================================================== -->
-<!-- end of add category modal  -->
-<!-- ============================================================== -->
+                        <div class="table-responsive" [hidden]="categories.length<=0">
 
-<!-- ============================================================== -->
-<!-- satrt of delete category modal  -->
-<!-- ============================================================== -->
-<div id="delete-category" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title" id="myModalLabel">Delete Category</h4>
-            </div>
-            <div class="modal-body" [hidden]="currentCategory.productCount> 0">
-                <p> Are you sure you want to delete category <span
-                        class="font-weight-bold">{{currentCategory.name}}</span>?</p>
-            </div>
-            <div class="modal-body" [hidden]="currentCategory.productCount<= 0">
-                <p> Please, make sure to delete all products under this category before dleete it</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" [disabled]="currentCategory.productCount>0" (click)="deleteCategory()"
-                    class="btn btn-info waves-effect" data-dismiss="modal">Delete</button>
-                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-<!-- ============================================================== -->
-<!-- end of delete category modal  -->
-<!-- ============================================================== -->
+                            <mat-form-field>
+                                <mat-label>Filter</mat-label>
+                                <input matInput (keyup)="applyFilter($event)" #input>
+                            </mat-form-field>
+
+                            <div class="mat-elevation-z8">
+                                <table mat-table [dataSource]="dataSource" matSort>
+
+                                    <!-- ID Column -->
+                                    <ng-container matColumnDef="name">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                                        <td mat-cell *matCellDef="let row">
+                                            <a class="btn btn-secondary" [class.btn-success]="row.id == parentId" role="button"
+                                                (click)="getSubCategories(row.id)">{{row.name}} </a>
+                                        </td>
+                                    </ng-container>
+
+                                    <!-- Progress Column -->
+                                    <ng-container matColumnDef="childs">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Sub-Categories </th>
+                                        <td mat-cell *matCellDef="let row"> {{row.childs}} </td>
+                                    </ng-container>
+
+                                    <!-- Name Column -->
+                                    <ng-container matColumnDef="action">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+                                        <td mat-cell *matCellDef="let row">
+                                            <i data-toggle="modal" role="button" data-target="#add-category"
+                                                (click)="currentCategory=row" class="fa fa-edit"></i>
+                                            <i data-toggle="modal" role="button" data-target="#delete-category"
+                                                (click)="currentCategory=row" class="fa fa-trash mx-2"></i>
+                                        </td>
+                                    </ng-container>
+
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                                    <!-- Row shown when there is no matching data. -->
+                                    <tr class="mat-row" *matNoDataRow>
+                                        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                            </div>
+
+
+                        </div>
+                        <hr>
+                        <hr>
+                        <!-- -------------------------------- -->
+                        <!----- Sub Category Table ----->
+                        <!-- -------------------------------- -->
+
+                        <div class="table-responsive" [hidden]="subCategories.length<=0">
+                            <h4 class="card-title">Sub Categories</h4>
+                            <mat-form-field>
+                                <mat-label>Filter</mat-label>
+                                <input matInput (keyup)="subFilter($event)" #subInput>
+                            </mat-form-field>
+
+                            <div class="mat-elevation-z8">
+                                <table mat-table [dataSource]="subDataSource" matSort #MatSort1="matSort">
+
+                                    <!-- ID Column -->
+                                    <ng-container matColumnDef="name">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                                        <td mat-cell *matCellDef="let row">
+                                            <a [routerLink]="['/admin/products/',row.id,'category']">
+                                                {{row.name}} </a>
+                                        </td>
+                                    </ng-container>
+
+                                    <!-- Count Column -->
+                                    <ng-container matColumnDef="count">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Products </th>
+                                        <td mat-cell *matCellDef="let row">
+                                            {{row.productCount}}
+                                        </td>
+                                    </ng-container>
+
+
+                                    <!-- Name Column -->
+                                    <ng-container matColumnDef="action">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+                                        <td mat-cell *matCellDef="let row">
+                                            <i data-toggle="modal" role="button" data-target="#add-category"
+                                                (click)="currentCategory=row" class="fa fa-edit"></i>
+                                            <i data-toggle="modal" role="button" data-target="#delete-category"
+                                                (click)="currentCategory=row" class="fa fa-trash mx-2"></i>
+                                        </td>
+                                    </ng-container>
+
+                                    <tr mat-header-row *matHeaderRowDef="subCategoryColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: subCategoryColumns;"></tr>
+
+                                    <!-- Row shown when there is no matching data. -->
+                                    <tr class="mat-row" *matNoDataRow>
+                                        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <mat-paginator #MatPaginator1 [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                            </div>
+
+
+                        </div>
+                        <div class="card-text text-center h2" [hidden]="categories.length>0">
+                            No Categories Yet
+                        </div>
+                        <!-- Row -->
+                        <!-- ============================================================== -->
+                        <!-- End PAge Content -->
+                        <!-- ============================================================== -->
+                        <!-- ============================================================== -->
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Container fluid  -->
+                    <!-- ============================================================== -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- satrt of add category modal  -->
+                <!-- ============================================================== -->
+                <div id="add-category" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title" id="myModalLabel">Add New Category</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal form-material">
+                                    <div class="form-group">
+                                        <div class="col-md-12 m-b-20">
+                                            <input type="text" class="form-control" [(ngModel)]="currentCategory.name"
+                                                name="name" placeholder="Type Category Name">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12 m-b-20">
+                                            <input type="text" class="form-control"
+                                                [(ngModel)]="currentCategory.ar_name" name="ar_name"
+                                                placeholder="ادخل اسم الفئة">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12 m-b-20">
+                                            <select [(ngModel)]="currentCategory.parentId" name="parent"
+                                                class="form-control p-0" id="input6" required>
+                                                <option>Parent Category (optional)</option>
+                                                <option *ngFor="let category of categories" [ngValue]="category.id">
+                                                    {{category.name}}
+                                                </option>
+                                            </select><span class="bar"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12 m-b-20">
+                                            <textarea [(ngModel)]="currentCategory.description" class="form-control"
+                                                name="description" rows="3"
+                                                placeholder="Category Description"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12 m-b-20">
+                                            <textarea [(ngModel)]="currentCategory.description" class="form-control"
+                                                name="description" rows="3" placeholder="وصف الفئة"></textarea>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" (click)="saveOrUpdate()" class="btn btn-info waves-effect"
+                                    data-dismiss="modal">Save</button>
+                                <button type="button" class="btn btn-default waves-effect"
+                                    data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- end of add category modal  -->
+                <!-- ============================================================== -->
+
+                <!-- ============================================================== -->
+                <!-- satrt of delete category modal  -->
+                <!-- ============================================================== -->
+                <div id="delete-category" class="modal fade in" tabindex="-1" role="dialog"
+                    aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title" id="myModalLabel">Delete Category</h4>
+                            </div>
+                            <div class="modal-body" [hidden]="currentCategory.productCount> 0">
+                                <p> Are you sure you want to delete category <span
+                                        class="font-weight-bold">{{currentCategory.name}}</span>?</p>
+                            </div>
+                            <div class="modal-body" [hidden]="currentCategory.productCount<= 0">
+                                <p> Please, make sure to delete all products under this category before dleete it</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" [disabled]="currentCategory.productCount>0"
+                                    (click)="deleteCategory()" class="btn btn-info waves-effect"
+                                    data-dismiss="modal">Delete</button>
+                                <button type="button" class="btn btn-default waves-effect"
+                                    data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- end of delete category modal  -->
+                <!-- ============================================================== -->

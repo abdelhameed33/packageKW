@@ -12,8 +12,14 @@ export class CategoryService {
         private categoryRepository: CategoryRepository) {
     }
 
-    async getCategories(parentId?:string): Promise<any[]> {
-        return await this.categoryRepository.getCategoriesWithCount(parentId);
+    async getCategories(parentId?: string, type?: string): Promise<any[]> {
+        if (parentId) {
+            return await this.categoryRepository.getCategoriesWithCount(parentId);
+        }
+        if(type){
+            return await this.categoryRepository.getCategoriesByType(type);
+        }
+        return await this.categoryRepository.getParentCategories(parentId);
     }
 
     async getCategory(id: number): Promise<Category> {
@@ -25,13 +31,13 @@ export class CategoryService {
     }
 
     async createCategory(createCategoryDto: CreateCategoryDto): Promise<Category> {
-        const { name, description,parentId } = createCategoryDto;
+        const { name, description, parentId } = createCategoryDto;
         const category = new Category()
-        if (parentId){
-            const id =parseInt(parentId);
-            const parent = await this.categoryRepository.findOne({id});
-            if (parent){
-                category.parentCategory= parent;   
+        if (parentId) {
+            const id = parseInt(parentId);
+            const parent = await this.categoryRepository.findOne({ id });
+            if (parent) {
+                category.parentCategory = parent;
             }
         }
         category.name = name;
@@ -53,6 +59,14 @@ export class CategoryService {
         const { name, description } = categoryDto;
         category.name = name;
         category.description = description;
+        // add parent category Id
+        if (categoryDto.parentId) {
+            const id = parseInt(categoryDto.parentId);
+            const parent = await this.categoryRepository.findOne({ id });
+            if (parent) {
+                category.parentCategory = parent;
+            }
+        }
         await this.categoryRepository.save(category);
         return category;
     }

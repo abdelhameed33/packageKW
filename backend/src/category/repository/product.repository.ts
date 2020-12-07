@@ -11,10 +11,20 @@ export class ProductRepository extends Repository<Product>{
         return products;
     }
 
+    async findById(productId: number): Promise<any> {
+        const query = this.createQueryBuilder('product')
+            .addSelect('category.id', 'category_id')
 
-    async isExists(categoryId: number):Promise<Product>{
+        query.leftJoin('category', 'category', 'category.id = product.category_id')
+        query.andWhere('product.id = :productId', { productId })
+        const products = await query.getOne();
+        return products;
+    }
+
+
+    async isExists(categoryId: number): Promise<Product> {
         const query = this.createQueryBuilder('product');
-        query.andWhere('product.id = :categoryId', {categoryId})
+        query.andWhere('product.id = :categoryId', { categoryId })
         query.select('product.id')
         const product = await query.getOne();
         return product;

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Category } from '../model/category.model';
 import { categoryUrl } from 'src/app/common/constants/app.constants';
+import { param } from 'jquery';
 
 
 @Injectable({
@@ -12,8 +13,11 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
 
-  get(): Observable<any> {
-    return this.http.get(categoryUrl.baseUrl);
+  get(req?: any): Observable<any> {
+
+    return this.http.get(categoryUrl.baseUrl, {
+      params: req,
+    });
   }
 
   getById(id: any): Observable<any> {

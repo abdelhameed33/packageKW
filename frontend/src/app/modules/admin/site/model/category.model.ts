@@ -6,13 +6,12 @@ export class Category {
     public ar_description?: string;
     // tslint:disable-next-line: variable-name
     ar_name?: string;
-    public productList: [];
     productCount = 0;
+    parentId?: any;
 
     constructor(name: string = '', description: string = '') {
         this.name = name;
         this.description = description;
-        this.productList = [];
     }
 
 }

@@ -1,7 +1,7 @@
 <div class="row el-element-overlay ">
     <div class="col-md-12 mt-3">
-        <h4 class="card-title">Product Details</h4>
-        <h6 class="card-subtitle m-b-20 text-muted">you can make gallery like this</h6>
+        <h4 class="card-title product-title">{{product.title}}</h4>
+        <!-- <h6 class="card-subtitle m-b-20 text-muted">you can make gallery like this</h6> -->
     </div>
     <!-- <div class="row"> -->
     <div class="col-lg-12">
@@ -9,23 +9,16 @@
             <div class="card-block">
                 <div class="row">
                     <div class="col-lg-4">
-                        <h4 class="card-title">With indicators</h4>
+                        <!-- <h4 class="card-title">With indicators</h4>
                         <h6 class="card-subtitle">You can also add the indicators to the carousel, alongside the
-                            controls, too.</h6>
-                        <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
-                                <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
-                                <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
-                            </ol>
+                            controls, too.</h6> -->
+                        <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel"
+                            [hidden]="product?.images?.length <=0">
                             <div class="carousel-inner" role="listbox">
-                                <div class="carousel-item active">
-                                    <img class="img-responsive" src="../assets/images/background/user-info.jpg"
-                                        alt="First slide">
-                                </div>
-                                <div class="carousel-item">
-                                    <img class="img-responsive" src="../assets/images/background/user-info.jpg"
-                                        alt="Second slide">
+                                <div class="carousel-item" [class.active]="i ==0"
+                                    *ngFor="let image of product.images;let i=index">
+                                    <img class="img-responsive" [src]="APP_URL+'/'+image?.image_name"
+                                        [alt]="image?.image_name">
                                 </div>
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button"
@@ -40,8 +33,26 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-md-2"></div>
-                    <div class="col-md-6"></div>
+                    <div class="col-md-6">
+                        <h4 class="card-title product-price">
+                            <span class="font-weight-bold">{{product.price}} </span>
+                            <span class="base-cost">{{product.price}}</span>
+                            KD
+                        </h4>
+                        <h4 class="card-title"> <a [routerLink]="['/admin/products/'+1+'/category']">Category</a></h4>
+                        <h4 class="card-title"> <span class="font-weight-bold">In Stock:</span> {{product.quantity}}
+                        </h4>
+                        <h4 class="card-title  my-5"> {{product.description}}</h4>
+                        <!-- <h6 class="card-subtitle">You can also add the indicators to the carousel, alongside the
+                            controls, too.</h6> -->
+
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-success mx-3 float-right"> <i class="fa fa-edit"></i>
+                            Edit</button>
+                        <button type="submit" class="btn btn-info mx-3 float-right"> <i class="fa fa-plus"></i>
+                            Sale</button>
+                    </div>
                 </div>
             </div>
         </div>

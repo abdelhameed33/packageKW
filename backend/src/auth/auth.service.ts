@@ -23,7 +23,7 @@ export class AuthService {
     }
 
     async getAllUser(): Promise<any[]> {
-        return this.userRepository.find();
+        return this.userRepository.find({role:UserRole.CLIENT});
     }
 
     async signIn(authCredentialDto: AuthCredentialDto): Promise<{ accessToken: string }> {

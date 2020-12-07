@@ -25,7 +25,7 @@
                                 <td>{{order?.value}}</td>
                                 <td>{{order?.date}}</td>
                                 <td>
-                                    <span *ngIf="order.status.toString() === 'Pending'"
+                                    <span *ngIf="order.status.toString() === 'In Progress'"
                                         class="label label-warning">{{order?.status?.toString()}}</span>
                                     <span *ngIf="order.status.toString() === 'Done'"
                                         class="label label-success">{{order?.status?.toString()}}</span>

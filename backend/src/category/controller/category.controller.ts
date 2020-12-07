@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Query, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Logger, Param, ParseIntPipe, Patch, Post, Query, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { Category } from '../entities/category.entity';
 import { CategoryService } from '../service/category.service';
@@ -6,6 +6,7 @@ import { CreateCategoryDto } from '../dto/create-category.dto';
 import { Roles } from 'src/auth/decorator/roles.decorator';
 import { RolesGuard } from 'src/auth/roles.guard';
 import { ProductService } from '../service/product.service';
+import { UserRole } from 'src/auth/user-role.enum';
 
 @Controller('category')
 export class CategoryController {
@@ -15,9 +16,9 @@ export class CategoryController {
     ) { }
 
     @Get()
-    getCategories(@Query('parentid') parentId: string): Promise<any[]> {
+    getCategories(@Query('parentid') parentId: string,@Query('type') type: string,): Promise<any[]> {
         console.log('Get all categories');
-        return this.categoryService.getCategories(parentId);
+        return this.categoryService.getCategories(parentId,type);
     }
 
     @Get('/:id')
@@ -27,7 +28,7 @@ export class CategoryController {
 
 
     @Post()
-    @Roles('admin')
+    @Roles(UserRole.ADMIN)
     @UseGuards(AuthGuard(), RolesGuard)
     @UsePipes(ValidationPipe)
     createCategory(@Body() createCategoryDto: CreateCategoryDto): Promise<Category> {
@@ -36,24 +37,26 @@ export class CategoryController {
     }
 
     @Delete('/:id')
-    @Roles('admin')
+    @Roles(UserRole.ADMIN)
     @UseGuards(AuthGuard(), RolesGuard)
     deleteCategory(@Param('id', ParseIntPipe) id: number) {
         return this.categoryService.deleteCategory(id);
     }
 
     @Patch('/:id')
-    @Roles('admin')
+    @Roles(UserRole.ADMIN)
     @UseGuards(AuthGuard(), RolesGuard)
     updateCategory(
         @Param('id', ParseIntPipe) id: number,
         @Body() categoryDto: CreateCategoryDto): Promise<Category> {
+        Logger.log(`update cstegory with ${id}`)
+        Logger.log(categoryDto);
         return this.categoryService.updateCategory(id, categoryDto);
     }
 
     @Get('/analytics/data')
-    // @Roles('admin')
-    // @UseGuards(AuthGuard(), RolesGuard)
+    @Roles(UserRole.ADMIN)
+    @UseGuards(AuthGuard(), RolesGuard)
     async getAnalytics(): Promise<any> {
         console.log('get analytics data');
         const products = await this.productService.getAllProducts().then(res => {

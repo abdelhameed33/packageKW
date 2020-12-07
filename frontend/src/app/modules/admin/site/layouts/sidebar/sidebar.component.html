@@ -14,7 +14,7 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                         <ul id="sidebarnav">
-                                <li class="nav-small-cap">PERSONAL</li>
+                                <li class="nav-small-cap">PackageKW</li>
                                 <li>
                                         <a [routerLink]="['/admin']" [routerLinkActiveOptions]="{exact: true}"
                                                 routerLinkActive="active" routerLink=""><i
@@ -26,6 +26,12 @@
                                                 routerLinkActive="active" routerLink=""><i
                                                         class="mdi mdi-cart-outline"></i><span
                                                         class="hide-menu">Orders</span></a>
+                                </li>
+                                <li>
+                                        <a [routerLink]="['/admin/products-create']"
+                                                [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active"
+                                                routerLink=""><i class="fa fa-product-hunt"></i><span
+                                                        class="hide-menu">Add Product</span></a>
                                 </li>
                                 <li>
                                         <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"><i

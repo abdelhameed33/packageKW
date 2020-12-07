@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './common/interceptor/error.interceptor';
 import { ErrorInterceptor } from './common/interceptor/jwt.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ErrorInterceptor } from './common/interceptor/jwt.interceptor';
     AppRoutingModule,
     PackgeKWModule,
     AdminModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {

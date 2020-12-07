@@ -1,0 +1,28 @@
+table {
+    width: 100%;
+  }
+  
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+  
+td, th {
+  width: 25%;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    border-radius: 4px 4px 0 0;
+    padding: .75em .75em 0 .75em;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: rgba(0,0,0,0.04);
+}
+
+.mat-form-field-flex {
+    display: inline-flex;
+    align-items: baseline;
+    box-sizing: border-box;
+    width: 100%;
+}

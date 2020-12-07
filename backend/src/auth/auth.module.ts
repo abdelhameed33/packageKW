@@ -14,7 +14,7 @@ import { UserRepository } from './user.repository';
     JwtModule.register({
       secret: 'mysec55',
       signOptions:{
-        expiresIn: 3600
+        expiresIn: 60*60*12
       }
     }),
     TypeOrmModule.forFeature([UserRepository]),

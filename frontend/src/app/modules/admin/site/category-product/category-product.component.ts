@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { APP_URL } from 'src/app/common/constants/app.constants';
 import { ProductService } from 'src/app/common/service/product.service';
 import { Category } from '../model/category.model';
 import { Product } from '../model/product.model';
@@ -12,7 +13,8 @@ import { CategoryService } from '../service/category.service';
 export class CategoryProductComponent implements OnInit {
 
   currentCategory: Category = new Category();
-  products: Product[] = [];
+  products?: Product[] = [];
+  APP_URL = APP_URL;
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,

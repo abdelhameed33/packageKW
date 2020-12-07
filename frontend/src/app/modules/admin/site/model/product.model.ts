@@ -6,6 +6,6 @@ export class Product {
     price?: number;
     quantity?: number;
     properties = '{}';
-    images?: string[] = [];
+    images: any[] = [];
 
 }

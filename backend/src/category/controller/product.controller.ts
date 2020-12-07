@@ -9,6 +9,7 @@ import { Observable, of } from 'rxjs';
 import { ProductValidationPipe } from '../pipes/product-create-validation.pipe';
 import { RolesGuard } from 'src/auth/roles.guard';
 import { Roles } from 'src/auth/decorator/roles.decorator';
+import { UserRole } from 'src/auth/user-role.enum';
 
 @Controller('api/products')
 export class ProductController {
@@ -20,8 +21,7 @@ export class ProductController {
 
 
     @Get('/:id')
-    getProductById(@Param('id', ParseIntPipe) id: number): Promise<Product> {
-        console.log('here')
+    getProductById(@Param('id', ParseIntPipe) id: number): Promise<any> {
         return this.productService.getProduct(id);
     }
 
@@ -34,7 +34,7 @@ export class ProductController {
 
 
     @Post('/:categoryId/category')
-    @Roles('admin')
+    @Roles(UserRole.ADMIN)
     @UseGuards(AuthGuard(), RolesGuard)
     @UsePipes(new ValidationPipe({ transform: true }))
     createProduct(
@@ -44,7 +44,7 @@ export class ProductController {
     }
 
     @Delete('/:id')
-    @Roles('admin')
+    @Roles(UserRole.ADMIN)
     @UseGuards(AuthGuard(), RolesGuard)
     deleteProduct(@Param('id', ParseIntPipe) id: number) {
         return this.productService.deleteProduct(id);

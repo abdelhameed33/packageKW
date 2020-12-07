@@ -22,7 +22,7 @@ export class OrdersComponent implements OnInit {
       date: '11/12/2020',
       productCount: 10,
       value: 11,
-      status: OrderStatus.Pending
+      status: OrderStatus.InProgress
     },
     {
       id: '2320',

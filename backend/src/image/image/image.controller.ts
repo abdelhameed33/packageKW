@@ -15,7 +15,7 @@ export const storage = {
     })
 }
 
-@Controller('image')
+@Controller('api/image')
 export class ImageController {
 
     

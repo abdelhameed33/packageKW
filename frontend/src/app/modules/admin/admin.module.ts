@@ -12,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
     AccountModule,
     AdminRoutingModule,
     SiteModule,
-    HttpClientModule
+    HttpClientModule,
   ]
 })
 export class AdminModule { }
