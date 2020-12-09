@@ -35,9 +35,16 @@ export class ProductService {
         return found;
     }
 
-    async createProduct(categoryId: number, createProductDto: CreateProductDto): Promise<Product> {
+    async createOrUpdateProduct(categoryId: number, createProductDto: CreateProductDto): Promise<Product> {
         const { title, price, quantity, description, images, properties } = createProductDto;
-        const product = new Product()
+        let product = new Product()
+        if (createProductDto?.id) {
+            console.log('id exist');
+            const found = await this.productRepository.findById(createProductDto.id);
+            if (found) {
+                product = found;
+            }
+        }
         product.properties = properties;
         product.title = title;
         product.price = price;

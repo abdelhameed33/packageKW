@@ -16,6 +16,8 @@ export class ProductViewComponent implements OnInit {
   images: any[] | undefined = [];
   salePercent = 0;
   newPrice = 0;
+  endDate = new Date();
+
   constructor(
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
@@ -43,6 +45,17 @@ export class ProductViewComponent implements OnInit {
     console.log(discount);
     console.log(this.salePercent);
     //  return this.product?.price - (this.product?.price * this.salePercent) / 100;
+  }
+
+  convertDate(date: any): string {
+    return new Date(date).toLocaleString();
+  }
+
+  getProductProps(object: string): [] {
+    try {
+      return JSON.parse(object);
+    } catch (e) { }
+    return [];
   }
 
 }

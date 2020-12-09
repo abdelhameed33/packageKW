@@ -32,7 +32,7 @@ export class Product extends BaseEntity {
     updated_at: Date;
 
     @ManyToOne(type => Category,
-        category => category.products, { eager: false })
+        category => category.products, { eager: true })
     @JoinColumn({ name: "category_id" })
     category: Category;
 
