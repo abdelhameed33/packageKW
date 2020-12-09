@@ -58,6 +58,8 @@ export class ProductService {
     }
     async isExists(id: number): Promise<Product> {
         const exist = await this.productRepository.isExists(id);
+        if (!exist)
+            throw new NotFoundException(`product with id:${id} not found`)
         return exist;
     }
 

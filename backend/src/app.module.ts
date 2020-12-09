@@ -11,6 +11,7 @@ import { ReviewsModule } from './reviews/reviews.module';
 import { OrderModule } from './order/order.module';
 import { AddressModule } from './address/address.module';
 import { ImageModule } from './image/image.module';
+import { PromotionModule } from './promotion/promotion.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { ImageModule } from './image/image.module';
     OrderModule,
     AddressModule,
     ImageModule,
+    PromotionModule,
   ],
   controllers: [],
   providers: [],

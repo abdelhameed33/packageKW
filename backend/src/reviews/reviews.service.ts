@@ -22,9 +22,6 @@ export class ReviewsService {
         review.comment=comment;
         review.rating=rating;
         const productFound = await this.productService.isExists(productId);
-        if (!productFound){
-            throw new NotFoundException(`product with id:${productId} not found`)
-        }
         review.product = <any>{ id: productId };
         review.user= user;
         await this.reviewsRepository.save(review);
