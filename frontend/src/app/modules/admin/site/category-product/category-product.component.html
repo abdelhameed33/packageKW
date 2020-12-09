@@ -28,7 +28,7 @@
                             <tr *ngFor="let product of products">
                                 <td><a [routerLink]="['/admin/products/',product.id]">{{product.title}}</a></td>
                                 <td>
-                                    <img [src]="APP_URL+'/'+product?.images[0]?.image_name" alt="iMac" width="80">
+                                    <img [src]="APP_URL+'/'+product!.images[0]?.image_name" alt="iMac" width="80">
                                 </td>
                                 <td>{{product.quantity}}</td>
                                 <td>{{product.price}}</td>
