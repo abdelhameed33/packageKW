@@ -11,9 +11,11 @@ import { Product } from '../model/product.model';
 })
 export class ProductViewComponent implements OnInit {
 
-  product: Product = new Product();
+  product: any = null;
   APP_URL = APP_URL;
-  images: any[] = [];
+  images: any[] | undefined = [];
+  salePercent = 0;
+  newPrice = 0;
   constructor(
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
@@ -29,6 +31,18 @@ export class ProductViewComponent implements OnInit {
       });
     });
 
+  }
+
+  computeNewPrice(): void {
+    this.newPrice = this.product?.price - (this.product?.price * this.salePercent) / 100;
+  }
+
+  computeSalePercent(): void {
+    const discount = this.product?.price - this.newPrice;
+    this.salePercent = (discount * 100) / this.product?.price;
+    console.log(discount);
+    console.log(this.salePercent);
+    //  return this.product?.price - (this.product?.price * this.salePercent) / 100;
   }
 
 }

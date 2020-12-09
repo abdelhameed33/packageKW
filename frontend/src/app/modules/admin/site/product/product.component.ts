@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { APP_URL } from 'src/app/common/constants/app.constants';
 import { ProductService } from 'src/app/common/service/product.service';
 import { Category } from '../model/category.model';
@@ -30,12 +30,16 @@ export class ProductComponent implements OnInit {
   categories: Category[] = [];
   selectedFile!: File;
   APP_URL = APP_URL;
+  mode = 'create';
+  productId!: string | null;
+ 
 
   constructor(
     private formBuilder: FormBuilder,
     private productService: ProductService,
     private categoryService: CategoryService,
-    private router: Router
+    private router: Router,
+    private activateRoure: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -52,6 +56,18 @@ export class ProductComponent implements OnInit {
       type: 'sub'
     }).subscribe(res => {
       this.categories = res;
+    });
+
+    this.activateRoure.paramMap.subscribe((paramMap: ParamMap) => {
+      if (paramMap.has('id')) {
+        this.productId = paramMap.get('id');
+        this.productService.getOne(this.productId).subscribe(res => {
+          this.newProduct = res;
+        });
+        this.mode = 'edit';
+      } else {
+        this.mode = 'creaet';
+      }
     });
   }
 

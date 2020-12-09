@@ -13,7 +13,7 @@ import { CategoryService } from '../service/category.service';
 export class CategoryProductComponent implements OnInit {
 
   currentCategory: Category = new Category();
-  products?: Product[] = [];
+  products: any;
   APP_URL = APP_URL;
   constructor(
     private activatedRoute: ActivatedRoute,
