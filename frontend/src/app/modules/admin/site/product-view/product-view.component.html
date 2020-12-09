@@ -39,11 +39,13 @@
                             <span class="base-cost">{{product?.price}}</span>
                             KD
                         </h4>
-                        <h4 class="card-title text-uppercase"> <a [routerLink]="['/admin/products/'+product?.category?.id+'/category']">{{product?.category?.name}}</a></h4>
+                        <h4 class="card-title text-uppercase"> <a
+                                [routerLink]="['/admin/products/'+product?.category?.id+'/category']">{{product?.category?.name}}</a>
+                        </h4>
                         <h4 class="card-title"> <span class="font-weight-bold">In Stock:</span> {{product?.quantity}}
                         </h4>
                         <h4 *ngFor="let prop of getProductProps(product?.properties)" class="card-title"> <span
-                                class="font-weight-bold">{{prop?.key}}:</span> {{prop?.value}}
+                                class="font-weight-bold">{{prop['key']}}:</span> {{prop['value']}}
                         </h4>
                         <h4 class="card-title  my-5"> {{product?.description}}</h4>
                         <!-- <h6 class="card-subtitle">You can also add the indicators to the carousel, alongside the
