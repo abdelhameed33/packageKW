@@ -13,6 +13,7 @@ import { PromotionService } from './promotion.service';
     TypeOrmModule.forFeature([Promotion]),
   ],
   controllers: [PromotionController],
-  providers: [PromotionService]
+  providers: [PromotionService],
+  exports:[PromotionService]
 })
 export class PromotionModule {}

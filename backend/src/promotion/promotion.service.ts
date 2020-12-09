@@ -12,32 +12,43 @@ export class PromotionService {
         @InjectRepository(Promotion)
         private promotionRepository: Repository<Promotion>,
         private productService: ProductService
-    ){}
+    ) { }
 
-    async createPromotion(createPromotionDto: CreatePromotionDto):Promise<Promotion>{
+    async createPromotion(createPromotionDto: CreatePromotionDto): Promise<Promotion> {
         console.log(createPromotionDto)
-        const {percent, start_date, end_date, productId} = createPromotionDto;
+        const { percent, start_date, end_date, productId } = createPromotionDto;
         const promotion = new Promotion();
-        promotion.product =<any>(await this.productService.isExists(productId));
-        promotion.percent= percent;
-        promotion.start_date= start_date;
-        promotion.end_date=end_date;
-    
+        promotion.product = <any>(await this.productService.isExists(productId));
+        promotion.percent = percent;
+        promotion.start_date = start_date;
+        promotion.end_date = end_date;
+
         return this.promotionRepository.save(promotion)
     }
 
-    async getPromotions(productId?: number):Promise<Promotion[]>{
+    async getPromotions(productId?: number): Promise<Promotion[]> {
         if (productId)
-        return await this.promotionRepository.find({product: <any>productId});
+            return await this.promotionRepository.find({ product: <any>productId });
 
         return await this.promotionRepository.find();
     }
 
-    async deletePromotion(id: number):Promise<void>{
-       const deleted = await this.promotionRepository.delete(id);
-       if (!deleted.affected){
-           throw new NotFoundException(`promotion with id ${id} not found`)
-       }
-       return ;
+    async deletePromotion(id: number): Promise<void> {
+        const deleted = await this.promotionRepository.delete(id);
+        if (!deleted.affected) {
+            throw new NotFoundException(`promotion with id ${id} not found`)
+        }
+        return;
+    }
+
+    async getActivePromotion(productId: number): Promise<Promotion> {
+        const product = await this.productService.isExists(productId);
+        const date:any = new Date().toISOString();
+        console.log(date)
+        const query = this.promotionRepository.createQueryBuilder('promotions');
+        query.andWhere('promotions.product_id = :productId', { productId })
+            .andWhere('promotions.start_date <= :date', { date  })
+            .andWhere('promotions.end_date > :date', { date });
+        return await query.getOne();
     }
 }

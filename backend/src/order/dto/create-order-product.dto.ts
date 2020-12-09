@@ -1,14 +1,14 @@
-import { IsNotEmpty } from "class-validator";
+import { IsNotEmpty, IsNumber } from "class-validator";
 
 export class CreateOrderProductDto{
 
-    @IsNotEmpty()
+    @IsNumber()
     quantity: number;
 
-    @IsNotEmpty()
+    @IsNumber()
     productId: number;
 
-    @IsNotEmpty()
+    // @IsNotEmpty()
     customizedProperties: string;
 
 }

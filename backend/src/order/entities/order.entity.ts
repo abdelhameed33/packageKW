@@ -12,6 +12,9 @@ export class Order extends BaseEntity{
     @CreateDateColumn()
     created_at: Date;
 
+    @Column()
+    total: number;
+
     @Column({
         type: "enum",
         enum: OrderStatus

@@ -8,10 +8,13 @@ import { AuthModule } from 'src/auth/auth.module';
 import { CategoryModule } from 'src/category/category.module';
 import { OrderProductRepository } from './repository/order-product.repository';
 import { OrderProduct } from './entities/order-products.entity';
+import { PromotionService } from 'src/promotion/promotion.service';
+import { PromotionModule } from 'src/promotion/promotion.module';
 
 @Module({
     imports: [
         AuthModule,
+        PromotionModule,
         CategoryModule,
         TypeOrmModule.forFeature([Order,OrderProduct,OrderProductRepository ,OrderRepository]),
     ],

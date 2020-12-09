@@ -6,6 +6,7 @@ import { GetUser } from 'src/auth/get-user.decerator';
 import { RolesGuard } from 'src/auth/roles.guard';
 import { UserRole } from 'src/auth/user-role.enum';
 import { User } from 'src/auth/user.entity';
+import { CreateOrderProductDto } from '../dto/create-order-product.dto';
 import { CreateOrderDto } from '../dto/create-order.dto';
 import { OrderStatus } from '../entities/order-status.enum';
 import { Order } from '../entities/order.entity';
@@ -20,7 +21,7 @@ export class OrderController {
 
     @Post()
     @UseGuards(AuthGuard())
-    createOrder(@GetUser()user:User,@Body() createOrderDto: CreateOrderDto): Promise<any> {
+    createOrder(@GetUser()user:User,@Body() createOrderDto: CreateOrderProductDto[]): Promise<any> {
         console.log(createOrderDto)
         return this.orderService.createOrder(user, createOrderDto);
     }
