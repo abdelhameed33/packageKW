@@ -5,10 +5,11 @@ export const typeOrmConfig : TypeOrmModuleOptions={
     type: 'mysql',
     host: 'localhost',
     port: 3306,
-    username: env.KW_DB_USERNAME,
-    password: env.KW_DB_PASSWORD,
+    username: 'root',
+    password: '',
     database: 'packagekw_db',
     entities: ["dist/**/*.entity{.ts,.js}"],
     synchronize: true,
-    logging: true
+    logging: true,
+    timezone: 'Z'
 }
