@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, UploadedFile, UploadedFiles, UseGuards, UseInterceptors, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Logger, Param, ParseIntPipe, Patch, Post, UploadedFile, UploadedFiles, UseGuards, UseInterceptors, UsePipes, ValidationPipe } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { Product } from '../product.entity';
 import { ProductService } from '../service/product.service';
@@ -33,13 +33,14 @@ export class ProductController {
 
 
 
-    @Post('/:categoryId/category')
+    @Post('/:categoryId')
     @Roles(UserRole.ADMIN)
     @UseGuards(AuthGuard(), RolesGuard)
     @UsePipes(new ValidationPipe({ transform: true }))
     createProduct(
         @Param('categoryId', ParseIntPipe) categoryId: number,
         @Body(ProductValidationPipe) createProductDto: CreateProductDto): Promise<Product> {
+        Logger.log(createProductDto);
         return this.productService.createOrUpdateProduct(categoryId, createProductDto);
     }
 

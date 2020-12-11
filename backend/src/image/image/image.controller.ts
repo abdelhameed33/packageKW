@@ -8,7 +8,7 @@ export const storage = {
     storage: diskStorage({
         destination: './uploads',
         filename: (req, file, cb) => {
-            const filename: string = path.parse(file.originalname).name.replace(/\s/g, '') + Date.now();
+            const filename: string = path.parse(file.originalname).name.replace(/\s/g, '') + '-' + Date.now();
             const extension: string = path.parse(file.originalname).ext;
             cb(null, `${filename}${extension}`)
         }
@@ -18,7 +18,7 @@ export const storage = {
 @Controller('api/image')
 export class ImageController {
 
-    
+
     @Post('/upload')
     // @Roles('admin')
     // @UseGuards(AuthGuard(), RolesGuard)

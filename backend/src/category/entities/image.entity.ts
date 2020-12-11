@@ -3,16 +3,16 @@ import { Product } from "../product.entity";
 
 
 @Entity()
-export class Image extends BaseEntity{
+export class Image extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column({ unique: true })
     image_name: string;
 
-    
+
     @ManyToOne(type => Product,
-        product => product.images, { eager: false })
+        product => product.images, { eager: false, onDelete: "CASCADE" })
     @JoinColumn({ name: "product_id" })
     product: Product;
 

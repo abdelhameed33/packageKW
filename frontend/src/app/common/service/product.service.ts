@@ -16,11 +16,15 @@ export class ProductService {
 
 
   save(product: Product, id: any): Observable<any> {
-    return this.http.post(productUrl.baseUrl + id + '/category', { ...product }, {});
+    return this.http.post(productUrl.baseUrl + id, { ...product }, {});
   }
 
   getOne(id: any): Observable<any> {
     return this.http.get(productUrl.baseUrl + id);
+  }
+
+  deleteOne(id: any): Observable<any> {
+    return this.http.delete(productUrl.baseUrl + id);
   }
 
   getCategoryProduct(categoryId: any): Observable<any> {
