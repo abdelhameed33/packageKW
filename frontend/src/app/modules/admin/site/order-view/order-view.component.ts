@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderViewComponent implements OnInit {
 
-  dtOptions: DataTables.Settings = {};
+
   orders = [
     {
       id: '1',
@@ -31,11 +31,5 @@ export class OrderViewComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 5,
-      lengthMenu: [5, 10, 25],
-      processing: true,
-    };
   }
 }

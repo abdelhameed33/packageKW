@@ -1,0 +1,116 @@
+.shoping_cart {
+  .shoping_content {
+    padding: 50px 25px 25px;
+    .cust_h2 {
+      text-align: left;
+      margin-bottom: 40px;
+    }
+    .shoping_cart_item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      padding: 30px;
+      border: 1px solid $main_color;
+      border-radius: 30px;
+      .media {
+        img {
+          width: 100px;
+          height: 100px;
+          border-radius: 30px;
+          object-fit: cover;
+        }
+        .media-body {
+          h5 {
+          }
+          .fax_text {
+            color: $white_black;
+          }
+        }
+      }
+      .sale_detail {
+        .Qty {
+          margin-right: 30px;
+          .incr_decr {
+            border-color: $main_color;
+          }
+        }
+      }
+    }
+  }
+  .cart_summary {
+    box-shadow: -22px 0px 20px 12px #2528290a;
+    padding: 50px 25px 25px;
+    height: 100%;
+    overflow-y: hidden;
+    h2 {
+      font-size: 24px;
+      border-bottom: 1px dashed #d1d1d1;
+      padding-bottom: 35px;
+      margin-bottom: 25px;
+    }
+    .order_summary {
+      border-bottom: 1px dashed #d1d1d1;
+      margin-bottom: 25px;
+      ul {
+        li {
+          margin-bottom: 25px;
+          p {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .summary_title {
+              color: $white_black;
+            }
+            .summary_val {
+              font-family: "Rubik-Bold";
+            }
+          }
+        }
+      }
+    }
+    .promocode {
+      border-bottom: 1px dashed #d1d1d1;
+      padding-bottom: 35px;
+      margin-bottom: 25px;
+      .promo_title {
+        margin-bottom: 14px;
+      }
+      .form-group {
+        .form-control {
+          border-color: #d1d1d1;
+        }
+        .promo_apply {
+          border: 1px solid #d1d1d1;
+          background-color: #d1d1d1;
+          color: $white_black;
+          padding: 0 30px;
+          height: 50px;
+          border-radius: 0 4px 4px 0;
+        }
+      }
+    }
+    .total_summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 25px;
+      h5 {
+        font-size: 18px;
+      }
+      p {
+      }
+    }
+    .cust_btn {
+      width: 100%;
+      padding: 18px 0;
+      border-radius: 4px;
+      margin-bottom: 25px;
+    }
+    .continue_btn {
+      color: $white_black;
+      display: block;
+      text-align: center;
+    }
+  }
+}

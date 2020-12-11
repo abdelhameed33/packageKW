@@ -1,0 +1,22 @@
+.slider_control.top_control span {
+  // top: 50px;
+}
+
+.card .card-img-top {
+  border-radius: 30px;
+  height: 130px;
+  width: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .slider_control span {
+    box-shadow: 2px 2px 11px 0 #00000052;
+  }
+  .slider_control span {
+    bottom: 10px;
+  }
+  .slider_control.top_control span {
+    bottom: 60px;
+  }
+}

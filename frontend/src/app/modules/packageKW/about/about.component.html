@@ -1,0 +1,110 @@
+<div class="breadcrumb_product breadcrumb_general" aria-label="breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a [routerLink]="['/home']">{{ "home" | translate }}</a>
+      </li>
+      <li class="breadcrumb-item current_page">
+        <a>{{ "about_us" | translate }}</a>
+      </li>
+    </ol>
+  </div>
+</div>
+<section class="about_main">
+  <div class="container">
+    <h1 class="cust_h2">{{ "about_us" | translate }}</h1>
+  </div>
+</section>
+<section class="about_description">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="about_des_text">
+          <p class="font-Medium about_desc_hint">
+            {{ "printing_your_dream_works" | translate }}
+          </p>
+          <h2 class="font-bold about_desc_title">
+            {{ "with_packagekw" | translate }}
+          </h2>
+          <p class="import_desc cust_h3">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+            sollicitudin aliquam urna vitae imperdiet.
+          </p>
+          <p class="normal_desc">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+            sollicitudin aliquam urna vitae imperdiet. Sed porta turpis sit amet
+            dui suscipit convallis. In hac habitasse platea dictumst. Donec
+            placerat leo at dapibus porttitor. Curabitur mauris ex.
+          </p>
+          <a [routerLink]="['/products']" class="cust_btn">{{
+            "browse_our_products" | translate
+          }}</a>
+        </div>
+        <!--End about_des_text-->
+      </div>
+    </div>
+  </div>
+</section>
+<!--End about_description-->
+<section class="our_service">
+  <div class="container">
+    <h2 class="cust_h2">{{ "Learn_About_Our_Services" | translate }}</h2>
+    <div class="service_content">
+      <div class="row">
+        <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
+          <div class="service_item">
+            <div class="service_icon">
+              <img
+                src="../../../assets/images/icons/service1.svg"
+                alt="icon1"
+              />
+            </div>
+            <h3 class="service_title font-bold">
+              {{ "Printing_Services" | translate }}
+            </h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+              sollicitudin aliquam urna vitae imperdiet.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
+          <div class="service_item">
+            <div class="service_icon">
+              <img
+                src="../../../assets/images/icons/service2.svg"
+                alt="icon1"
+              />
+            </div>
+            <h3 class="service_title font-bold">
+              {{ "Design_Services" | translate }}
+            </h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+              sollicitudin aliquam urna vitae imperdiet.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="service_item">
+            <div class="service_icon">
+              <img
+                src="../../../assets/images/icons/service3.svg"
+                alt="icon1"
+              />
+            </div>
+            <h3 class="service_title font-bold">
+              {{ "Digital_Services" | translate }}
+            </h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+              sollicitudin aliquam urna vitae imperdiet.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--End our_service-->
+<app-testimonial></app-testimonial>

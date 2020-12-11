@@ -1,0 +1,60 @@
+.main_slider{
+	padding: 50px 0;
+	.home_slider{
+		position: relative;
+		height: 100%;
+	}
+	
+	.slider_content{
+		box-shadow: 5px -10px 99px 0px #2528292e;
+		border-radius: 30px;
+		.slid_item{
+			position: relative;
+			padding: 65px 0;
+			border-radius: 30px;
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: bottom;
+//			img{
+//				width: 100%;
+//				border-radius: 30px;
+//			}
+			.item_content{
+
+				ul{
+					li{
+						display: inline-block;
+						position: relative;
+						margin-right: 10px;
+						padding-right: 5px;
+						&::after{
+							position: absolute;
+							content: "/";
+							left: 100%;
+				
+						}
+						&:last-of-type{
+							&::after{
+								content: ""
+							}
+						}
+					}
+				}
+				h1{
+					font-size: 58px;
+					font-family: "Rubik-Bold";
+					margin-bottom: 15px;
+				}
+				p{
+					margin-bottom: 35px;
+				}
+				a{
+					display: inline-block;
+					background-color: #fff;
+					padding: 15px 30px;
+					text-align: center;
+				}
+			}
+		}
+	}
+}

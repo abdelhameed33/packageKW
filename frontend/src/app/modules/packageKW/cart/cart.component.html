@@ -1,0 +1,112 @@
+<div class="breadcrumb_product breadcrumb_general" aria-label="breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="['/home']" routerLinkActive="router-link-active" >Home</a></li>
+      <li class="breadcrumb-item current_page"><a>Shopping Cart</a></li>
+    </ol>
+  </div>
+</div>
+<section class="shoping_cart">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="shoping_content">
+          <h2 class="cust_h2">Shopping Cart</h2>
+          <div class="shoping_cart_item mb-3" *ngFor="let item of cartObject">
+            <div class="media d-flex align-items-center">
+              <img
+                class="mr-4"
+                [src]="item.img"
+                alt="cart1"
+              />
+              <div class="media-body">
+                <h5 class="mt-0 cust_h3 text-left mb-2">{{item.name}}</h5>
+                <span class="fax_text">{{item.dec}}</span>
+              </div>
+            </div>
+            <div
+              class="sale_detail d-flex align-items-center justify-content-between"
+            >
+              <div class="Qty">
+                <div class="incr_decr">
+                  <button
+                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                    class="minus"
+                  >
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <input
+                    class="quantity"
+                    name="quantity"
+                    value="1"
+                    type="number"
+                  />
+                  <button
+                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                    class="plus"
+                  >
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+              <p class="cust_h3">{{item.checkoutAmount}}</p>
+            </div>
+
+            <div class="close_cart">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+          <!--End shoping_cart_item-->
+        </div>
+        <!--End shoping_content-->
+      </div>
+      <div class="col-lg-4">
+        <div class="cart_summary">
+          <h2 class="font-bold">Order summary</h2>
+          <div class="order_summary">
+            <ul>
+              <li>
+                <p>
+                  <span class="summary_title">Subtotal</span>
+                  <span class="summary_val">120 KWD</span>
+                </p>
+              </li>
+              <li>
+                <p>
+                  <span class="summary_title">Fee</span>
+                  <span class="summary_val">120 KWD</span>
+                </p>
+              </li>
+              <li>
+                <p>
+                  <span class="summary_title">Delivery</span>
+                  <span class="summary_val">25 KWD</span>
+                </p>
+              </li>
+            </ul>
+          </div>
+          <div class="promocode">
+            <h5 class="promo_title">Promo Code</h5>
+            <div class="form-group">
+              <div class="prefix d-flex align-items-center">
+                <input
+                  type="number"
+                  name="promocode"
+                  class="form-control"
+                  placeholder="Enter Promo Code"
+                />
+                <button type="submit" class="promo_apply">Apply</button>
+              </div>
+            </div>
+          </div>
+          <div class="total_summary">
+            <h5>Total</h5>
+            <p class="bold_18">25 KWD</p>
+          </div>
+          <button class="cust_btn" [routerLink]="['/checkout']" routerLinkActive="router-link-active" >Proceed To Checkout</button>
+          <a href="#" class="continue_btn" [routerLink]="['/products']" routerLinkActive="router-link-active" >Continue Shopping</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

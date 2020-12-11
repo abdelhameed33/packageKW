@@ -1,1 +1,8 @@
-welcome
+<app-navbar></app-navbar>
+<div class="container-fluid page-body-wrapper p-0">
+  <main [@routing]="outletRef.isActivated ? outletRef.activatedRoute : ''">
+    <router-outlet #outletRef="outlet"></router-outlet>
+  </main>
+  <app-subscribe></app-subscribe>
+  <app-footer></app-footer>
+</div>

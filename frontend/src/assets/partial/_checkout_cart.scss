@@ -1,0 +1,96 @@
+.checkout_cart{
+	.ckeckout_head{
+		font-size: 18px;
+		margin-bottom: 30px
+	}
+    .head-section{
+        a{
+            cursor: pointer;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+}
+.address-card{
+    padding: 20px 30px;
+    position: relative;
+    border: 1px solid #F1D8DA;
+	
+    label{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }
+    h4{
+        font-size: 14px;
+        margin-bottom: 0;
+        margin-top: 5px;
+    }
+    p{
+        margin-bottom: 0;
+        font-size: 0;
+        color: $white_black;
+        transition: all 0.3s ease-in-out;
+		span{
+			color: $black_color
+		}
+        &:last-child{
+            margin: 0;
+        }
+    }
+   
+    &__control{
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        visibility: hidden;
+        transition: all 0.3s ease-in-out;
+        opacity: 0.2;
+        z-index: 2;
+    }
+    &.active,
+	&.show_card{   
+        border-radius: 4px;
+        background-color: #FEEFF0;
+        p{
+        margin-bottom: 10px;
+        font-size: 14px;
+
+        }
+        h4{
+        margin-bottom: 10px;
+        margin-top: 0;
+
+        }
+        .address-card__control{
+            visibility: visible;
+            opacity: 1;
+        }           
+    }
+	&.show_card{
+		background-color: #fff;
+	}
+	&.show_img{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		h4{
+			margin-bottom: 0;
+			margin-top: 5px;
+		}
+		.address-card__control{
+			opacity: 1;
+			visibility: visible;
+			position: static
+		}
+	}
+}
+.payment_method{
+	padding: 35px 0;
+}

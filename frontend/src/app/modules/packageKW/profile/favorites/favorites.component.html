@@ -1,0 +1,36 @@
+<h3 class="cust_h2 text-left mb-4">Favorites</h3>
+							<div class="favorit_content">
+								<div class="row">
+                  <div class="col-md-6 col-lg-4" *ngFor="let item of productObject">
+                    <div class="card Products_item" [ngClass]="{'sale': item.sale}">
+                      <img
+                        class="card-img-top swiper-lazy"
+                        [src]="item.img"
+                        [alt]="item.name"
+                      />
+                      <div class="card-body">
+                        <h5 class="card-title cust_h3">{{item.name}}</h5>
+                        <p class="card-text">
+                          {{item.dec}}
+                        </p>
+                        <a [routerLink]="['/business-card/']"   class="card_link">View Details</a>
+                      </div>
+                    </div>
+                    <!--End card-->
+                  <!--End card-->
+                </div>
+
+								</div>
+
+							</div>
+							<div class="pagination">
+								<span class="left_pagn"><i class="fas fa-chevron-left"></i></span>
+								<ul>
+									<li class="active">1</li>
+									<li class="d-none d-sm-block">2</li>
+									<li class="d-none d-sm-block">3</li>
+									<li>...</li>
+									<li>4</li>
+								</ul>
+								<span class="right_pagn"><i class="fas fa-chevron-right"></i></span>
+							</div><!--End pagination-->

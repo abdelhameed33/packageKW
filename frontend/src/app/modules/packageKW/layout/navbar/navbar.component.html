@@ -1,0 +1,441 @@
+<div
+  class="overlay"
+  (click)="authDropDown = false; cartDropDown = false"
+  [ngClass]="[authDropDown ? 'active' : '', cartDropDown ? 'active' : '']"
+></div>
+<div class="topNav">
+  <div class="container" style="position: relative">
+    <!-- check out dropdown -->
+    <div class="your_checkout" [ngClass]="{ active: cartDropDown }">
+      <ul class="your_shoping_cart">
+        <li class="your_shoping_item">
+          <div class="media d-flex align-items-center">
+            <img
+              class="mr-4"
+              src="../../../assets/images/pro5.png"
+              alt="cart1"
+            />
+            <div class="media-body">
+              <h6 class="mt-0 font-Medium text-left mb-2">Notebook</h6>
+              <span class="fax_text">Ref: 10145444645</span>
+            </div>
+          </div>
+          <div class="close_cart">
+            <i class="fas fa-times"></i>
+          </div>
+        </li>
+        <li class="your_shoping_item">
+          <div class="media d-flex align-items-center">
+            <img
+              class="mr-4"
+              src="../../../assets/images/pro5.png"
+              alt="cart1"
+            />
+            <div class="media-body">
+              <h6 class="mt-0 font-Medium text-left mb-2">Notebook</h6>
+              <span class="fax_text">Ref: 10145444645</span>
+            </div>
+          </div>
+          <div class="close_cart">
+            <i class="fas fa-times"></i>
+          </div>
+        </li>
+      </ul>
+      <div class="total_checkout">
+        <span class="font-Medium">Total</span>
+        <span class="checkout_price">80 KWD</span>
+      </div>
+      <div class="checkout_action">
+        <button
+          class="checkout_btn checkout_action_btn"
+          [routerLink]="['/checkout']"
+          (click)="cartDropDown = false"
+        >
+          Checkout
+        </button>
+        <button
+          class="cust_btn checkout_action_btn"
+          [routerLink]="['/carts']"
+          (click)="cartDropDown = false"
+        >
+          View Cart
+        </button>
+      </div>
+    </div>
+
+    <!-- user profile dropdown -->
+    <div
+      class="your_checkout user_profile_list"
+      [ngClass]="{ active: authDropDown }"
+    >
+      <ul class="your_shoping_cart">
+        <li class="your_shoping_item">
+          <a [routerLink]="['/login']" (click)="authDropDown = !authDropDown">
+            <img
+              src="../../../assets/images/icons/user.svg"
+              alt="user icon"
+              class="mr-3"
+            />
+            <span>Sign In</span>
+          </a>
+        </li>
+        <li class="your_shoping_item">
+          <a
+            [routerLink]="['/register']"
+            (click)="authDropDown = !authDropDown"
+          >
+            <img
+              src="../../../assets/images/icons/user.svg"
+              alt="user icon"
+              class="mr-3"
+            />
+            <span>Create a new account</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-6 col-md-8">
+        <div class="nav_contact">
+          <ul>
+            <li>
+              <span><i class="far fa-envelope"></i></span>
+              <a>Packagekw@Gmail.Com</a>
+            </li>
+            <li>
+              <span><i class="fas fa-phone"></i></span>
+              <a>𝟶𝟶𝟿𝟼𝟻-𝟻𝟷𝟷𝟶𝟶𝟹𝟼𝟶</a>
+            </li>
+          </ul>
+          <a class="nav_search"><i class="fas fa-search"></i></a>
+        </div>
+        <!--End nav_contact-->
+        <div class="nav_responsive d-lg-none">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            (click)="showMenu = !showMenu"
+          >
+            <i class="fas fa-bars"></i></button
+          ><!--End navbar-toggler-->
+          <a class="navbar-brand" [routerLink]="['/home']">
+            <img src="../../../assets/images/icons/logo.svg" /> </a
+          ><!--End navbar-brand-->
+        </div>
+        <!--End nav_responsive-->
+      </div>
+      <div class="col-6 col-md-4">
+        <div class="nav_action d-flex justify-content-end">
+          <ul class="nav_action_list d-flex">
+            <li
+              class="nav_action_item shopping-cart_icon"
+              (click)="cartDropDown = !cartDropDown"
+            >
+              <a><i class="fas fa-shopping-cart"></i></a>
+            </li>
+            <li class="nav_action_item">
+              <a>
+                <span *ngIf="lang == 'en'" (click)="changeLanguage('ar')"
+                  >AR
+                </span>
+                <span *ngIf="lang == 'ar'" (click)="changeLanguage('en')"
+                  >EN
+                </span>
+              </a>
+            </li>
+            <li
+              class="user_icon nav_action_item"
+              (click)="authDropDown = !authDropDown"
+            >
+              <a><i class="fas fa-user-alt"></i></a>
+            </li>
+          </ul>
+        </div>
+        <!--End nav_action-->
+      </div>
+    </div>
+  </div>
+</div>
+<!--End topNav-->
+<div
+  class="overlay menu"
+  [ngClass]="{ active: showMenu }"
+  (click)="showMenu = false"
+></div>
+<div class="bottomNav sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand d-none d-lg-block" [routerLink]="['/home']">
+        <img src="../../../assets/images/icons/logo.svg" /> </a
+      ><!--End navbar-brand-->
+
+      <div
+        class="collapse navbar-collapse nav_list show"
+        id="navbarSupportedContent"
+        [ngClass]="{ active: showMenu }"
+      >
+        <form>
+          <div class="user_login d-lg-none" (click)="showMenu = false">
+            <a class="profile_link" [routerLink]="['/login']"
+              ><img
+                src="../../../assets/images/icons/user.svg"
+                alt="user_profile"
+            /></a>
+            <a class="user_login" [routerLink]="['/login']">Login</a>
+            <span><i class="fas fa-times"></i></span>
+          </div>
+          <!--End user_login-->
+        </form>
+        <!--End form-->
+        <ul class="navbar-nav mr-auto" (click)="showMenu = false">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/notebook']">Notebooks</a>
+            <div class="mini_menu">
+              <ul>
+                <li>
+                  <a [routerLink]="['/business-card']">Classic Business Card</a>
+                </li>
+                <li>
+                  <a [routerLink]="['/business-card']"
+                    >Wild-Format Business Card</a
+                  >
+                </li>
+                <li>
+                  <a [routerLink]="['/business-card']"
+                    >Networker’s Business Card</a
+                  >
+                </li>
+                <li>
+                  <a [routerLink]="['/business-card']"
+                    >Typographic Business Card</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <!--End mini_menu-->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/notebook']">Flyers</a>
+            <div class="mini_menu">
+              <ul>
+                <li>
+                  <a [routerLink]="['/business-card']">Classic Business Card</a>
+                </li>
+                <li>
+                  <a [routerLink]="['/business-card']"
+                    >Wild-Format Business Card</a
+                  >
+                </li>
+                <li>
+                  <a [routerLink]="['/business-card']"
+                    >Networker’s Business Card</a
+                  >
+                </li>
+                <li>
+                  <a [routerLink]="['/business-card']"
+                    >Typographic Business Card</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <!--End mini_menu-->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/notebook']">Greeting Cards</a>
+            <div class="mini_menu">
+              <ul>
+                <li>
+                  <a [routerLink]="['/business-card']">Classic Business Card</a>
+                </li>
+                <li>
+                  <a [routerLink]="['/business-card']"
+                    >Wild-Format Business Card</a
+                  >
+                </li>
+                <li>
+                  <a [routerLink]="['/business-card']"
+                    >Networker’s Business Card</a
+                  >
+                </li>
+                <li>
+                  <a [routerLink]="['/business-card']"
+                    >Typographic Business Card</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <!--End mini_menu-->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/notebook']">Envelopes</a>
+            <div class="mini_menu">
+              <ul>
+                <li>
+                  <a [routerLink]="['/business-card']">Classic Business Card</a>
+                </li>
+                <li>
+                  <a [routerLink]="['/business-card']"
+                    >Wild-Format Business Card</a
+                  >
+                </li>
+                <li>
+                  <a [routerLink]="['/business-card']"
+                    >Networker’s Business Card</a
+                  >
+                </li>
+                <li>
+                  <a [routerLink]="['/business-card']"
+                    >Typographic Business Card</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <!--End mini_menu-->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/business-card']"
+              >Business Cards
+            </a>
+            <!--								if you want show add class open_list-->
+            <div class="mini_menu">
+              <ul>
+                <li>
+                  <a [routerLink]="['/business-card']">Classic Business Card</a>
+                </li>
+                <li>
+                  <a [routerLink]="['/business-card']"
+                    >Wild-Format Business Card</a
+                  >
+                </li>
+                <li>
+                  <a [routerLink]="['/business-card']"
+                    >Networker’s Business Card</a
+                  >
+                </li>
+                <li>
+                  <a [routerLink]="['/business-card']"
+                    >Typographic Business Card</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <!--End mini_menu-->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/sticker']">Stickers</a>
+            <div class="mini_menu">
+              <ul>
+                <li>
+                  <a [routerLink]="['/business-card']">Classic Business Card</a>
+                </li>
+                <li>
+                  <a [routerLink]="['/business-card']"
+                    >Wild-Format Business Card</a
+                  >
+                </li>
+                <li>
+                  <a [routerLink]="['/business-card']"
+                    >Networker’s Business Card</a
+                  >
+                </li>
+                <li>
+                  <a [routerLink]="['/business-card']"
+                    >Typographic Business Card</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <!--End mini_menu-->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/sticker']">Canvas Prints</a>
+            <div class="mini_menu">
+              <ul>
+                <li>
+                  <a [routerLink]="['/business-card']">Classic Business Card</a>
+                </li>
+                <li>
+                  <a [routerLink]="['/business-card']"
+                    >Wild-Format Business Card</a
+                  >
+                </li>
+                <li>
+                  <a [routerLink]="['/business-card']"
+                    >Networker’s Business Card</a
+                  >
+                </li>
+                <li>
+                  <a [routerLink]="['/business-card']"
+                    >Typographic Business Card</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <!--End mini_menu-->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/sticker']">Posters</a>
+            <div class="mini_menu">
+              <ul>
+                <li>
+                  <a [routerLink]="['/business-card']">Classic Business Card</a>
+                </li>
+                <li>
+                  <a [routerLink]="['/business-card']"
+                    >Wild-Format Business Card</a
+                  >
+                </li>
+                <li>
+                  <a [routerLink]="['/business-card']"
+                    >Networker’s Business Card</a
+                  >
+                </li>
+                <li>
+                  <a [routerLink]="['/business-card']"
+                    >Typographic Business Card</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <!--End mini_menu-->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/sticker']">Folders</a>
+            <div class="mini_menu">
+              <ul>
+                <li>
+                  <a [routerLink]="['/business-card']">Classic Business Card</a>
+                </li>
+                <li>
+                  <a [routerLink]="['/business-card']"
+                    >Wild-Format Business Card</a
+                  >
+                </li>
+                <li>
+                  <a [routerLink]="['/business-card']"
+                    >Networker’s Business Card</a
+                  >
+                </li>
+                <li>
+                  <a [routerLink]="['/business-card']"
+                    >Typographic Business Card</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <!--End mini_menu-->
+          </li>
+        </ul>
+        <!--End navbar-nav -->
+      </div>
+      <!--End nav_list-->
+    </div>
+  </nav>
+  <!--End navbar-->
+</div>
+<!--End bottomNav-->

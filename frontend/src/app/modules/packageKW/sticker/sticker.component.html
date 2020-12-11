@@ -1,0 +1,192 @@
+<div class="breadcrumb_product breadcrumb_general" aria-label="breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="['/home']" >Home</a></li>
+      <li class="breadcrumb-item"><a [routerLink]="['/products']"  >Products</a></li>
+      <li class="breadcrumb-item current_page"><a>Sticker</a></li>
+    </ol>
+  </div>
+</div>
+<section class="pro_cust">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="pro_cust_image">
+          <img
+            src="../../../assets/images/slider_image.png"
+            alt="pro_cust_image"
+          />
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-5 offset-lg-1">
+        <div class="cust_description">
+          <div class="front_side">
+            <h3 class="pro_cust_title bold_18 mt-0">Product customization</h3>
+            <div class="add_cust_logo">
+              <span class="cust_des_title">Add Your Logo</span>
+              <div class=" upload mx-auto	mb-lg-0 mb-4  ">
+                <div [ngClass]="{uploaded: uploadedFile}"
+                  class="upload-file d-flex flex-column justify-content-center mx-auto align-items-center position-relative">
+                  <div class="text-center" *ngIf="!uploadedFile">
+                    <input id="upload" type="file" (change)="uploadFile($event)" class="p-absolute"
+                      accept=".png,.jpg,.jpeg">
+                    <h5>Drag & Drop Logo to upload </h5>
+                    <p>Or</p>
+                    <!-- <span>Maximum logo height 50px </span> -->
+                    <button class="btn">
+                      Select File
+                    </button>
+                  </div>
+                  <div class="show-photo" *ngIf="uploadedFile">
+                    <div class="icon" (click)="clearFile()">
+                      <img src="../../assets/images/icons/modal-close.svg" alt="x">
+                    </div>
+                    <!-- end icon-->
+                    <img [src]="uploadedFile" alt="photo">
+                  </div>
+                </div>
+                <!-- end upload-file-->
+            </div>
+            </div>
+            <div class="select_bg">
+              <span class="cust_des_title">Background</span>
+              <div class="bg_type">
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input
+                    type="radio"
+                    class="custom-control-input"
+                    id="bg_img"
+                    name="bg_type"
+                    value="customEx"
+                    checked
+                  />
+                  <label class="custom-control-label" for="bg_img">Image</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input
+                    type="radio"
+                    class="custom-control-input"
+                    id="bg_color"
+                    name="bg_type"
+                    value="customEx"
+                    checked
+                  />
+                  <label class="custom-control-label" for="bg_color"
+                    >Color</label
+                  >
+                </div>
+              </div>
+              <div class=" upload mx-auto	mb-lg-0 mb-4  ">
+                <div [ngClass]="{uploaded: uploadedFile2}"
+                  class="upload-file d-flex flex-column justify-content-center mx-auto align-items-center position-relative">
+                  <div class="text-center" *ngIf="!uploadedFile2">
+                    <input id="upload" type="file" (change)="uploadFile2($event)" class="p-absolute"
+                      accept=".png,.jpg,.jpeg">
+                    <h5>Drag & Drop Logo to upload</h5>
+                    <p>Or</p>
+                    <!-- <span>Maximum logo height 50px </span> -->
+                    <button class="btn">
+                      Select File
+                    </button>
+                  </div>
+                  <div class="show-photo" *ngIf="uploadedFile2">
+                    <div class="icon" (click)="clearFile2()">
+                      <img src="../../assets/images/icons/modal-close.svg" alt="x">
+                    </div>
+                    <!-- end icon-->
+                    <img [src]="uploadedFile2" alt="photo">
+                  </div>
+                </div>
+                <!-- end upload-file-->
+            </div>
+            </div>
+            <div>
+              <div class="form-group mt-3">
+                <label for="Text">Text</label>
+                <input
+                  type="text"
+                  name="Text"
+                  class="form-control"
+                  placeholder="Enter A Text"
+                  id="Text"
+                />
+              </div>
+              <!-- /form-group -->
+            </div>
+          </div>
+          <div class="back_side">
+            <h3 class="pro_cust_title bold_18">Product Customization</h3>
+          </div>
+          <div class="customize_product">
+            <span class="cust_des_title">Select Size</span>
+            <div  class="cust_pro_size">
+              <img src="../../assets/images/icons/dropdown.svg" alt="dropdown">
+              <select>
+                <option>9*5 CM</option>
+                <option>9*5 CM</option>
+                <option>9*5 CM</option>
+                <option>9*5 CM</option>
+              </select>
+            </div>
+            <div
+              class="sale_detail d-flex align-items-center justify-content-between"
+            >
+              <div class="Qty">
+                <span class="detail_title">Qty</span>
+                <div class="incr_decr">
+                  <button
+                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                    class="minus"
+                  >
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <input
+                    class="quantity"
+                    name="quantity"
+                    value="1"
+                    type="number"
+                  />
+                  <button
+                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                    class="plus"
+                  >
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+              <h3 class="sale_num">40 KWD</h3>
+            </div>
+            <span class="cust_des_title">Note</span>
+            <div class="form-group form-group-icon">
+              <textarea
+                placeholder="Add Note"
+                rows="5"
+                id="Review"
+                class="form-control"
+              ></textarea>
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input
+                type="checkbox"
+                class="custom-control-input"
+                id="see_copy"
+                name="see_copy"
+                checked
+              />
+              <label class="custom-control-label" for="see_copy"
+                >I want to see a copy before printing all copies</label
+              >
+            </div>
+          </div>
+          <div
+            class="cust_des_action d-flex align-items-center justify-content-end"
+          >
+            <button class="cancle_btn font-Medium" [routerLink]="['/business-card']" routerLinkActive="router-link-active" >Cancel</button>
+            <button class="add_btn cust_btn" [routerLink]="['/carts']">Add To Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--End pro_cust-->

@@ -8,7 +8,6 @@ import { OrderStatus } from '../model/order-status.enum';
 })
 export class OrdersComponent implements OnInit {
 
-  dtOptions: DataTables.Settings = {};
   orders = [
     {
       id: '2320',
@@ -35,12 +34,7 @@ export class OrdersComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 5,
-      lengthMenu: [5, 10, 25],
-      processing: true,
-    };
+
   }
 
 }

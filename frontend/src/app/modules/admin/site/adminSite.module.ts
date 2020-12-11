@@ -7,7 +7,6 @@ import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { SidebarComponent } from './layouts/sidebar/sidebar.component';
 import { ProductComponent } from './product/product.component';
-import { DataTablesModule } from 'angular-datatables';
 import { CategoryProductComponent } from './category-product/category-product.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductViewComponent } from './product-view/product-view.component';
@@ -37,7 +36,6 @@ import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
   imports: [
     CommonModule,
     SiteRoutingModule,
-    DataTablesModule,
     FormsModule,
     ReactiveFormsModule,
     ReactiveFormsModule,
