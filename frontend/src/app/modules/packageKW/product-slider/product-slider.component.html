@@ -1,0 +1,30 @@
+<div class="Products_content">
+  <div class="slider_control Products_control top_control">
+    <span class="left_arrow left"><i class="fas fa-chevron-left"></i></span>
+    <span class="right_arrow right"><i class="fas fa-chevron-right"></i></span>
+  </div>
+  <div class="Products_slider">
+    <swiper [config]="config2">
+      <div class="item" *ngFor="let item of productObject">
+        <div class="card Products_item" [ngClass]="{ sale: item.sale }">
+          <img
+            class="card-img-top swiper-lazy"
+            [src]="item.img"
+            alt="product1"
+          />
+          <div class="card-body">
+            <h5 class="card-title cust_h3">{{ item.name }}</h5>
+            <p class="card-text">
+              {{ item.dec }}
+            </p>
+            <a [routerLink]="['/business-card/']" class="card_link"
+              >View Details</a
+            >
+          </div>
+        </div>
+        <!--End card-->
+      </div>
+    </swiper>
+  </div>
+</div>
+<!--End Products_content-->

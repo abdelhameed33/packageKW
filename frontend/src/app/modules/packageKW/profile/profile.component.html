@@ -1,0 +1,83 @@
+<div class="breadcrumb_product breadcrumb_general" aria-label="breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item current_page"><a>My Profile</a></li>
+    </ol>
+  </div>
+</div>
+<section class="order">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="user_profile_tabs">
+          <div class="user_info">
+            <div class="user_logo">
+              <img
+                src="../../../assets/images/icons/user_profile.svg"
+                alt="user_logo"
+              />
+              <p>
+                Welcome, <span class="user_name font-Medium">Badr Ragab</span>
+              </p>
+            </div>
+          </div>
+          <ul class="user_profile_list">
+            <li [routerLink]="['order']" routerLinkActive="active">
+              <img
+                src="../../../assets/images/icons/order.svg"
+                alt="order_icon"
+              />
+              <span class="font-Medium">My Orders</span>
+            </li>
+            <li [routerLink]="['save-address']" routerLinkActive="active">
+              <img
+                src="../../../assets/images/icons/address.svg"
+                alt="order_icon"
+              />
+              <span class="font-Medium">Saved Addresses</span>
+            </li>
+            <li [routerLink]="['favorites']" routerLinkActive="active">
+              <img
+                src="../../../assets/images/icons/favorit.svg"
+                alt="order_icon"
+              />
+              <span class="font-Medium">Favorites</span>
+            </li>
+            <li [routerLink]="['edit-profile']" routerLinkActive="active">
+              <img
+                src="../../../assets/images/icons/edit.svg"
+                alt="order_icon"
+              />
+              <span class="font-Medium">Edit Profile</span>
+            </li>
+            <li [routerLink]="['reset-password']" routerLinkActive="active">
+              <img
+                src="../../../assets/images/icons/password.svg"
+                alt="order_icon"
+              />
+              <span class="font-Medium">Reset Password</span>
+            </li>
+            <li [routerLink]="['/login']" routerLinkActive="active">
+              <img
+                src="../../../assets/images/icons/signout.svg"
+                alt="order_icon"
+              />
+              <span class="font-Medium">Sign Out</span>
+            </li>
+          </ul>
+          <!--End user_profile_list-->
+        </div>
+        <!--End user_profile_tabs-->
+      </div>
+      <div class="col-lg-9">
+        <main
+          [@routing]="outletRef.isActivated ? outletRef.activatedRoute : ''"
+        >
+          <router-outlet #outletRef="outlet"></router-outlet>
+        </main>
+      </div>
+    </div>
+  </div>
+</section>
+<!--End order-->

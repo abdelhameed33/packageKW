@@ -3,6 +3,7 @@ import { IsNotEmpty, IsNumber, IsString, MaxLength, Min, MinLength } from "class
 export class CreateProductDto {
 
     id: number;
+
     @IsString()
     @MinLength(3)
     @MaxLength(100)

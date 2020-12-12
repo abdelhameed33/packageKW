@@ -1,4 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* You can add global styles to this file, and also import other style files */
+
+$main_color: #f49da1;
+$sec_color: #feeff0;
+$black_color: #252829;
+$white_black: #6a7072;
+$gray: #ebebeb;
+
+@import "assets/partial/_general";
+@import "assets/partial/_navbar";
+@import "assets/partial/_main_slider";
+@import "assets/partial/_Products";
+@import "assets/partial/_customer_opinion";
+@import "assets/partial/_subscribe";
+@import "assets/partial/_footer";
+@import "assets/partial/_product_page";
+@import "assets/partial/_prduct_detail_page";
+@import "assets/partial/_pro_customization";
+@import "assets/partial/_auth";
+@import "assets/partial/check";
+@import "assets/partial/_about_page";
+@import "assets/partial/_shoping_cart_page";
+@import "assets/partial/checkout_cart";
+@import "assets/partial/_user_profile";
+@import "assets/partial/upload";
+@import "assets/partial/media";
+@import "assets/partial/rtl";
+
+:focus {
+  outline: none !important;
+}

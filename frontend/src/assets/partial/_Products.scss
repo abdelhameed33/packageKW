@@ -1,0 +1,74 @@
+.Products{
+	text-align: center;
+	padding: 30px 0 0;
+	.Products_content{
+		position: relative;
+	}
+	.cust_h2{
+		margin-bottom: 65px
+	}
+	.View_all{
+		margin-top: 45px;
+	}
+}
+.card{
+	border: none;
+	&.sale{
+		.card-body{
+			position: relative;
+			&::after{
+				position: absolute;
+				content: "Sale";
+				text-align: center;
+				bottom: 88%;
+				left: 28px;
+				width: 44px;
+				height: 44px;
+				background: #fff;
+				border-radius: 50%;
+				line-height: 44px;
+				color: $main_color;
+				font-size: 12px;
+				font-family: "Rubik-Bold";
+				box-shadow: 0px 0px 26px 0px #25282938
+			}
+		}
+		
+	}
+	.card-img-top{
+		border-radius: 30px;
+		
+	}
+	.card-body{
+		
+		.card-title{
+			
+		}
+		.card-text{
+			text-align: center
+		}
+		.card_link{
+			color: $main_color;
+			display: block;
+			font-size: 18px;
+			font-family: "Rubik-Bold";
+			text-align: center;
+			margin-top: 25px;
+			
+		}
+	}
+}
+.sale_num{
+	color: $main_color;
+	display: block;
+	font-size: 18px;
+	font-family: "Rubik-Bold";
+	text-align: center;
+	margin-top: 25px;
+	span{
+		font-family: "Rubik-Regular";
+		margin-left: 5px;
+		text-decoration: line-through
+	}
+	
+}

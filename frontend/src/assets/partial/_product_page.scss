@@ -1,0 +1,80 @@
+.all_products {
+  padding: 50px 0;
+  .product_filter {
+    .cust_h2 {
+      margin-bottom: 46px;
+      text-align: left;
+      margin-top: 10px;
+    }
+    h5 {
+      margin-bottom: 20px;
+      font-family: "Rubik-Medium";
+      font-size: 14px;
+    }
+    .Categories,
+    .price_rang {
+      border-radius: 30px;
+      border: 1px solid #f49da1;
+      margin: 25px 0;
+      padding: 25px;
+    }
+    .search_filter {
+      border: 1px solid $main_color;
+      border-radius: 30px;
+      padding: 12px 30px;
+      position: relative;
+      input {
+        border: none;
+      }
+      button {
+        width: 47px;
+        height: 47px;
+        border-radius: 30px;
+        position: absolute;
+        display: inline-block;
+        top: 0;
+        right: -3px;
+        text-align: center;
+        line-height: 50px;
+        background-color: $main_color;
+        cursor: pointer;
+        border: none;
+      }
+    }
+    .Categories {
+      .custom-control.custom-checkbox {
+        margin-bottom: 10px;
+      }
+      a {
+        font-family: "Rubik-Medium";
+        color: $main_color;
+        display: block;
+      }
+    }
+    .price_rang {
+    }
+  }
+  .product_items {
+    .sort_item {
+      margin-bottom: 40px;
+      .cust_h2 {
+      }
+      .sort_content {
+        width: 255px;
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        border: 1px solid $main_color;
+        border-radius: 5px;
+        justify-content: space-between;
+        span {
+          font-family: "Rubik-Bold";
+        }
+        select {
+          border: none;
+          font-family: "Rubik-Regular";
+        }
+      }
+    }
+  }
+}

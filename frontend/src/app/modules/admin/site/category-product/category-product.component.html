@@ -32,10 +32,16 @@
                                 </td>
                                 <td>{{product.quantity}}</td>
                                 <td>{{product.price}}</td>
-                                <td><a href="javascript:void(0)" class="text-inverse p-r-10" data-toggle="tooltip"
-                                        title="" data-original-title="Edit"><i class="ti-marker-alt"></i></a> <a
-                                        href="javascript:void(0)" class="text-inverse" title="" data-toggle="tooltip"
-                                        data-original-title="Delete"><i class="ti-trash"></i></a></td>
+                                <td>
+                                    <a href="javascript:void(0)" class="text-inverse p-r-10" data-toggle="tooltip"
+                                        title="" data-animation="false" data-original-title="Edit"><i
+                                            class="fa fa-edit"></i></a>
+                                    <a (click)="productToDelete=product" href="javascript:void(0)" class="text-inverse"
+                                        title="" data-animation="false" data-toggle="tooltip"
+                                        data-original-title="Delete"><i data-toggle="modal" role="button"
+                                            data-target="#delete-product" class="fa fa-trash"></i>
+                                    </a>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -44,3 +50,32 @@
         </div>
     </div>
 </div>
+
+<!-- ============================================================== -->
+<!-- satrt of delete product modal  -->
+<!-- ============================================================== -->
+<div id="delete-product" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">Delete Product</h4>
+            </div>
+            <div class="modal-body">
+                <p> Are you sure you want to delete Product <span
+                        class="font-weight-bold">{{productToDelete.title}}</span>?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" (click)="deleteProduct()" class="btn btn-info waves-effect"
+                    data-dismiss="modal">Delete</button>
+                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- ============================================================== -->
+<!-- end of delete product modal  -->
+<!-- ============================================================== -->

@@ -1,0 +1,162 @@
+.order{
+	padding: 30px 0 50px
+}
+.user_profile_tabs{
+	padding: 30px 0;
+	background-color: #fff;
+	box-shadow: 0px 0 33px 6px #2528291f;
+	position: sticky;
+	top: 100px;
+	border-radius: 4px;
+	.user_info{
+		.user_logo{
+			text-align: center;
+			img{
+				margin-bottom: 10px;
+			}
+			p{
+				color: $white_black;
+				span{
+					color: $black_color
+				}
+			}
+		}
+	}
+	.user_profile_list{
+		margin-top: 30px;
+		li{
+			color: $white_black;
+			padding: 15px 0 15px 25px;
+			border-bottom: 1px solid #EBEBEB;
+			background-color: #fff;
+			transition: all .4s ease-in-out;
+			position: relative;
+			&:last-of-type{
+				border-bottom: 0
+			}
+			&::after{
+				position: absolute;
+				content: "";
+				left: 0;
+				top: 0;
+				width: 0;
+				height: 100%;
+				background-color: $main_color;
+				transition: all .4s ease-in-out;
+			}
+			img{
+				filter: grayscale(1);
+				margin-right: 20px;
+				transition: all .4s ease-in-out;
+			}
+			span{
+
+			}
+			&.active,
+			&:hover{
+				background-color:#FEEFF0;
+				&::after{
+					width: 5px;
+				}
+				
+				img{
+					filter: grayscale(0)
+				}
+			}
+		}
+	}
+}
+
+.profile_table{
+	.responsive_table{
+		margin-top: 25px;
+		.order_table{
+			border-radius: 6px;
+			overflow: hidden;
+			width: 100%;
+			.table_head_cell,
+			.table_body_cell{
+				padding: 20px;
+			}
+			.table_head{
+				background-color: #FEEFF0;
+				.table_head_cell{
+					font-family: "Rubik-Medium";
+				}
+			}
+			.table_body{
+				.table_body_row{
+					border-bottom: 1px solid #EBEBEB;
+					&:last-of-type{
+						border-bottom: 0
+					}
+					.table_body_cell{
+						span{
+
+						}
+						img{
+
+						}
+					}
+				}
+				
+			}
+		}
+	}
+}
+.table_btns{
+	border: 1px solid #fff;
+	border-radius: 15px;
+	padding: 6px 19px;
+	white-space: nowrap
+}
+.sucess_btn{
+	color: #30CB2A;
+	border-color: #30CB2A;
+}
+.warn_btn{
+	color: #F3C23C;
+	border-color: #F3C23C
+}
+.cancled_btn{
+	color: #FF3841;
+	border-color:  #FF3841
+}
+.pagination{
+	display: flex;
+	justify-content: center;
+	margin-top: 50px;
+	span,
+	ul li{
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		background-color: #fff;
+		text-align: center;
+		line-height: 40px;
+		margin-right: 10px;
+		box-shadow: 0px 0px 15px 0px #25282914;
+		cursor: pointer;
+		font-family: "Rubik-Medium";
+		
+	}
+	.left_pagn{
+		
+	}
+	.right_pagn{
+		
+	}
+	ul{
+		display: flex;
+		li{
+			display: inline-block;
+			margin-bottom: 10px;
+			&.active{
+				background-color: $main_color
+			}
+		}
+	}
+}
+.saved_address_content{
+	margin-top: 30px;
+}

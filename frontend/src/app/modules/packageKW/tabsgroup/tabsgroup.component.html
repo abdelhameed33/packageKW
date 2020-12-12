@@ -1,0 +1,154 @@
+<section class="pro_tabs BusinessCards">
+  <div class="container">
+    <div class="tab_control">
+      <ul>
+        <li [ngClass]="{'active': tabDec}" (click)="toggleTab()">Description</li>
+        <li [ngClass]="{'active': tabReview}" (click)="toggleTab()">Reviews <span class="review_num">(2)</span></li>
+      </ul>
+    </div>
+    <!--End tab_control-->
+    <div class="tab_content">
+      <div class="tab_desc" *ngIf="tabDec">
+        <p>
+          Our Hardcover BusinessCards mixes premium materials with practical
+          design. Like the smooth, Swedish paper and the “Swiss binding” (which
+          means every page of your MOO BusinessCards stays flat, and you’re not
+          wrestling with flappy pages).
+        </p>
+        <ul>
+          <li>Cloth cove</li>
+          <li>Lay-flat Swiss binding</li>
+          <li>Top sheet</li>
+          <li>100gsm Munken Kristall paper (lined or dotted)</li>
+          <li>G . F Smith Colorplan paper (blank)</li>
+          <li>Wayfinding ribbon</li>
+        </ul>
+      </div>
+      <!--End tab_desc-->
+      <div class="tab_review " *ngIf="tabReview">
+        <div class="review_content">
+          <div class="row">
+            <div class="col-lg-7">
+              <div class="media">
+                <div class="review_rate">
+                  <ul>
+                    <li><i class="fas fa-star"></i></li>
+                    <li><i class="fas fa-star"></i></li>
+                    <li><i class="fas fa-star"></i></li>
+                    <li><i class="fas fa-star"></i></li>
+                    <li><i class="fas fa-star"></i></li>
+                  </ul>
+                </div>
+                <img
+                  class="mr-2 mr-sm-4"
+                  src="../../../assets/images/customer1.png"
+                  alt="review1"
+                />
+                <div class="media-body">
+                  <h5>Jonathan Ross</h5>
+                  <span class="review_date">November 9, 2020</span>
+                  <p>
+                    If you need your cards today, Staples is a good option, with
+                    excellent online design tools and printing quality.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--End review_content-->
+        <div class="review_content">
+          <div class="row">
+            <div class="col-lg-7">
+              <div class="media">
+                <div class="review_rate">
+                  <ul>
+                    <li><i class="fas fa-star"></i></li>
+                    <li><i class="fas fa-star"></i></li>
+                    <li><i class="fas fa-star"></i></li>
+                    <li><i class="fas fa-star"></i></li>
+                    <li><i class="fas fa-star"></i></li>
+                  </ul>
+                </div>
+                <img
+                  class="mr-2 mr-sm-4"
+                  src="../../../assets/images/customer2.png"
+                  alt="review2"
+                />
+                <div class="media-body">
+                  <h5>Jonathan Ross</h5>
+                  <span class="review_date">November 9, 2020</span>
+                  <p>
+                    If you need your cards today, Staples is a good option, with
+                    excellent online design tools and printing quality.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--End review_content-->
+        <div class="add_review_form">
+          <h4>Add a review</h4>
+          <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+              <form>
+                <div class="new_rate">
+                  <span>Your rating</span>
+                  <ul>
+                    <li><i class="far fa-star"></i></li>
+                    <li><i class="far fa-star"></i></li>
+                    <li><i class="far fa-star"></i></li>
+                    <li><i class="far fa-star"></i></li>
+                    <li><i class="far fa-star"></i></li>
+                  </ul>
+                </div>
+                <div class="row clearfix">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="jobTitle">Job Title</label>
+                      <input
+                        type="email"
+                        name="email"
+                        class="form-control"
+                        placeholder="Enter Job Title"
+                        id="jobTitle"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group ">
+                      <label for="email">Email Address</label>
+                      <input
+                        type="email"
+                        name="email"
+                        class="form-control"
+                        placeholder="Enter Email Address"
+                      />
+                    </div>
+                    <!-- /form-group -->
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group ">
+                      <label for="Review">Review</label>
+                      <textarea
+                        placeholder="Enter Review"
+                        rows="5"
+                        id="Review"
+                        class="form-control"
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" class="cust_btn float-right">
+                  Submit
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--End ta_review-->
+    </div>
+  </div>
+</section>

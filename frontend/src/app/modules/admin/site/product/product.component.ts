@@ -71,7 +71,8 @@ export class ProductComponent implements OnInit {
           this.newProduct = res;
           this.productAttributes = this.getProductProps(this.newProduct.properties);
           this.categoryId = this.newProduct.category?.id;
-          this.images = this.newProduct?.images;
+          this.images = this.newProduct?.images.map(img => img.image_name);
+          console.log(this.images);
         });
         this.mode = 'edit';
       } else {

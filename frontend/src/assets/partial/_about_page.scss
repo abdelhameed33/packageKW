@@ -1,0 +1,96 @@
+//about_main
+.about_main{
+	background-image: url(../images/about_bg.png);
+	padding: 75px 0;
+	text-align: center;
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+	.cust_h2{
+		color: #fff;
+	}
+}
+
+//about_description
+.about_description{
+	padding: 100px 0;
+	position: relative;
+	background-image: url(../images/about_desc.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	.flower_img{
+		position: absolute;
+		top: 0;
+		left: 80px;
+		z-index: 0;
+		height: 100%;
+		object-fit: cover;
+		opacity: .6;
+		object-fit: fill;
+	}
+	.about_des_text{
+		.about_desc_hint{
+			font-size: 24px;
+			margin-bottom: 10px;
+		}
+		.about_desc_title{
+			font-size: 58px;
+			margin-bottom: 40px;
+		}
+		.import_desc{
+			margin-bottom: 20px;
+			text-align: left;
+			width:83%
+		}
+		.normal_desc{
+			color: $white_black;
+			margin-bottom: 40px;
+			width: 83%
+		}
+		.cust_btn{
+			width: auto;
+			border-radius: 4px;
+			padding: 15px 25px
+		}
+	}
+	.about_des_img{
+		position: absolute;
+		left: 46%;
+		width: 68%;
+		top: -16%;
+		img{
+			width: 100%
+		}
+	}
+}
+
+//our_service
+.our_service{
+	.cust_h2{
+		margin-bottom: 60px;
+	}
+	.service_content{
+		.service_item{
+			padding: 50px 35px;
+			position: relative;
+			background-color: #fff;
+			box-shadow: 5px 10px 99px 0 #25282917;
+			border-radius: 6px;
+			.service_icon{
+				position: absolute;
+				top: -32px;
+				img{
+					
+				}
+			}
+			.service_title{
+				font-size: 24px;
+				margin-bottom: 15px;
+			}
+			p{
+				color: #6A7072
+			}
+		}
+	}
+}

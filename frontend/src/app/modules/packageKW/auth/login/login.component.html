@@ -1,0 +1,74 @@
+<div class="breadcrumb_product breadcrumb_general" aria-label="breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a [routerLink]="['/home']">{{ "home" | translate }}</a>
+      </li>
+      <li class="breadcrumb-item current_page">
+        <a>{{ "Login" | translate }}</a>
+      </li>
+    </ol>
+  </div>
+</div>
+<!-- /breadcrumb_product -->
+<section class="auth-section">
+  <div class="container">
+    <div class="py-5 my-5">
+      <div class="auth-card">
+        <div class="brand text-center">
+          <img src="../../../assets/images/icons/logo.svg" alt="logo" />
+          <p class="mt-3">{{ "login_to_your_account" | translate }}</p>
+        </div>
+        <div>
+          <div class="form-group">
+            <label for="email">{{ "email_address" | translate }}</label>
+            <input
+              type="email"
+              name="email"
+              class="form-control"
+              placeholder="{{ 'enter' | translate }} {{
+                'email_address' | translate
+              }}"
+            />
+          </div>
+          <!-- /form-group -->
+          <div class="form-group form-group-icon">
+            <i
+              class="fas"
+              [ngClass]="inputPassword ? 'fa-eye' : 'fa-eye-slash'"
+              (click)="inputPassword = !inputPassword"
+            ></i>
+            <label for="password">{{ "Password" | translate }}</label>
+            <input
+              [type]="inputPassword ? 'password' : 'text'"
+              name="password"
+              class="form-control"
+              placeholder="{{ 'enter' | translate }} {{
+                'Password' | translate
+              }}"
+            />
+          </div>
+          <!-- /form-group -->
+
+          <button
+            [routerLink]="['/profile/order']"
+            class="add_btn cust_btn d-lg-block w-100"
+          >
+            {{ "Sign_In" | translate }}
+          </button>
+          <a class="d-block mt-3 text-center">{{
+            "Forgot_Your_Password?" | translate
+          }}</a>
+          <span class="d-block mt-4 text-center">
+            {{ "Dont_have_an_account" | translate }} ,
+            <a [routerLink]="['/register']">{{
+              "Create_a_new_account" | translate
+            }}</a>
+          </span>
+        </div>
+      </div>
+      <!-- /auth-card -->
+    </div>
+  </div>
+  <!-- /container -->
+</section>

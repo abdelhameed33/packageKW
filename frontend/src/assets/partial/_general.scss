@@ -1,0 +1,471 @@
+/*fonts
+====================*/
+
+@font-face {
+  font-family: "Rubik-Medium";
+  src: url("../vendor/fonts/Rubik-Medium.ttf");
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Rubik-Regular";
+  src: url("../vendor/fonts/Rubik-Regular.ttf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Rubik-Bold";
+  src: url("../vendor/fonts/Rubik-Bold.ttf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Rubik-Italic";
+  src: url("../vendor/fonts/Rubik-Italic.ttf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Rubik-MediumItalic";
+  src: url("../vendor/fonts/Rubik-MediumItalic.ttf");
+  font-weight: bold;
+}
+
+::-webkit-scrollbar {
+  width: 0.5em;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $main_color;
+}
+
+/*body
+===========================*/
+body {
+  font-family: "Rubik-Regular";
+  font-size: 14px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  color: $black_color;
+  position: relative;
+}
+
+/* Links
+==========================*/
+a,
+a:hover,
+a:focus {
+  text-decoration: none;
+  color: inherit;
+}
+input:focus,
+button:focus {
+  outline: none;
+}
+label,
+button {
+  cursor: pointer;
+}
+
+/* Headings
+========================== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  display: block;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+/*Lists
+==========================*/
+ul {
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*class
+==================*/
+.font-bold {
+  font-family: "Rubik-Bold";
+}
+.font-Medium {
+  font-family: "Rubik-Medium";
+}
+.cust_h2 {
+  font-family: "Rubik-Bold";
+  font-size: 33px;
+  text-align: center;
+}
+.cust_h3 {
+  text-align: center;
+  font-family: "Rubik-Medium";
+  font-size: 18px;
+}
+.bold_18 {
+  font-family: "Rubik-Bold";
+  font-size: 18px;
+}
+.cust_btn {
+  width: 118px;
+  font-family: "Rubik-Medium";
+  border: none;
+  background: $main_color;
+  color: $black_color;
+  padding: 10px;
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  transition: all 0.4s ease-in-out;
+  z-index: 1;
+  overflow: hidden;
+  border: 1px solid $main_color;
+  &::after {
+    position: absolute;
+    content: "";
+    background-color: #fff;
+    width: 0;
+    height: 100%;
+    transition: all 0.4s ease-in-out;
+    left: 0;
+    top: 0;
+    z-index: -1;
+  }
+  &:hover {
+    box-shadow: 0px 0px 18px 0px #fbdadc7a;
+    color: #f49da1;
+    &::after {
+      width: 100%;
+    }
+  }
+  &.View_all {
+    width: 132px;
+  }
+}
+.cancle_btn {
+  border: none;
+  margin-right: 20px;
+  background-color: #fff;
+}
+.close_modal {
+  color: $main_color;
+}
+.close_cart {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 50%;
+  border: 1px solid $black_color;
+  cursor: pointer;
+
+  i {
+  }
+}
+.main-color {
+  color: $main_color !important;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $black_color;
+  opacity: 0.2;
+  z-index: 9999;
+}
+//media object
+.media {
+  position: relative;
+  .review_rate {
+    position: absolute;
+    top: 20px;
+    right: 0;
+
+    ul {
+      li {
+        display: inline-block;
+        color: #ffc107;
+      }
+    }
+  }
+  img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+  .media-body {
+    h5 {
+      font-size: 18px;
+      font-family: "Rubik-Bold";
+      margin-top: 10px;
+    }
+    span {
+      &.review_date {
+        display: block;
+        color: $white_black;
+        margin-bottom: 20px;
+      }
+    }
+    p {
+      width: 87%;
+    }
+  }
+}
+
+//sucess_mesg
+.sucess_mesg {
+  background-color: #57db76;
+  color: #fff;
+  padding: 10px 0;
+  .mes_content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    p {
+    }
+    span {
+      width: 25px;
+      height: 25px;
+      line-height: 25px;
+      border-radius: 50%;
+      text-align: center;
+      border: 1px solid #fff;
+      cursor: pointer;
+    }
+  }
+}
+
+.slider_control {
+  &.top_control {
+    span {
+      top: 13%;
+      &.left {
+        left: 27px;
+      }
+      &.right {
+        right: 27px;
+      }
+    }
+  }
+  span {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    right: 11%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: #fff;
+    cursor: pointer;
+    &.left {
+      left: 15px;
+    }
+    &.right {
+      right: 15px;
+    }
+  }
+}
+.custom-control-label {
+  padding-left: 7px;
+}
+.custom-control-input:checked ~ .custom-control-label::before {
+  border-color: $main_color;
+  background-color: $main_color;
+}
+.custom-control-label::after,
+.custom-control-label::before {
+  width: 20px;
+  height: 20px;
+  top: 0;
+}
+.custom-control-label::before {
+  border: $main_color solid 1px;
+}
+.custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
+  border-color: unset;
+}
+.custom-control-input:focus ~ .custom-control-label::before {
+  box-shadow: unset;
+}
+
+//custom-radio
+.custom-radio .custom-control-input:checked ~ .custom-control-label::after {
+  background-color: #f8bdbf;
+  top: 5px;
+  left: -19px;
+  border-radius: 50%;
+  background-image: unset;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+.custom-radio .custom-control-input ~ .custom-control-label::before,
+.custom-radio .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: #fff;
+  width: 25px;
+  height: 25px;
+}
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  display: none;
+}
+
+//breadcrumb_general
+.breadcrumb_general {
+  background-color: #f7f7f7;
+  padding: 20px 0;
+  .breadcrumb {
+    background-color: inherit;
+    margin: 0;
+    padding: 0;
+    .breadcrumb-item {
+      a {
+        color: $main_color;
+      }
+      &.current_page {
+        a {
+          color: $white_black;
+        }
+      }
+    }
+  }
+}
+.breadcrumb-item + .breadcrumb-item::before {
+  content: "\f061";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 11px;
+}
+
+.p-absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+//qty
+.Qty {
+  display: flex;
+  align-items: center;
+  span {
+    margin-right: 20px;
+  }
+  .incr_decr {
+    width: 160px;
+    display: flex;
+    border: 1px solid #ebebeb;
+    border-radius: 20px;
+    padding: 10px 15px;
+    button {
+      border: none;
+      background-color: unset;
+      color: $white_black;
+      &:focus {
+        color: $black_color;
+      }
+    }
+    input {
+      width: calc(100% - 70px);
+      border: none;
+      text-align: center;
+      margin: 0 10px;
+    }
+  }
+}
+.form-group {
+  position: relative;
+  font-size: 14px;
+  .form-control {
+    border-color: #f1d8da;
+    font-size: 14px;
+    padding: 24px;
+    height: 50px;
+    &:focus {
+      box-shadow: none;
+    }
+    &::placeholder {
+      color: #a2a2a2;
+    }
+  }
+  textarea {
+    &.form-control {
+      height: auto;
+    }
+  }
+  .prefix {
+    .form-control {
+      border-right: none;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .custom-select-sm {
+      border: none;
+      background-color: none;
+      border: 1px solid #f1d8da;
+      border-left: 0;
+      height: 50px;
+      color: #6a7072;
+      cursor: pointer;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  i {
+    position: absolute;
+    top: 47px;
+    right: 10px;
+    color: #d1d1d1;
+    cursor: pointer;
+  }
+}
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+textarea {
+  resize: none;
+}
+
+// Abdelhameed
+.slider_control {
+  span {
+    z-index: 99;
+  }
+}
+
+.slider_control span {
+  box-shadow: 2px 2px 11px 0 #00000052;
+}
+.ngx-slider .ngx-slider-selection,
+.ngx-slider .ngx-slider-pointer {
+  background-color: $main_color !important;
+}
+.ngx-slider .ngx-slider-pointer {
+  width: 25px !important;
+  height: 25px !important;
+  top: -11px !important;
+}
+.ngx-slider .ngx-slider-pointer:after {
+  content: unset !important;
+}

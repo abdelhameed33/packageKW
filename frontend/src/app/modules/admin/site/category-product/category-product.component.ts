@@ -14,6 +14,7 @@ export class CategoryProductComponent implements OnInit {
 
   currentCategory: Category = new Category();
   products: any;
+  productToDelete = new Product();
   APP_URL = APP_URL;
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -43,6 +44,14 @@ export class CategoryProductComponent implements OnInit {
     this.productService.getCategoryProduct(categoryId).subscribe(res => {
       console.log(res);
       this.products = res;
+    });
+  }
+
+  deleteProduct(): void {
+    this.productService.deleteOne(this.productToDelete?.id).subscribe(res => {
+      console.log(res);
+      this.products = this.products.filter((pro: Product) => pro.id !== this.productToDelete.id);
+      this.productToDelete = new Product();
     });
   }
 

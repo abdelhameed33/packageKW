@@ -36,13 +36,13 @@ export class Product extends BaseEntity {
     @JoinColumn({ name: "category_id" })
     category: Category;
 
-    @OneToMany(() => Image, (image: Image) => image.product,{eager:true})
+    @OneToMany(() => Image, (image: Image) => image.product, { eager: true, cascade: true })
     images: Image[];
 
-    @OneToMany(() => Promotion, (promotion: Promotion) => promotion.product,{eager:true})
+    @OneToMany(() => Promotion, (promotion: Promotion) => promotion.product, { eager: true, cascade: true })
     promotions: Promotion[];
 
-    @OneToMany(() => Reviews, (review: Reviews) => review.product,{eager:true})
+    @OneToMany(() => Reviews, (review: Reviews) => review.product, { eager: true, cascade: true })
     reviews: Reviews[];
 
 }

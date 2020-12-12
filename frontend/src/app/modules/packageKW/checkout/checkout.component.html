@@ -1,0 +1,246 @@
+<div class="breadcrumb_product breadcrumb_general" aria-label="breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a [routerLink]="['/home']" routerLinkActive="router-link-active"
+          >Home</a
+        >
+      </li>
+      <li class="breadcrumb-item">
+        <a [routerLink]="['/carts']" routerLinkActive="router-link-active"
+          >Shopping Cart</a
+        >
+      </li>
+      <li class="breadcrumb-item current_page"><a>Checkout</a></li>
+    </ol>
+  </div>
+</div>
+<section class="shoping_cart checkout_cart">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="checkout shoping_content">
+          <h2 class="cust_h2 text-left">Checkout</h2>
+          <div class="d-flex justify-content-between mt-4 mb-3 head-section">
+            <p class="ckeckout_head">Billing Addresses</p>
+            <a class="main-color" (click)="openModal(template)"
+              >Add a new address</a
+            >
+          </div>
+          <!-- /d-flec -->
+
+          <div
+            class="address-card mb-3"
+            [ngClass]="{ active: item.checked }"
+            *ngFor="let item of ckeckoutObject; let i = index"
+          >
+            <div class="d-flex">
+              <label [for]="'choose' + i"></label>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input
+                  type="radio"
+                  class="custom-control-input"
+                  [id]="'choose' + i"
+                  name="example"
+                  [checked]="item.checked"
+                  (change)="toggle(i)"
+                />
+                <div class="custom-control-label"></div>
+              </div>
+              <div>
+                <h4 class="font-bold">{{ item.cityName }}</h4>
+                <p>{{ item.addressDesc }}</p>
+                <p>
+                  Phone number:
+                  <span class="font-bold">{{ item.phoneNamber }}</span>
+                </p>
+                <p>
+                  State/province/area:<span class="font-bold">
+                    {{ item.stateArea }}</span
+                  >
+                </p>
+              </div>
+            </div>
+            <!-- /d-flex  -->
+            <div class="address-card__control">
+              <div class="d-flex">
+                <img src="../../../assets/images/icons/edit.png" />
+                <img src="../../../assets/images/icons/delete.png" />
+              </div>
+            </div>
+            <!-- /control -->
+          </div>
+          <!-- /address-card -->
+
+          <div class="payment_method">
+            <h3 class="ckeckout_head">Payment Method</h3>
+            <div
+              class="address-card mb-3 show_img"
+              [ngClass]="{ active: item.checked }"
+              *ngFor="let item of payMethod; let i = index"
+            >
+              <div class="d-flex">
+                <label [for]="'pay' + i"></label>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input
+                    type="radio"
+                    class="custom-control-input"
+                    [id]="'pay' + i"
+                    name="payment_method"
+                    [checked]="item.checked"
+                    (change)="togglePay(i)"
+                  />
+                  <div class="custom-control-label"></div>
+                </div>
+                <div>
+                  <h4 class="font-bold">{{ item.name }}</h4>
+                </div>
+              </div>
+              <!-- /d-flex  -->
+              <div class="address-card__control">
+                <div>
+                  <img [src]="item.img" alt="visa" />
+                </div>
+              </div>
+              <!-- /control -->
+            </div>
+            <!--End address-card-->
+          </div>
+          <!--End payment_method-->
+        </div>
+        <!--End checkout_cart-->
+      </div>
+      <div class="col-lg-4">
+        <div class="cart_summary">
+          <h2 class="font-bold">Order summary</h2>
+          <div class="order_summary">
+            <ul>
+              <li>
+                <p>
+                  <span class="summary_title">Subtotal</span>
+                  <span class="summary_val">120 KWD</span>
+                </p>
+              </li>
+              <li>
+                <p>
+                  <span class="summary_title">Fee</span>
+                  <span class="summary_val">120 KWD</span>
+                </p>
+              </li>
+              <li>
+                <p>
+                  <span class="summary_title">Delivery</span>
+                  <span class="summary_val">25 KWD</span>
+                </p>
+              </li>
+            </ul>
+          </div>
+          <div class="promocode">
+            <h5 class="promo_title">Promo Code</h5>
+            <div class="form-group">
+              <div class="prefix d-flex align-items-center">
+                <input
+                  type="number"
+                  name="promocode"
+                  class="form-control"
+                  placeholder="Enter Promo Code"
+                />
+                <button type="submit" class="promo_apply">Apply</button>
+              </div>
+            </div>
+          </div>
+          <div class="total_summary">
+            <h5>Total</h5>
+            <p class="bold_18">25 KWD</p>
+          </div>
+          <button
+            class="cust_btn"
+            [routerLink]="['/carts/success']"
+            routerLinkActive="router-link-active"
+          >
+            Proceed To Checkout
+          </button>
+          <a
+            [routerLink]="['/products']"
+            routerLinkActive="router-link-active"
+            class="continue_btn"
+            >Continue Shopping</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--		modal-->
+
+<ng-template #template>
+  <div class="modal-header pb-0" style="border-bottom: 0">
+    <h5 class="modal-title font-Medium" style="font-size: 14px">
+      Add a new address
+    </h5>
+    <button
+      type="button"
+      class="close close_modal"
+      data-dismiss="modal"
+      aria-label="Close"
+      (click)="modalRef.hide()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div>
+      <div class="form-group">
+        <label for="Address"> Address 1</label>
+        <input
+          type="text"
+          name="Address"
+          class="form-control"
+          placeholder="Enter Address 1"
+          id="Address"
+        />
+      </div>
+      <div class="form-group">
+        <label for="Address2"> Address 2</label>
+        <input
+          type="text"
+          name="Address2"
+          class="form-control"
+          placeholder="Enter Address 2"
+          id="Address2"
+        />
+      </div>
+      <div class="form-group">
+        <label for="City"> City</label>
+        <input
+          type="text"
+          name="City"
+          class="form-control"
+          placeholder="Enter City"
+          id="City"
+        />
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label for="state"> State/Province/Area</label>
+            <input type="text" name="State" class="form-control" id="state" />
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label for="zip"> Zip/Postal Code</label>
+            <input type="number" name="zip" class="form-control" id="zip" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn cancle_btn" data-dismiss="modal">
+      Cancel
+    </button>
+    <button type="button" class="btn cust_btn">Add</button>
+  </div>
+</ng-template>

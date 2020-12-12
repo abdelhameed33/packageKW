@@ -1,0 +1,65 @@
+<section class="main_slider">
+  <div class="container">
+    <div class="home_slider">
+      <div class="slider_control home_control">
+        <span class="left_arrow left"><i class="fas fa-chevron-left"></i></span>
+        <span class="right_arrow right"
+          ><i class="fas fa-chevron-right"></i
+        ></span>
+      </div>
+
+      <!--End slider_control-->
+      <div class="slider_content">
+        <swiper [config]="config">
+          <div
+            class="slid_item"
+            *ngFor="let item of mainSlider"
+            [ngStyle]="{ 'background-image': 'url(' + item.photo + ')' }"
+          >
+            <div class="d-flex flex-wrap h-100">
+              <div class="col-md-8 offset-md-4 col-lg-6 offset-lg-6 h-100">
+                <div class="item_content">
+                  <ul>
+                    <li>Design</li>
+                    <li>Print</li>
+                    <li>products</li>
+                  </ul>
+                  <h1>packagekw</h1>
+                  <p>
+                    Create personalized products for <br />any event or occasion
+                  </p>
+                  <a
+                    [routerLink]="['/products']"
+                    routerLinkActive="router-link-active"
+                    >Browse Our Products</a
+                  >
+                </div>
+                <!--End item_content-->
+              </div>
+            </div>
+          </div>
+          <!--End slid_item-->
+        </swiper>
+      </div>
+
+      <!--End slider_content-->
+    </div>
+    <!--End home_slider-->
+  </div>
+</section>
+<!--End main_slider-->
+<section class="Products">
+  <div class="container">
+    <h2 class="cust_h2">Best Selling Products</h2>
+
+    <app-product-slider></app-product-slider>
+
+    <a
+      [routerLink]="['/products']"
+      routerLinkActive="router-link-active"
+      class="View_all cust_btn m-0"
+      >View All</a
+    >
+  </div>
+</section>
+<!--End Products-->
