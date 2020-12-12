@@ -40,7 +40,7 @@ export class ProductController {
     createProduct(
         @Param('categoryId', ParseIntPipe) categoryId: number,
         @Body(ProductValidationPipe) createProductDto: CreateProductDto): Promise<Product> {
-        return this.productService.createProduct(categoryId, createProductDto);
+        return this.productService.createOrUpdateProduct(categoryId, createProductDto);
     }
 
     @Delete('/:id')

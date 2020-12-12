@@ -1,5 +1,5 @@
 .carousel-item{
-    max-height: 350px;
+    max-height: 400px;
 }
 
 .card-block{
@@ -16,3 +16,10 @@
 .base-cost{
     text-decoration:  line-through;
 }
+mat-form-field {
+    margin-right: 12px;
+}
+.img-responsive{
+    max-height: -webkit-fill-available;
+}
+  

@@ -39,13 +39,17 @@
                             <span class="base-cost">{{product?.price}}</span>
                             KD
                         </h4>
-                        <h4 class="card-title"> <a [routerLink]="['/admin/products/'+1+'/category']">Category</a></h4>
+                        <h4 class="card-title text-uppercase"> <a
+                                [routerLink]="['/admin/products/'+product?.category?.id+'/category']">{{product?.category?.name}}</a>
+                        </h4>
                         <h4 class="card-title"> <span class="font-weight-bold">In Stock:</span> {{product?.quantity}}
+                        </h4>
+                        <h4 *ngFor="let prop of getProductProps(product?.properties)" class="card-title"> <span
+                                class="font-weight-bold">{{prop['key']}}:</span> {{prop['value']}}
                         </h4>
                         <h4 class="card-title  my-5"> {{product?.description}}</h4>
                         <!-- <h6 class="card-subtitle">You can also add the indicators to the carousel, alongside the
                             controls, too.</h6> -->
-
                     </div>
                     <div class="col-md-2">
                         <button [routerLink]="['/admin/products/'+product?.id+'/edit']"
@@ -56,6 +60,34 @@
                             Sale</button>
 
 
+                        <!-- <mat-form-field>
+                            <input matInput [matDatepicker]="startatpicker" placeholder="Choose a date">
+                            <mat-datepicker-toggle [for]="startatpicker">
+                            </mat-datepicker-toggle>
+                            <mat-datepicker #startatpicker startView="year" [startAt]="startDate"></mat-datepicker>
+                        </mat-form-field> -->
+
+
+
+                    </div>
+                </div>
+                <div class="row" [hidden]='product?.reviews?.length<=0'>
+                    <div class="col-md-12">
+                        <h4 class="card-title font-weight-bold  mt-5"> Reviews :</h4>
+                        <hr>
+                        <div class="profiletimeline">
+                            <div class="sl-item" *ngFor="let review of product?.reviews;let i=index">
+                                <div class=" sl-left"> <img src="assets/images/user.jpg" alt="user" class="img-circle">
+                                </div>
+                                <div class="sl-right">
+                                    <div><a role="button" class="link mx-1">John Doe</a> <span
+                                            class="sl-date">{{convertDate(review?.created_at)}}</span>
+                                        <p class="m-t-10"> {{review?.comment}} </p>
+                                    </div>
+                                    <!-- <div class="like-comm m-t-20"> <a href="javascript:void(0)" class="link m-r-10">2 comment</a> <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart text-danger"></i> 5 Love</a> </div> -->
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -90,6 +122,14 @@
                                 [(ngModel)]="newPrice" [value]="newPrice" name="price" placeholder="New Price">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label>End Date: </label>
+                        <div class="col-md-12 m-b-20">
+                            <input type="date" class="form-control" [value]="endDate" name="price"
+                                placeholder="New Price">
+                        </div>
+                    </div>
+
                     <h4 class="card-title"><span>Current Salary: </span>{{product?.price}}</h4>
                     <h4 [hidden]="!salePercent" class="card-title"><span>New Salary: </span>{{newPrice}}</h4>
                     <h4 [hidden]="!newPrice" class="card-title"><span>Sale Percent: </span>{{salePercent}}%</h4>

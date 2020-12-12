@@ -32,7 +32,13 @@ export class ProductComponent implements OnInit {
   APP_URL = APP_URL;
   mode = 'create';
   productId!: string | null;
- 
+  productAttributes: Property[] = [];
+  categoryId: any;
+
+  typeOptions = [
+    { value: 'single', text: 'single value' },
+    { value: 'multi', text: 'multi value' },
+  ];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -63,19 +69,40 @@ export class ProductComponent implements OnInit {
         this.productId = paramMap.get('id');
         this.productService.getOne(this.productId).subscribe(res => {
           this.newProduct = res;
+          this.productAttributes = this.getProductProps(this.newProduct.properties);
+          this.categoryId = this.newProduct.category?.id;
+          this.images = this.newProduct?.images;
         });
         this.mode = 'edit';
       } else {
-        this.mode = 'creaet';
+        this.mode = 'create';
       }
     });
   }
+  getProductProps(object: any): [] {
+    try {
+      return JSON.parse(object);
+    } catch (e) { }
+    return [];
+  }
 
+  addProperty(): void {
+    console.log(this.productAttributes);
+    this.productAttributes.push({
+      key: '',
+      type: 'single',
+      value: ''
 
+    });
+  }
+
+  deleteAttr(index: any): void {
+    this.productAttributes.splice(index, 1);
+  }
 
   onFileChanged(event: any): void {
     this.selectedFile = event.target.files[0];
-    console.log(this.selectedFile);
+    //  console.log(this.selectedFile);
     const uploadData = new FormData();
     uploadData.append('file', this.selectedFile, this.selectedFile.name);
     this.productService.imageUpload(uploadData).subscribe(res => {
@@ -96,7 +123,7 @@ export class ProductComponent implements OnInit {
   }
 
   get form(): any {
-    console.log(this.productForm.controls);
+    // console.log(this.productForm.controls);
     return this.productForm.controls;
   }
 
@@ -108,7 +135,9 @@ export class ProductComponent implements OnInit {
       return;
     }
     this.newProduct.images = this.images;
-    console.log(this.newProduct);
+    this.newProduct.properties = JSON.stringify(this.productAttributes);
+    this.newProduct.price = parseFloat(this.newProduct.price + '');
+    //  console.log(this.newProduct);
     this.productService.save(this.newProduct, this.form.category.value).subscribe((res: Product) => {
       console.log(res);
       this.router.navigate(['products/', res.id]);
@@ -119,4 +148,10 @@ export class ProductComponent implements OnInit {
 
   }
 
+}
+
+export class Property {
+  public type = 'single';
+  public key = '';
+  public value: any = '';
 }

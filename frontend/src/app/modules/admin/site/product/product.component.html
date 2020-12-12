@@ -7,8 +7,8 @@
             <div class="card-block">
                 <form [formGroup]="productForm" (ngSubmit)="onSubmit()" id="productform" autocomplete="off">
                     <div class="form-body">
-                        <h3 [hidden]="mode == 'create'" class="card-title">Add New Product</h3>
-                        <h3 [hidden]="mode == 'edit'" class="card-title">Edit - {{newProduct.title}}</h3>
+                        <h3 [hidden]="mode == 'edit'" class="card-title">Add New Product</h3>
+                        <h3 [hidden]="mode == 'create'" class="card-title">Edit - {{newProduct.title}}</h3>
                         <hr>
                         <div class="row p-t-20">
                             <div class="col-md-6">
@@ -30,7 +30,8 @@
                             <div class="col-md-6">
                                 <div class="form-group " [class.has-danger]="submitted && form.category.errors">
                                     <label class="control-label">Category</label>
-                                    <select formControlName="category" required class="form-control custom-select">
+                                    <select [(ngModel)]="categoryId" formControlName="category" required
+                                        class="form-control custom-select">
                                         <option [ngValue]=null>Select Category ....</option>
                                         <option *ngFor="let category of categories" [ngValue]="category.id">
                                             {{category.name}}</option>
@@ -141,8 +142,42 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <button class="btn btn-info"> <i class="fa fa-plus"></i> Add
+                                    <button class="btn btn-info" type="button" (click)="addProperty()"> <i
+                                            class="fa fa-plus"></i> Add
                                         Property</button>
+                                </div>
+                            </div>
+                            <div class="col-md-12 row" *ngFor="let attr of productAttributes;let i=index">
+                                <div class="form-group row col-md-4">
+                                    <label for="key" class="col-sm-2 col-form-label">Key</label>
+                                    <div class="col-sm-10">
+                                        <input [ngModelOptions]="{standalone: true}" type="text" [(ngModel)]="attr.key"
+                                            class="form-control" id="key" placeholder="key">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row col-md-2 mx-1">
+                                    <label for="type" class="col-sm-2 col-form-label">Type</label>
+                                    <div class="col-sm-10">
+                                        <select [ngModelOptions]="{standalone: true}" [(ngModel)]="attr.type"
+                                            id="inputState" class="form-control">
+                                            <option selected>Choose...</option>
+                                            <option *ngFor="let opt of typeOptions" [value]="opt.value">{{opt.text}}
+                                            </option>
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row col-md-5 mx-1">
+                                    <label for="value" class="col-sm-2 col-form-label">Value</label>
+                                    <div class="col-sm-10">
+                                        <input [ngModelOptions]="{standalone: true}" type="text" class="form-control"
+                                            [(ngModel)]="attr.value" id="value" placeholder="Value">
+                                    </div>
+                                </div>
+                                <div (click)="deleteAttr(i)" class="form-group row col-md-1 mx-1 mt-2">
+                                    <i role="button" class="fa fa-lg fa-trash"></i>
                                 </div>
                             </div>
                             <!--/span-->
@@ -150,7 +185,7 @@
                     </div>
                     <div class="form-actions">
                         <button type="submit" class="btn btn-success mx-3"> <i class="fa fa-check"></i> Save</button>
-                        <button type="button" class="btn btn-inverse">Cancel</button>
+                        <button type="button" [routerLink]="['/admin/products/',newProduct?.id]" class="btn btn-inverse">Cancel</button>
                     </div>
                 </form>
             </div>
