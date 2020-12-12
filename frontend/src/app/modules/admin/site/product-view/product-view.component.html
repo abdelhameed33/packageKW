@@ -1,66 +1,70 @@
 <div class="row el-element-overlay ">
-    <div class="col-md-12 mt-3">
-        <h4 class="card-title product-title">{{product?.title}}</h4>
-        <!-- <h6 class="card-subtitle m-b-20 text-muted">you can make gallery like this</h6> -->
-    </div>
-    <!-- <div class="row"> -->
-    <div class="col-lg-12">
-        <div class="card">
-            <div class="card-block">
-                <div class="row">
-                    <div class="col-lg-4 img-container">
-                        <!-- <h4 class="card-title">With indicators</h4>
+  <div class="col-md-12 mt-3">
+    <h4 class="card-title product-title">{{product?.title}}</h4>
+    <!-- <h6 class="card-subtitle m-b-20 text-muted">you can make gallery like this</h6> -->
+  </div>
+  <!-- <div class="row"> -->
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-block">
+        <div class="row">
+          <div class="col-lg-4 img-container">
+            <!-- <h4 class="card-title">With indicators</h4>
                         <h6 class="card-subtitle">You can also add the indicators to the carousel, alongside the
                             controls, too.</h6> -->
-                        <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel"
-                            [hidden]="product?.images?.length <=0">
-                            <div class="carousel-inner" role="listbox">
-                                <div class="carousel-item" [class.active]="i ==0"
-                                    *ngFor="let image of product?.images;let i=index">
-                                    <img class="img-responsive" [src]="APP_URL+'/'+image?.image_name"
-                                        [alt]="image?.image_name">
-                                </div>
-                            </div>
-                            <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button"
-                                data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button"
-                                data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <h4 class="card-title product-price">
-                            <span class="font-weight-bold">{{product?.price}} </span>
-                            <span class="base-cost">{{product?.price}}</span>
-                            KD
-                        </h4>
-                        <h4 class="card-title text-uppercase"> <a
-                                [routerLink]="['/admin/products/'+product?.category?.id+'/category']">{{product?.category?.name}}</a>
-                        </h4>
-                        <h4 class="card-title"> <span class="font-weight-bold">In Stock:</span> {{product?.quantity}}
-                        </h4>
-                        <h4 *ngFor="let prop of getProductProps(product?.properties)" class="card-title"> <span
-                                class="font-weight-bold">{{prop['key']}}:</span> {{prop['value']}}
-                        </h4>
-                        <h4 class="card-title  my-5"> {{product?.description}}</h4>
-                        <!-- <h6 class="card-subtitle">You can also add the indicators to the carousel, alongside the
+            <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel"
+              [hidden]="product?.images?.length <=0">
+              <div class="carousel-inner" role="listbox">
+                <div class="carousel-item" [class.active]="i ==0" *ngFor="let image of product?.images;let i=index">
+                  <img class="img-responsive" [src]="APP_URL+'/'+image?.image_name" [alt]="image?.image_name">
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h4 class="card-title product-price">
+              <span class="font-weight-bold">{{product?.price}} </span>
+              <span class="base-cost">{{product?.price}}</span>
+              KD
+            </h4>
+            <h4 class="card-title text-uppercase"> <a
+                [routerLink]="['/admin/products/'+product?.category?.id+'/category']">{{product?.category?.name}}</a>
+            </h4>
+            <h4 class="card-title"> <span class="font-weight-bold">In Stock:</span> {{product?.quantity}}
+            </h4>
+            <h4 *ngFor="let prop of getProductProps(product?.properties)" class="card-title"> <span
+                class="font-weight-bold">{{prop['key']}}:</span>
+
+              <span *ngIf="!isArray(prop['value'])"> {{prop['value']}}</span>
+              <span *ngIf="isArray(prop['value'])">
+                <select required class="form-control custom-select">
+                  <option *ngFor="let val of prop['value']">
+                    {{val}}</option>
+                </select>
+              </span>
+            </h4>
+            <h4 class="card-title  my-5"> {{product?.description}}</h4>
+            <!-- <h6 class="card-subtitle">You can also add the indicators to the carousel, alongside the
                             controls, too.</h6> -->
-                    </div>
-                    <div class="col-md-2">
-                        <button [routerLink]="['/admin/products/'+product?.id+'/edit']"
-                            class="btn btn-success mx-3 float-right"> <i class="fa fa-edit"></i>
-                            Edit</button>
-                        <button class="btn btn-info mx-3 float-right" data-toggle="modal" data-target="#add-sale"> <i
-                                class="fa fa-plus"></i>
-                            Sale</button>
+          </div>
+          <div class="col-md-2">
+            <button [routerLink]="['/admin/products/'+product?.id+'/edit']" class="btn btn-success mx-3 float-right"> <i
+                class="fa fa-edit"></i>
+              Edit</button>
+            <button class="btn btn-info mx-3 float-right" data-toggle="modal" data-target="#add-sale"> <i
+                class="fa fa-plus"></i>
+              Sale</button>
 
 
-                        <!-- <mat-form-field>
+            <!-- <mat-form-field>
                             <input matInput [matDatepicker]="startatpicker" placeholder="Choose a date">
                             <mat-datepicker-toggle [for]="startatpicker">
                             </mat-datepicker-toggle>
@@ -69,80 +73,80 @@
 
 
 
-                    </div>
-                </div>
-                <div class="row" [hidden]='product?.reviews?.length<=0'>
-                    <div class="col-md-12">
-                        <h4 class="card-title font-weight-bold  mt-5"> Reviews :</h4>
-                        <hr>
-                        <div class="profiletimeline">
-                            <div class="sl-item" *ngFor="let review of product?.reviews;let i=index">
-                                <div class=" sl-left"> <img src="assets/images/user.jpg" alt="user" class="img-circle">
-                                </div>
-                                <div class="sl-right">
-                                    <div><a role="button" class="link mx-1">John Doe</a> <span
-                                            class="sl-date">{{convertDate(review?.created_at)}}</span>
-                                        <p class="m-t-10"> {{review?.comment}} </p>
-                                    </div>
-                                    <!-- <div class="like-comm m-t-20"> <a href="javascript:void(0)" class="link m-r-10">2 comment</a> <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart text-danger"></i> 5 Love</a> </div> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+        <div class="row" [hidden]='product?.reviews?.length<=0'>
+          <div class="col-md-12">
+            <h4 class="card-title font-weight-bold  mt-5"> Reviews :</h4>
+            <hr>
+            <div class="profiletimeline">
+              <div class="sl-item" *ngFor="let review of product?.reviews;let i=index">
+                <div class=" sl-left"> <img src="assets/images/user.jpg" alt="user" class="img-circle">
+                </div>
+                <div class="sl-right">
+                  <div><a role="button" class="link mx-1">John Doe</a> <span
+                      class="sl-date">{{convertDate(review?.created_at)}}</span>
+                    <p class="m-t-10"> {{review?.comment}} </p>
+                  </div>
+                  <!-- <div class="like-comm m-t-20"> <a href="javascript:void(0)" class="link m-r-10">2 comment</a> <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart text-danger"></i> 5 Love</a> </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- </div> -->
+  </div>
+  <!-- </div> -->
 </div>
 
 <!-- ============================================================== -->
 <!-- satrt of sale modal  -->
 <!-- ============================================================== -->
 <div id="add-sale" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title" id="myModalLabel">Add Sale</h4>
-            </div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title" id="myModalLabel">Add Sale</h4>
+      </div>
 
-            <div class="modal-body">
-                <form autocomplete="off">
-                    <div class="form-group">
-                        <div class="col-md-12 m-b-20">
-                            <input type="number" class="form-control" [(ngModel)]="salePercent"
-                                (input)="computeNewPrice()" [value]="salePercent" name="sale"
-                                placeholder="Sale Percent like 10%">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-12 m-b-20">
-                            <input type="number" class="form-control" (input)="computeSalePercent()"
-                                [(ngModel)]="newPrice" [value]="newPrice" name="price" placeholder="New Price">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>End Date: </label>
-                        <div class="col-md-12 m-b-20">
-                            <input type="date" class="form-control" [value]="endDate" name="price"
-                                placeholder="New Price">
-                        </div>
-                    </div>
+      <div class="modal-body">
+        <form autocomplete="off">
+          <div class="form-group">
+            <div class="col-md-12 m-b-20">
+              <label for="value" class="col-form-label">Sale By %</label>
+              <input type="number" class="form-control" [(ngModel)]="salePercent" (input)="computeNewPrice()"
+                [value]="salePercent" name="sale" placeholder="Sale Percent like 10%">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-12 m-b-20">
+              <label for="value" class="col-form-label">Sale by a new value</label>
+              <input type="number" class="form-control" (input)="computeSalePercent()" [(ngModel)]="newPrice"
+                [value]="newPrice" name="price" placeholder="New Price">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>End Date: </label>
+            <div class="col-md-12 m-b-20">
+              <input type="date" class="form-control" [(ngModel)]="endDate" name="enddate" placeholder="End Date">
+            </div>
+          </div>
 
-                    <h4 class="card-title"><span>Current Salary: </span>{{product?.price}}</h4>
-                    <h4 [hidden]="!salePercent" class="card-title"><span>New Salary: </span>{{newPrice}}</h4>
-                    <h4 [hidden]="!newPrice" class="card-title"><span>Sale Percent: </span>{{salePercent}}%</h4>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">Save</button>
-                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
-            </div>
-        </div>
-        <!-- /.modal-content -->
+          <h4 class="card-title"><span>Current Salary: </span>{{product?.price}}</h4>
+          <h4 [hidden]="!salePercent" class="card-title"><span>New Salary: </span>{{newPrice}}</h4>
+          <h4 [hidden]="!newPrice" class="card-title"><span>Sale Percent: </span>{{salePercent}}%</h4>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="addSale()" class="btn btn-info waves-effect" >Save</button>
+        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
+      </div>
     </div>
-    <!-- /.modal-dialog -->
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
 </div>
 <!-- ============================================================== -->
 <!-- end of add sale modal  -->

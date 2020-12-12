@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { of } from 'rxjs/internal/observable/of';
 import { Product } from 'src/app/modules/admin/site/model/product.model';
-import { APP_URL, categoryUrl, productUrl } from '../constants/app.constants';
+import { APP_URL, productUrl } from '../constants/app.constants';
 
 @Injectable({
   providedIn: 'root'

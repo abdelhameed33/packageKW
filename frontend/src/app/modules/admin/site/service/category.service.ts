@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Category } from '../model/category.model';
 import { categoryUrl } from 'src/app/common/constants/app.constants';
-import { param } from 'jquery';
 
 
 @Injectable({

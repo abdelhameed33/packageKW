@@ -34,6 +34,7 @@ export class ProductComponent implements OnInit {
   productId!: string | null;
   productAttributes: Property[] = [];
   categoryId: any;
+  multiValues = new Set<string>();
 
   typeOptions = [
     { value: 'single', text: 'single value' },
@@ -68,6 +69,7 @@ export class ProductComponent implements OnInit {
       if (paramMap.has('id')) {
         this.productId = paramMap.get('id');
         this.productService.getOne(this.productId).subscribe(res => {
+          // initialize Product values
           this.newProduct = res;
           this.productAttributes = this.getProductProps(this.newProduct.properties);
           this.categoryId = this.newProduct.category?.id;
@@ -79,6 +81,21 @@ export class ProductComponent implements OnInit {
         this.mode = 'create';
       }
     });
+  }
+
+  addValue(event, attrIndex) {
+    const value = event.target.value;
+    console.log(value);
+    if (value && value.trim().length > 0) {
+      event.target.value = '';
+      this.multiValues.add(value.trim());
+
+      this.productAttributes[attrIndex].value = [...this.multiValues];
+    }
+  }
+  removeValue(val, attrIndex) {
+    this.multiValues.delete(val);
+    this.productAttributes[attrIndex].value = [...this.multiValues];
   }
   getProductProps(object: any): [] {
     try {
@@ -138,6 +155,7 @@ export class ProductComponent implements OnInit {
     this.newProduct.images = this.images;
     this.newProduct.properties = JSON.stringify(this.productAttributes);
     this.newProduct.price = parseFloat(this.newProduct.price + '');
+
     //  console.log(this.newProduct);
     this.productService.save(this.newProduct, this.form.category.value).subscribe((res: Product) => {
       console.log(res);

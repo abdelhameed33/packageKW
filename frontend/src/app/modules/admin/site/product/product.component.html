@@ -1,194 +1,204 @@
 <div class="row">
-    <div class="col-lg-12 mt-4">
-        <div class="card card-outline-info">
-            <!-- <div class="card-header">
+  <div class="col-lg-12 mt-4">
+    <div class="card card-outline-info">
+      <!-- <div class="card-header">
                 <h4 class="m-b-0 text-white">Other Sample form</h4>
             </div> -->
-            <div class="card-block">
-                <form [formGroup]="productForm" (ngSubmit)="onSubmit()" id="productform" autocomplete="off">
-                    <div class="form-body">
-                        <h3 [hidden]="mode == 'edit'" class="card-title">Add New Product</h3>
-                        <h3 [hidden]="mode == 'create'" class="card-title">Edit - {{newProduct.title}}</h3>
-                        <hr>
-                        <div class="row p-t-20">
-                            <div class="col-md-6">
-                                <div class="form-group" [class.has-danger]="submitted && form.productname.errors">
-                                    <label class="control-label">Product Name</label>
-                                    <input [(ngModel)]="newProduct.title" type="text" id="productname"
-                                        class="form-control" formControlName="productname" required
-                                        placeholder="Product Name">
-                                    <div *ngIf="submitted && form.productname.errors">
-                                        <small *ngIf="form.productname.errors.required" class="form-control-feedback">*
-                                            This
-                                            field is
-                                            required</small>
-                                    </div>
-                                    <!-- <small class="form-control-feedback"> This is inline help </small>  -->
-                                </div>
-                            </div>
-                            <!--/span-->
-                            <div class="col-md-6">
-                                <div class="form-group " [class.has-danger]="submitted && form.category.errors">
-                                    <label class="control-label">Category</label>
-                                    <select [(ngModel)]="categoryId" formControlName="category" required
-                                        class="form-control custom-select">
-                                        <option [ngValue]=null>Select Category ....</option>
-                                        <option *ngFor="let category of categories" [ngValue]="category.id">
-                                            {{category.name}}</option>
-                                    </select>
-                                    <div *ngIf="submitted && form.category.errors">
-                                        <small *ngIf="form.category.errors.required" class="form-control-feedback">*
-                                            This
-                                            field is
-                                            required</small>
-                                    </div>
-                                </div>
-                            </div>
+      <div class="card-block">
+        <form [formGroup]="productForm" (ngSubmit)="onSubmit()" id="productform" autocomplete="off">
+          <div class="form-body">
+            <h3 [hidden]="mode == 'edit'" class="card-title">Add New Product</h3>
+            <h3 [hidden]="mode == 'create'" class="card-title">Edit - {{newProduct.title}}</h3>
+            <hr>
+            <div class="row p-t-20">
+              <div class="col-md-6">
+                <div class="form-group" [class.has-danger]="submitted && form.productname.errors">
+                  <label class="control-label">Product Name</label>
+                  <input [(ngModel)]="newProduct.title" type="text" id="productname" class="form-control"
+                    formControlName="productname" required placeholder="Product Name">
+                  <div *ngIf="submitted && form.productname.errors">
+                    <small *ngIf="form.productname.errors.required" class="form-control-feedback">*
+                      This
+                      field is
+                      required</small>
+                  </div>
+                  <!-- <small class="form-control-feedback"> This is inline help </small>  -->
+                </div>
+              </div>
+              <!--/span-->
+              <div class="col-md-6">
+                <div class="form-group " [class.has-danger]="submitted && form.category.errors">
+                  <label class="control-label">Category</label>
+                  <select [(ngModel)]="categoryId" formControlName="category" required
+                    class="form-control custom-select">
+                    <option [ngValue]=null>Select Category ....</option>
+                    <option *ngFor="let category of categories" [ngValue]="category.id">
+                      {{category.name}}</option>
+                  </select>
+                  <div *ngIf="submitted && form.category.errors">
+                    <small *ngIf="form.category.errors.required" class="form-control-feedback">*
+                      This
+                      field is
+                      required</small>
+                  </div>
+                </div>
+              </div>
 
-                            <!--/span-->
-                        </div>
-                        <!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group" [class.has-danger]="submitted && form.quantity.errors">
-                                    <label class="control-label">Quantity</label>
-                                    <!-- has-danger > form-control-danger -->
-                                    <input [(ngModel)]="newProduct.quantity" formControlName="quantity" required
-                                        type="number" id="quantity" class="form-control" placeholder="quantity">
-                                    <div *ngIf="submitted && form.quantity.errors">
-                                        <small *ngIf="form.quantity.errors.required" class="form-control-feedback">*
-                                            This
-                                            field is
-                                            required</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--/span-->
-                            <div class="col-md-6">
-                                <div class="form-group" [class.has-danger]="submitted && form.price.errors">
-                                    <label class="control-label">Price</label>
-                                    <input [(ngModel)]="newProduct.price" formControlName="price" required type="number"
-                                        id="price" class="form-control" placeholder="Price in dinar">
-                                    <div *ngIf="submitted && form.price.errors">
-                                        <small *ngIf="form.price.errors.required" class="form-control-feedback">*
-                                            This
-                                            field is
-                                            required</small>
-                                    </div>
-                                </div>
-                            </div>
+              <!--/span-->
+            </div>
+            <!--/row-->
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group" [class.has-danger]="submitted && form.quantity.errors">
+                  <label class="control-label">Quantity</label>
+                  <!-- has-danger > form-control-danger -->
+                  <input [(ngModel)]="newProduct.quantity" formControlName="quantity" required type="number"
+                    id="quantity" class="form-control" placeholder="quantity">
+                  <div *ngIf="submitted && form.quantity.errors">
+                    <small *ngIf="form.quantity.errors.required" class="form-control-feedback">*
+                      This
+                      field is
+                      required</small>
+                  </div>
+                </div>
+              </div>
+              <!--/span-->
+              <div class="col-md-6">
+                <div class="form-group" [class.has-danger]="submitted && form.price.errors">
+                  <label class="control-label">Price</label>
+                  <input [(ngModel)]="newProduct.price" formControlName="price" required type="number" id="price"
+                    class="form-control" placeholder="Price in dinar">
+                  <div *ngIf="submitted && form.price.errors">
+                    <small *ngIf="form.price.errors.required" class="form-control-feedback">*
+                      This
+                      field is
+                      required</small>
+                  </div>
+                </div>
+              </div>
 
-                            <!--/span-->
-                        </div>
-                        <!--/row-->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group" [class.has-danger]="submitted && form.description.errors">
+              <!--/span-->
+            </div>
+            <!--/row-->
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group" [class.has-danger]="submitted && form.description.errors">
 
-                                    <textarea [(ngModel)]="newProduct.description" formControlName="description"
-                                        required class="form-control" name="description" rows="3"
-                                        placeholder="Product Description"></textarea>
-                                    <div *ngIf="submitted && form.description.errors">
-                                        <small *ngIf="form.description.errors.required" class="form-control-feedback">*
-                                            This
-                                            field is
-                                            required</small>
-                                    </div>
+                  <textarea [(ngModel)]="newProduct.description" formControlName="description" required
+                    class="form-control" name="description" rows="3" placeholder="Product Description"></textarea>
+                  <div *ngIf="submitted && form.description.errors">
+                    <small *ngIf="form.description.errors.required" class="form-control-feedback">*
+                      This
+                      field is
+                      required</small>
+                  </div>
 
-                                </div>
-                            </div>
+                </div>
+              </div>
 
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6">
-                                <div class="card">
-                                    <div class="card-block">
-                                        <h4 class="card-title"> Product Image</h4>
-                                        <label for="input-file-now"></label>
-                                        <input type="file" id="input-file-now" accept="image/*"
-                                            (change)="onFileChanged($event)" />
-                                    </div>
-                                </div>
-                            </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6">
+                <div class="card">
+                  <div class="card-block">
+                    <h4 class="card-title"> Product Image</h4>
+                    <label for="input-file-now"></label>
+                    <input type="file" id="input-file-now" accept="image/*" (change)="onFileChanged($event)" />
+                  </div>
+                </div>
+              </div>
 
-                        </div>
-                        <div class="row el-element-overlay">
-                            <!-- <div class="col-md-12">
+            </div>
+            <div class="row el-element-overlay">
+              <!-- <div class="col-md-12">
                                 <h4 class="card-title">Fade-in effect</h4>
                                 <h6 class="card-subtitle m-b-20 text-muted">You can use by default
                                     <code>el-overlay</code></h6>
                             </div> -->
-                            <div class="col-lg-3 col-md-6" *ngFor="let path of images">
-                                <div class="card">
-                                    <div class="el-card-item">
-                                        <div class="el-card-avatar el-overlay-1"> <img [src]="APP_URL+'/'+path"
-                                                alt="user" />
-                                            <div class="el-overlay">
-                                                <ul class="el-info">
-                                                    <li><a (click)="removeImage(path)" class="btn default btn-outline"
-                                                            href="javascript:void(0);"><i class="fa fa-trash"></i></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--/row-->
-                        <h3 class="box-title m-t-40">Add Product Attributes</h3>
-                        <hr>
-                        <!--/row-->
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <button class="btn btn-info" type="button" (click)="addProperty()"> <i
-                                            class="fa fa-plus"></i> Add
-                                        Property</button>
-                                </div>
-                            </div>
-                            <div class="col-md-12 row" *ngFor="let attr of productAttributes;let i=index">
-                                <div class="form-group row col-md-4">
-                                    <label for="key" class="col-sm-2 col-form-label">Key</label>
-                                    <div class="col-sm-10">
-                                        <input [ngModelOptions]="{standalone: true}" type="text" [(ngModel)]="attr.key"
-                                            class="form-control" id="key" placeholder="key">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row col-md-2 mx-1">
-                                    <label for="type" class="col-sm-2 col-form-label">Type</label>
-                                    <div class="col-sm-10">
-                                        <select [ngModelOptions]="{standalone: true}" [(ngModel)]="attr.type"
-                                            id="inputState" class="form-control">
-                                            <option selected>Choose...</option>
-                                            <option *ngFor="let opt of typeOptions" [value]="opt.value">{{opt.text}}
-                                            </option>
-
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row col-md-5 mx-1">
-                                    <label for="value" class="col-sm-2 col-form-label">Value</label>
-                                    <div class="col-sm-10">
-                                        <input [ngModelOptions]="{standalone: true}" type="text" class="form-control"
-                                            [(ngModel)]="attr.value" id="value" placeholder="Value">
-                                    </div>
-                                </div>
-                                <div (click)="deleteAttr(i)" class="form-group row col-md-1 mx-1 mt-2">
-                                    <i role="button" class="fa fa-lg fa-trash"></i>
-                                </div>
-                            </div>
-                            <!--/span-->
-                        </div>
+              <div class="col-lg-3 col-md-6" *ngFor="let path of images">
+                <div class="card">
+                  <div class="el-card-item">
+                    <div class="el-card-avatar el-overlay-1"> <img [src]="APP_URL+'/'+path" alt="user" />
+                      <div class="el-overlay">
+                        <ul class="el-info">
+                          <li><a (click)="removeImage(path)" class="btn default btn-outline"
+                              href="javascript:void(0);"><i class="fa fa-trash"></i></a>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-success mx-3"> <i class="fa fa-check"></i> Save</button>
-                        <button type="button" [routerLink]="['/admin/products/',newProduct?.id]" class="btn btn-inverse">Cancel</button>
-                    </div>
-                </form>
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
+            <!--/row-->
+            <h3 class="box-title m-t-40">Add Product Attributes</h3>
+            <hr>
+            <!--/row-->
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <button class="btn btn-info" type="button" (click)="addProperty()"> <i class="fa fa-plus"></i> Add
+                    Property</button>
+                </div>
+              </div>
+              <div class="col-md-12 row" *ngFor="let attr of productAttributes;let i=index">
+                <div class="form-group row col-md-4">
+                  <label for="key" class="col-sm-2 col-form-label">Key</label>
+                  <div class="col-sm-10">
+                    <input [ngModelOptions]="{standalone: true}" type="text" [(ngModel)]="attr.key" class="form-control"
+                      id="key" placeholder="key">
+                  </div>
+                </div>
+
+                <div class="form-group row col-md-2 mx-1">
+                  <label for="type" class="col-sm-2 col-form-label">Type</label>
+                  <div class="col-sm-10">
+                    <select [ngModelOptions]="{standalone: true}" [(ngModel)]="attr.type" id="inputState"
+                      class="form-control">
+                      <option selected>Choose...</option>
+                      <option *ngFor="let opt of typeOptions" [value]="opt.value">{{opt.text}}
+                      </option>
+
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group row col-md-5 mx-1" [hidden]="attr.type ==='multi'">
+                  <label for="value" class="col-sm-2 col-form-label">Value</label>
+                  <div class="col-sm-10">
+                    <input [ngModelOptions]="{standalone: true}" type="text" class="form-control"
+                      [(ngModel)]="attr.value" id="value" placeholder="Value">
+                  </div>
+                </div>
+
+                <div class="form-group row col-md-5 mx-1" [hidden]="attr.type ==='single'">
+                  <label for="value" class="col-sm-2 col-form-label">Value</label>
+                  <div class="col-sm-10">
+                    <input (keyup.space)="addValue($event,i)" type="text" class="form-control" id="value"
+                      placeholder="Value">
+                    <small class="form-control-feedback"> Press space to add value</small>
+                    <div class="model-note-container tages-container">
+                      <span *ngFor="let val of multiValues" class="single-tage">{{val}}
+                        <i role="button" (click)="removeValue(val,i)" class="fa fa-times-circle"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div (click)="deleteAttr(i)" class="form-group row col-md-1 mx-1 mt-2">
+                  <i role="button" class="fa fa-lg fa-trash"></i>
+                </div>
+              </div>
+              <!--/span-->
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-success mx-3"> <i class="fa fa-check"></i> Save</button>
+            <button type="button" [routerLink]="['/admin/products/',newProduct?.id]"
+              class="btn btn-inverse">Cancel</button>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
