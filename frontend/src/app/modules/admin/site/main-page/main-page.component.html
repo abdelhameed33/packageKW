@@ -1,350 +1,341 @@
 <div>
+  <!-- ============================================================== -->
+  <!-- Container fluid  -->
+  <!-- ============================================================== -->
+  <div>
     <!-- ============================================================== -->
-    <!-- Container fluid  -->
+    <!-- Bread crumb and right sidebar toggle -->
     <!-- ============================================================== -->
-    <div>
-        <!-- ============================================================== -->
-        <!-- Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-        <div class="row page-titles">
-            <div class="col-md-5 col-8 align-self-center">
-                <h3 class="text-themecolor">Dashboard 2</h3>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard2</li>
-                </ol>
+    <div class="row page-titles">
+      <div class="col-md-5 col-8 align-self-center">
+        <h3 class="text-themecolor">Dashboard 2</h3>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+          <li class="breadcrumb-item active">Dashboard2</li>
+        </ol>
+      </div>
+      <div class="col-md-7 col-4 align-self-center">
+        <div class="d-flex m-t-10 justify-content-end">
+          <div class="d-flex m-r-20 m-l-10 hidden-md-down">
+            <div class="chart-text m-r-10">
+              <h6 class="m-b-0"><small>THIS MONTH</small></h6>
+              <h4 class="m-t-0 text-info">$58,356</h4>
             </div>
-            <div class="col-md-7 col-4 align-self-center">
-                <div class="d-flex m-t-10 justify-content-end">
-                    <div class="d-flex m-r-20 m-l-10 hidden-md-down">
-                        <div class="chart-text m-r-10">
-                            <h6 class="m-b-0"><small>THIS MONTH</small></h6>
-                            <h4 class="m-t-0 text-info">$58,356</h4>
-                        </div>
-                        <div class="spark-chart">
-                            <div id="monthchart"></div>
-                        </div>
-                    </div>
-                    <div class="d-flex m-r-20 m-l-10 hidden-md-down">
-                        <div class="chart-text m-r-10">
-                            <h6 class="m-b-0"><small>LAST MONTH</small></h6>
-                            <h4 class="m-t-0 text-primary">$48,356</h4>
-                        </div>
-                        <div class="spark-chart">
-                            <div id="lastmonthchart"></div>
-                        </div>
-                    </div>
+            <div class="spark-chart">
+              <div id="monthchart"></div>
+            </div>
+          </div>
+          <div class="d-flex m-r-20 m-l-10 hidden-md-down">
+            <div class="chart-text m-r-10">
+              <h6 class="m-b-0"><small>LAST MONTH</small></h6>
+              <h4 class="m-t-0 text-primary">$48,356</h4>
+            </div>
+            <div class="spark-chart">
+              <div id="lastmonthchart"></div>
+            </div>
+          </div>
 
-                </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Start Page Content -->
+    <!-- ============================================================== -->
+    <div class="row">
+      <!-- Column -->
+      <div class="col-lg-3 col-md-6">
+        <div class="card">
+          <div class="card-block">
+            <div class="d-flex flex-row">
+              <div class="round round-lg align-self-center round-info"><i class="mdi mdi-cellphone-link"></i></div>
+              <div class="m-l-10 align-self-center">
+                <h3 class="m-b-0 font-light">{{analytics[2]?.categories}}</h3>
+                <h5 class="text-muted m-b-0">Total Categories</h5>
+              </div>
             </div>
+          </div>
+        </div>
+      </div>
+      <!-- Column -->
+      <!-- Column -->
+      <div class="col-lg-3 col-md-6">
+        <div class="card">
+          <div class="card-block">
+            <div class="d-flex flex-row">
+              <div class="round round-lg align-self-center round-warning"><i class="fa fa-product-hunt"></i></div>
+              <div class="m-l-10 align-self-center">
+                <h3 class="m-b-0 font-lgiht">{{analytics[2]?.products}}</h3>
+                <h5 class="text-muted m-b-0">Total Prdoucts</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Column -->
+      <!-- Column -->
+      <div class="col-lg-3 col-md-6">
+        <div class="card">
+          <div class="card-block">
+            <div class="d-flex flex-row">
+              <div class="round round-lg align-self-center round-primary"><i class="mdi mdi-cart-outline"></i></div>
+              <div class="m-l-10 align-self-center">
+                <h3 class="m-b-0 font-lgiht">{{analytics[1]?.length}}</h3>
+                <h5 class="text-muted m-b-0">Total Orders</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Column -->
+      <!-- Column -->
+      <div class="col-lg-3 col-md-6">
+        <div class="card">
+          <div class="card-block">
+            <div class="d-flex flex-row">
+              <div class="round round-lg align-self-center round-danger"><i class="mdi mdi-account-multiple"></i>
+              </div>
+              <div class="m-l-10 align-self-center">
+                <h3 class="m-b-0 font-lgiht">{{analytics[0]?.length}}</h3>
+                <h5 class="text-muted m-b-0">Active Clients</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Column -->
+    </div>
+    <!-- Row -->
+
+    <!-- Row -->
+    <!-- Row -->
+    <div class="row">
+
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body p-2">
+            <button (click)="reInintialize()" class="btn btn-success waves-effect waves-light m-r-10 my-2"
+              data-toggle="modal" data-target="#add-category">Add Category</button>
+            <h4 class="card-title">Main Categories</h4>
+            <h6 class="card-subtitle"></h6>
+            <div class="table-responsive" [hidden]="categories.length<=0">
+
+              <mat-form-field>
+                <mat-label>Filter</mat-label>
+                <input matInput (keyup)="applyFilter($event)" #input>
+              </mat-form-field>
+
+              <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource" matSort>
+
+                  <!-- ID Column -->
+                  <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                    <td mat-cell *matCellDef="let row">
+                      <a class="btn btn-secondary" [class.btn-success]="row.id == parentId" role="button"
+                        (click)="getSubCategories(row.id)">{{row.name}} </a>
+                    </td>
+                  </ng-container>
+
+                  <!-- Progress Column -->
+                  <ng-container matColumnDef="childs">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Sub-Categories </th>
+                    <td mat-cell *matCellDef="let row"> {{row.childs}} </td>
+                  </ng-container>
+
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+                    <td mat-cell *matCellDef="let row">
+                      <i data-toggle="modal" role="button" data-target="#add-category" (click)="currentCategory=row"
+                        class="fa fa-edit"></i>
+                      <i data-toggle="modal" role="button" data-target="#delete-category" (click)="currentCategory=row"
+                        class="fa fa-trash mx-2"></i>
+                    </td>
+                  </ng-container>
+
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                  <!-- Row shown when there is no matching data. -->
+                  <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"
+                    </td>
+                  </tr>
+                </table>
+
+                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+              </div>
+
+
+            </div>
+            <hr>
+            <hr>
+            <!-- -------------------------------- -->
+            <!----- Sub Category Table ----->
+            <!-- -------------------------------- -->
+
+            <div class="table-responsive" [hidden]="subCategories.length<=0">
+              <h4 class="card-title">Sub Categories</h4>
+              <mat-form-field>
+                <mat-label>Filter</mat-label>
+                <input matInput (keyup)="subFilter($event)" #subInput>
+              </mat-form-field>
+
+              <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="subDataSource" matSort #MatSort1="matSort">
+
+                  <!-- ID Column -->
+                  <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                    <td mat-cell *matCellDef="let row">
+                      <a [routerLink]="['/admin/products/',row.id,'category']">
+                        {{row.name}} </a>
+                    </td>
+                  </ng-container>
+
+                  <!-- Count Column -->
+                  <ng-container matColumnDef="count">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Products </th>
+                    <td mat-cell *matCellDef="let row">
+                      {{row.productCount}}
+                    </td>
+                  </ng-container>
+
+
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+                    <td mat-cell *matCellDef="let row">
+                      <i data-toggle="modal" role="button" data-target="#add-category" (click)="currentCategory=row"
+                        class="fa fa-edit"></i>
+                      <i data-toggle="modal" role="button" data-target="#delete-category" (click)="currentCategory=row"
+                        class="fa fa-trash mx-2"></i>
+                    </td>
+                  </ng-container>
+
+                  <tr mat-header-row *matHeaderRowDef="subCategoryColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: subCategoryColumns;"></tr>
+
+                  <!-- Row shown when there is no matching data. -->
+                  <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"
+                    </td>
+                  </tr>
+                </table>
+
+                <mat-paginator #MatPaginator1 [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+              </div>
+
+
+            </div>
+            <div class="card-text text-center h2" [hidden]="categories.length>0">
+              No Categories Yet
+            </div>
+            <!-- Row -->
+            <!-- ============================================================== -->
+            <!-- End PAge Content -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+          </div>
+          <!-- ============================================================== -->
+          <!-- End Container fluid  -->
+          <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->
-        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- satrt of add category modal  -->
         <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Start Page Content -->
-        <!-- ============================================================== -->
-        <div class="row">
-            <!-- Column -->
-            <div class="col-lg-3 col-md-6">
-                <div class="card">
-                    <div class="card-block">
-                        <div class="d-flex flex-row">
-                            <div class="round round-lg align-self-center round-info"><i
-                                    class="mdi mdi-cellphone-link"></i></div>
-                            <div class="m-l-10 align-self-center">
-                                <h3 class="m-b-0 font-light">{{analytics[2]?.categories}}</h3>
-                                <h5 class="text-muted m-b-0">Total Categories</h5>
-                            </div>
-                        </div>
+        <div id="add-category" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">Add New Category</h4>
+              </div>
+              <div class="modal-body">
+                <form class="form-horizontal form-material">
+                  <div class="form-group">
+                    <div class="col-md-12 m-b-20">
+                      <input type="text" class="form-control" [(ngModel)]="currentCategory.name" name="name"
+                        placeholder="Type Category Name">
                     </div>
-                </div>
-            </div>
-            <!-- Column -->
-            <!-- Column -->
-            <div class="col-lg-3 col-md-6">
-                <div class="card">
-                    <div class="card-block">
-                        <div class="d-flex flex-row">
-                            <div class="round round-lg align-self-center round-warning"><i
-                                    class="fa fa-product-hunt"></i></div>
-                            <div class="m-l-10 align-self-center">
-                                <h3 class="m-b-0 font-lgiht">{{analytics[2]?.products}}</h3>
-                                <h5 class="text-muted m-b-0">Total Prdoucts</h5>
-                            </div>
-                        </div>
+                  </div>
+                  <!-- <div class="form-group">
+                    <div class="col-md-12 m-b-20">
+                      <input type="text" class="form-control" [(ngModel)]="currentCategory.ar_name" name="ar_name"
+                        placeholder="ادخل اسم الفئة">
                     </div>
-                </div>
-            </div>
-            <!-- Column -->
-            <!-- Column -->
-            <div class="col-lg-3 col-md-6">
-                <div class="card">
-                    <div class="card-block">
-                        <div class="d-flex flex-row">
-                            <div class="round round-lg align-self-center round-primary"><i
-                                    class="mdi mdi-cart-outline"></i></div>
-                            <div class="m-l-10 align-self-center">
-                                <h3 class="m-b-0 font-lgiht">{{analytics[1]?.length}}</h3>
-                                <h5 class="text-muted m-b-0">Total Orders</h5>
-                            </div>
-                        </div>
+                  </div> -->
+                  <div class="form-group">
+                    <div class="col-md-12 m-b-20">
+                      <select [(ngModel)]="currentCategory.parentId" name="parent" class="form-control p-0" id="input6"
+                        required>
+                        <option>Parent Category (optional)</option>
+                        <option *ngFor="let category of categories" [ngValue]="category.id">
+                          {{category.name}}
+                        </option>
+                      </select><span class="bar"></span>
                     </div>
-                </div>
-            </div>
-            <!-- Column -->
-            <!-- Column -->
-            <div class="col-lg-3 col-md-6">
-                <div class="card">
-                    <div class="card-block">
-                        <div class="d-flex flex-row">
-                            <div class="round round-lg align-self-center round-danger"><i
-                                    class="mdi mdi-account-multiple"></i>
-                            </div>
-                            <div class="m-l-10 align-self-center">
-                                <h3 class="m-b-0 font-lgiht">{{analytics[0]?.users}}</h3>
-                                <h5 class="text-muted m-b-0">Active Clients</h5>
-                            </div>
-                        </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-md-12 m-b-20">
+                      <textarea [(ngModel)]="currentCategory.description" class="form-control" name="description"
+                        rows="3" placeholder="Category Description"></textarea>
                     </div>
-                </div>
+                  </div>
+                  <!-- <div class="form-group">
+                    <div class="col-md-12 m-b-20">
+                      <textarea [(ngModel)]="currentCategory.description" class="form-control" name="description"
+                        rows="3" placeholder="وصف الفئة"></textarea>
+                    </div>
+                  </div> -->
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" (click)="saveOrUpdate()" class="btn btn-info waves-effect"
+                  >Save</button>
+                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
+              </div>
             </div>
-            <!-- Column -->
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
         </div>
-        <!-- Row -->
+        <!-- ============================================================== -->
+        <!-- end of add category modal  -->
+        <!-- ============================================================== -->
 
-        <!-- Row -->
-        <!-- Row -->
-        <div class="row">
-
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body p-2">
-                        <button (click)="reInintialize()" class="btn btn-success waves-effect waves-light m-r-10 my-2"
-                            data-toggle="modal" data-target="#add-category">Add Category</button>
-                        <h4 class="card-title">Main Categories</h4>
-                        <h6 class="card-subtitle"></h6>
-                        <div class="table-responsive" [hidden]="categories.length<=0">
-
-                            <mat-form-field>
-                                <mat-label>Filter</mat-label>
-                                <input matInput (keyup)="applyFilter($event)" #input>
-                            </mat-form-field>
-
-                            <div class="mat-elevation-z8">
-                                <table mat-table [dataSource]="dataSource" matSort>
-
-                                    <!-- ID Column -->
-                                    <ng-container matColumnDef="name">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-                                        <td mat-cell *matCellDef="let row">
-                                            <a class="btn btn-secondary" [class.btn-success]="row.id == parentId" role="button"
-                                                (click)="getSubCategories(row.id)">{{row.name}} </a>
-                                        </td>
-                                    </ng-container>
-
-                                    <!-- Progress Column -->
-                                    <ng-container matColumnDef="childs">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Sub-Categories </th>
-                                        <td mat-cell *matCellDef="let row"> {{row.childs}} </td>
-                                    </ng-container>
-
-                                    <!-- Name Column -->
-                                    <ng-container matColumnDef="action">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
-                                        <td mat-cell *matCellDef="let row">
-                                            <i data-toggle="modal" role="button" data-target="#add-category"
-                                                (click)="currentCategory=row" class="fa fa-edit"></i>
-                                            <i data-toggle="modal" role="button" data-target="#delete-category"
-                                                (click)="currentCategory=row" class="fa fa-trash mx-2"></i>
-                                        </td>
-                                    </ng-container>
-
-                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-                                    <!-- Row shown when there is no matching data. -->
-                                    <tr class="mat-row" *matNoDataRow>
-                                        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"
-                                        </td>
-                                    </tr>
-                                </table>
-
-                                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-                            </div>
-
-
-                        </div>
-                        <hr>
-                        <hr>
-                        <!-- -------------------------------- -->
-                        <!----- Sub Category Table ----->
-                        <!-- -------------------------------- -->
-
-                        <div class="table-responsive" [hidden]="subCategories.length<=0">
-                            <h4 class="card-title">Sub Categories</h4>
-                            <mat-form-field>
-                                <mat-label>Filter</mat-label>
-                                <input matInput (keyup)="subFilter($event)" #subInput>
-                            </mat-form-field>
-
-                            <div class="mat-elevation-z8">
-                                <table mat-table [dataSource]="subDataSource" matSort #MatSort1="matSort">
-
-                                    <!-- ID Column -->
-                                    <ng-container matColumnDef="name">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-                                        <td mat-cell *matCellDef="let row">
-                                            <a [routerLink]="['/admin/products/',row.id,'category']">
-                                                {{row.name}} </a>
-                                        </td>
-                                    </ng-container>
-
-                                    <!-- Count Column -->
-                                    <ng-container matColumnDef="count">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Products </th>
-                                        <td mat-cell *matCellDef="let row">
-                                            {{row.productCount}}
-                                        </td>
-                                    </ng-container>
-
-
-                                    <!-- Name Column -->
-                                    <ng-container matColumnDef="action">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
-                                        <td mat-cell *matCellDef="let row">
-                                            <i data-toggle="modal" role="button" data-target="#add-category"
-                                                (click)="currentCategory=row" class="fa fa-edit"></i>
-                                            <i data-toggle="modal" role="button" data-target="#delete-category"
-                                                (click)="currentCategory=row" class="fa fa-trash mx-2"></i>
-                                        </td>
-                                    </ng-container>
-
-                                    <tr mat-header-row *matHeaderRowDef="subCategoryColumns"></tr>
-                                    <tr mat-row *matRowDef="let row; columns: subCategoryColumns;"></tr>
-
-                                    <!-- Row shown when there is no matching data. -->
-                                    <tr class="mat-row" *matNoDataRow>
-                                        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"
-                                        </td>
-                                    </tr>
-                                </table>
-
-                                <mat-paginator #MatPaginator1 [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-                            </div>
-
-
-                        </div>
-                        <div class="card-text text-center h2" [hidden]="categories.length>0">
-                            No Categories Yet
-                        </div>
-                        <!-- Row -->
-                        <!-- ============================================================== -->
-                        <!-- End PAge Content -->
-                        <!-- ============================================================== -->
-                        <!-- ============================================================== -->
-                    </div>
-                    <!-- ============================================================== -->
-                    <!-- End Container fluid  -->
-                    <!-- ============================================================== -->
-                </div>
-                <!-- ============================================================== -->
-                <!-- satrt of add category modal  -->
-                <!-- ============================================================== -->
-                <div id="add-category" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                <h4 class="modal-title" id="myModalLabel">Add New Category</h4>
-                            </div>
-                            <div class="modal-body">
-                                <form class="form-horizontal form-material">
-                                    <div class="form-group">
-                                        <div class="col-md-12 m-b-20">
-                                            <input type="text" class="form-control" [(ngModel)]="currentCategory.name"
-                                                name="name" placeholder="Type Category Name">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-12 m-b-20">
-                                            <input type="text" class="form-control"
-                                                [(ngModel)]="currentCategory.ar_name" name="ar_name"
-                                                placeholder="ادخل اسم الفئة">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-12 m-b-20">
-                                            <select [(ngModel)]="currentCategory.parentId" name="parent"
-                                                class="form-control p-0" id="input6" required>
-                                                <option>Parent Category (optional)</option>
-                                                <option *ngFor="let category of categories" [ngValue]="category.id">
-                                                    {{category.name}}
-                                                </option>
-                                            </select><span class="bar"></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-12 m-b-20">
-                                            <textarea [(ngModel)]="currentCategory.description" class="form-control"
-                                                name="description" rows="3"
-                                                placeholder="Category Description"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-12 m-b-20">
-                                            <textarea [(ngModel)]="currentCategory.description" class="form-control"
-                                                name="description" rows="3" placeholder="وصف الفئة"></textarea>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" (click)="saveOrUpdate()" class="btn btn-info waves-effect"
-                                    data-dismiss="modal">Save</button>
-                                <button type="button" class="btn btn-default waves-effect"
-                                    data-dismiss="modal">Cancel</button>
-                            </div>
-                        </div>
-                        <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
-                <!-- ============================================================== -->
-                <!-- end of add category modal  -->
-                <!-- ============================================================== -->
-
-                <!-- ============================================================== -->
-                <!-- satrt of delete category modal  -->
-                <!-- ============================================================== -->
-                <div id="delete-category" class="modal fade in" tabindex="-1" role="dialog"
-                    aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                <h4 class="modal-title" id="myModalLabel">Delete Category</h4>
-                            </div>
-                            <div class="modal-body" [hidden]="currentCategory.productCount> 0">
-                                <p> Are you sure you want to delete category <span
-                                        class="font-weight-bold">{{currentCategory.name}}</span>?</p>
-                            </div>
-                            <div class="modal-body" [hidden]="currentCategory.productCount<= 0">
-                                <p> Please, make sure to delete all products under this category before dleete it</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" [disabled]="currentCategory.productCount>0"
-                                    (click)="deleteCategory()" class="btn btn-info waves-effect"
-                                    data-dismiss="modal">Delete</button>
-                                <button type="button" class="btn btn-default waves-effect"
-                                    data-dismiss="modal">Cancel</button>
-                            </div>
-                        </div>
-                        <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
-                <!-- ============================================================== -->
-                <!-- end of delete category modal  -->
-                <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- satrt of delete category modal  -->
+        <!-- ============================================================== -->
+        <div id="delete-category" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">Delete Category</h4>
+              </div>
+              <div class="modal-body" [hidden]="currentCategory.productCount> 0">
+                <p> Are you sure you want to delete category <span
+                    class="font-weight-bold">{{currentCategory.name}}</span>?</p>
+              </div>
+              <div class="modal-body" [hidden]="currentCategory.productCount<= 0">
+                <p> Please, make sure to delete all products under this category before dleete it</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" [disabled]="currentCategory.productCount>0" (click)="deleteCategory()"
+                  class="btn btn-info waves-effect" data-dismiss="modal">Delete</button>
+                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- end of delete category modal  -->
+        <!-- ============================================================== -->

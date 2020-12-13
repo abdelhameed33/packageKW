@@ -7,7 +7,8 @@ export class Product {
         public price?: number,
         public quantity?: number,
         public properties?: string,
-        public category?: any
+        public category?: any,
+        public promotions?: any[],
     ) {
         this.images = [];
     }

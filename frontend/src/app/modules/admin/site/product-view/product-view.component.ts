@@ -18,7 +18,8 @@ export class ProductViewComponent implements OnInit {
   images: any[] | undefined = [];
   salePercent = 0;
   newPrice = 0;
-  endDate = new Date().toLocaleString();
+  endDate = new Date().toISOString();
+  minDate = new Date().toJSON().split('T')[0];
 
   constructor(
     private productService: ProductService,
@@ -31,8 +32,8 @@ export class ProductViewComponent implements OnInit {
       const productId = res.get('id');
       this.productService.getOne(productId).subscribe((product: Product) => {
         this.product = product;
+        this.computeSale(product);
         this.images = this.product?.images;
-        console.log(this.product?.images);
       });
     });
 
@@ -40,6 +41,21 @@ export class ProductViewComponent implements OnInit {
 
   computeNewPrice(): void {
     this.newPrice = this.product?.price - (this.product?.price * this.salePercent) / 100;
+  }
+
+  computeSale(myProduct: Product): void {
+    console.log(myProduct);
+    if (myProduct?.promotions?.length > 0 && this.validateDate(myProduct)) {
+      const sale = myProduct?.promotions[0].percent;
+      this.newPrice = Math.round((this.product?.price - (this.product?.price * sale) / 100) * 100) / 100;
+      this.salePercent = sale;
+      this.endDate = new Date(myProduct?.promotions[0].end_date).toJSON().split('T')[0];
+
+    }
+  }
+
+  validateDate(myProduct): boolean {
+    return new Date(myProduct.promotions[0].end_date) >= new Date();
   }
 
   computeSalePercent(): void {
@@ -63,13 +79,13 @@ export class ProductViewComponent implements OnInit {
         end_date: new Date(this.endDate).toISOString(),
         productId: this.product?.id
       };
-      console.log(promotion);
-      // this.promotionService.save(promotion).subscribe(res => {
-      //   console.log(res);
-      //   $("#add-sale").modal("hide");
-      // }, err => {
-      //   console.log(err);
-      // })
+      //  console.log(promotion);
+      this.promotionService.save(promotion).subscribe(res => {
+        console.log(res);
+        $('#add-sale').modal('hide');
+      }, err => {
+        console.log(err);
+      });
     }
   }
 

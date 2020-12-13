@@ -30,9 +30,13 @@
             </div>
           </div>
           <div class="col-md-6">
-            <h4 class="card-title product-price">
-              <span class="font-weight-bold">{{product?.price}} </span>
+            <h4 [hidden]="!newPrice" class="card-title product-price">
+              <span class="font-weight-bold">{{newPrice}} </span>
               <span class="base-cost">{{product?.price}}</span>
+              KD
+            </h4>
+            <h4 [hidden]="newPrice" class="card-title product-price">
+              <span class="font-weight-bold">{{product?.price}} </span>
               KD
             </h4>
             <h4 class="card-title text-uppercase"> <a
@@ -128,19 +132,21 @@
             </div>
           </div>
           <div class="form-group">
-            <label>End Date: </label>
             <div class="col-md-12 m-b-20">
-              <input type="date" class="form-control" [(ngModel)]="endDate" name="enddate" placeholder="End Date">
+              <label class="col-form-label">End Date: </label>
+              <input type="date" [min]="minDate" class="form-control" [(ngModel)]="endDate" name="enddate"
+                placeholder="End Date">
             </div>
           </div>
 
           <h4 class="card-title"><span>Current Salary: </span>{{product?.price}}</h4>
           <h4 [hidden]="!salePercent" class="card-title"><span>New Salary: </span>{{newPrice}}</h4>
           <h4 [hidden]="!newPrice" class="card-title"><span>Sale Percent: </span>{{salePercent}}%</h4>
+
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" (click)="addSale()" class="btn btn-info waves-effect" >Save</button>
+        <button type="button" (click)="addSale()" class="btn btn-info waves-effect">Save</button>
         <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
       </div>
     </div>

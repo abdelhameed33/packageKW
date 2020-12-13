@@ -3,8 +3,10 @@ import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { AuthCredentialDto } from './dto/auth-credential.dto';
 import { CreateUserDto } from './dto/create-user.dto';
+import { ResUserDto } from './dto/res-user.dto';
 import { JwtPayload } from './jwt-payload.interface';
 import { UserRole } from './user-role.enum';
+import { User } from './user.entity';
 import { UserRepository } from './user.repository';
 
 @Injectable()
@@ -22,8 +24,16 @@ export class AuthService {
         return this.userRepository.signUp(createUserDto, userRole);
     }
 
-    async getAllUser(): Promise<any[]> {
-        return this.userRepository.find({role:UserRole.CLIENT});
+    async getAllUser(): Promise<ResUserDto[]> {
+        return this.userRepository.find({ role: UserRole.CLIENT }).then(res => {
+
+            return res.map(obj => {
+                console.log('------------------');
+                console.log(obj);
+                return new ResUserDto(obj);
+            });
+
+        });
     }
 
     async signIn(authCredentialDto: AuthCredentialDto): Promise<{ accessToken: string }> {

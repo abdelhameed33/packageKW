@@ -45,4 +45,8 @@ export class AuthenticationService {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(new User());
   }
+
+  getUsers(): Observable<any> {
+    return this.http.get(APP_URL + '/auth/users/');
+  }
 }

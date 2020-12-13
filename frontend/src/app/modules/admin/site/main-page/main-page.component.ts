@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import { MainService } from 'src/app/common/service/main.service';
 import { Category } from '../model/category.model';
 import { CategoryService } from '../service/category.service';
+declare var $: any;
 
 @Component({
   selector: 'app-main-page',
@@ -121,6 +122,7 @@ export class MainPageComponent implements OnInit, AfterViewInit {
       console.log(res);
       this.getAllCategories();
       this.getSubCategories(this.parentId);
+      $('#add-category').modal('hide');
     });
   }
 
