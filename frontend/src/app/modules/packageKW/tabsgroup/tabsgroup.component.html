@@ -2,8 +2,12 @@
   <div class="container">
     <div class="tab_control">
       <ul>
-        <li [ngClass]="{'active': tabDec}" (click)="toggleTab()">Description</li>
-        <li [ngClass]="{'active': tabReview}" (click)="toggleTab()">Reviews <span class="review_num">(2)</span></li>
+        <li [ngClass]="{ active: tabDec }" (click)="toggleTab()">
+          {{ "Description" | translate }}
+        </li>
+        <li [ngClass]="{ active: tabReview }" (click)="toggleTab()">
+          {{ "Reviews" | translate }} <span class="review_num">(2)</span>
+        </li>
       </ul>
     </div>
     <!--End tab_control-->
@@ -25,7 +29,7 @@
         </ul>
       </div>
       <!--End tab_desc-->
-      <div class="tab_review " *ngIf="tabReview">
+      <div class="tab_review" *ngIf="tabReview">
         <div class="review_content">
           <div class="row">
             <div class="col-lg-7">
@@ -39,11 +43,7 @@
                     <li><i class="fas fa-star"></i></li>
                   </ul>
                 </div>
-                <img
-                  class="mr-2 mr-sm-4"
-                  src="../../../assets/images/customer1.png"
-                  alt="review1"
-                />
+                <img class="mr-2 mr-sm-4" src="../../../assets/images/customer1.png" alt="review1" />
                 <div class="media-body">
                   <h5>Jonathan Ross</h5>
                   <span class="review_date">November 9, 2020</span>
@@ -70,11 +70,7 @@
                     <li><i class="fas fa-star"></i></li>
                   </ul>
                 </div>
-                <img
-                  class="mr-2 mr-sm-4"
-                  src="../../../assets/images/customer2.png"
-                  alt="review2"
-                />
+                <img class="mr-2 mr-sm-4" src="../../../assets/images/customer2.png" alt="review2" />
                 <div class="media-body">
                   <h5>Jonathan Ross</h5>
                   <span class="review_date">November 9, 2020</span>
@@ -89,12 +85,12 @@
         </div>
         <!--End review_content-->
         <div class="add_review_form">
-          <h4>Add a review</h4>
+          <h4>{{ "Add_a_review" | translate }}</h4>
           <div class="row">
             <div class="col-lg-8 offset-lg-2">
               <form>
                 <div class="new_rate">
-                  <span>Your rating</span>
+                  <span>{{ "Your_rating" | translate }}</span>
                   <ul>
                     <li><i class="far fa-star"></i></li>
                     <li><i class="far fa-star"></i></li>
@@ -106,42 +102,36 @@
                 <div class="row clearfix">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="jobTitle">Job Title</label>
-                      <input
-                        type="email"
-                        name="email"
-                        class="form-control"
-                        placeholder="Enter Job Title"
-                        id="jobTitle"
-                      />
+                      <label for="jobTitle">{{
+                        "Job_Title" | translate
+                      }}</label>
+                      <input type="email" name="email" class="form-control" placeholder="{{ 'enter' | translate }} {{
+                          'Job_Title' | translate
+                        }}" id="jobTitle" />
                     </div>
                   </div>
                   <div class="col-md-6">
-                    <div class="form-group ">
-                      <label for="email">Email Address</label>
-                      <input
-                        type="email"
-                        name="email"
-                        class="form-control"
-                        placeholder="Enter Email Address"
-                      />
+                    <div class="form-group">
+                      <label for="email">{{
+                        "email_address" | translate
+                      }}</label>
+                      <input type="email" name="email" class="form-control" placeholder="{{ 'enter' | translate }} {{
+                          'email_address' | translate
+                        }}" />
                     </div>
                     <!-- /form-group -->
                   </div>
                   <div class="col-12">
-                    <div class="form-group ">
-                      <label for="Review">Review</label>
-                      <textarea
-                        placeholder="Enter Review"
-                        rows="5"
-                        id="Review"
-                        class="form-control"
-                      ></textarea>
+                    <div class="form-group">
+                      <label for="Review">{{ "Review" | translate }}</label>
+                      <textarea placeholder="{{ 'enter' | translate }} {{
+                          'Review' | translate
+                        }}" rows="5" id="Review" class="form-control"></textarea>
                     </div>
                   </div>
                 </div>
                 <button type="submit" class="cust_btn float-right">
-                  Submit
+                  {{ "Submit" | translate }}
                 </button>
               </form>
             </div>

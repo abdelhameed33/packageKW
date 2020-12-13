@@ -2,16 +2,18 @@
   <div class="container">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a [routerLink]="['/home']" routerLinkActive="router-link-active"
-          >Home</a
-        >
+        <a [routerLink]="['/home']" routerLinkActive="router-link-active">{{
+          "home" | translate
+        }}</a>
       </li>
       <li class="breadcrumb-item">
-        <a [routerLink]="['/carts']" routerLinkActive="router-link-active"
-          >Shopping Cart</a
-        >
+        <a [routerLink]="['/carts']" routerLinkActive="router-link-active">{{
+          "Shopping_Cart" | translate
+        }}</a>
       </li>
-      <li class="breadcrumb-item current_page"><a>Checkout</a></li>
+      <li class="breadcrumb-item current_page">
+        <a>{{ "Checkout" | translate }}</a>
+      </li>
     </ol>
   </div>
 </div>
@@ -20,12 +22,12 @@
     <div class="row">
       <div class="col-lg-8">
         <div class="checkout shoping_content">
-          <h2 class="cust_h2 text-left">Checkout</h2>
+          <h2 class="cust_h2 text-left">{{ "Checkout" | translate }}</h2>
           <div class="d-flex justify-content-between mt-4 mb-3 head-section">
-            <p class="ckeckout_head">Billing Addresses</p>
-            <a class="main-color" (click)="openModal(template)"
-              >Add a new address</a
-            >
+            <p class="ckeckout_head">{{ "Billing_Addresses" | translate }}</p>
+            <a class="main-color" (click)="openModal(template)">{{
+              "Add_a_new_address" | translate
+            }}</a>
           </div>
           <!-- /d-flec -->
 
@@ -73,7 +75,7 @@
           <!-- /address-card -->
 
           <div class="payment_method">
-            <h3 class="ckeckout_head">Payment Method</h3>
+            <h3 class="ckeckout_head">{{ "Payment_Method" | translate }}</h3>
             <div
               class="address-card mb-3 show_img"
               [ngClass]="{ active: item.checked }"
@@ -112,59 +114,67 @@
       </div>
       <div class="col-lg-4">
         <div class="cart_summary">
-          <h2 class="font-bold">Order summary</h2>
+          <h2 class="font-bold">{{ "Order_summary" | translate }}</h2>
           <div class="order_summary">
             <ul>
               <li>
                 <p>
-                  <span class="summary_title">Subtotal</span>
-                  <span class="summary_val">120 KWD</span>
+                  <span class="summary_title">{{
+                    "Subtotal" | translate
+                  }}</span>
+                  <span class="summary_val">120 {{ "KWD" | translate }}</span>
                 </p>
               </li>
               <li>
                 <p>
-                  <span class="summary_title">Fee</span>
-                  <span class="summary_val">120 KWD</span>
+                  <span class="summary_title">{{ "Fee" | translate }}</span>
+                  <span class="summary_val">120 {{ "KWD" | translate }}</span>
                 </p>
               </li>
               <li>
                 <p>
-                  <span class="summary_title">Delivery</span>
-                  <span class="summary_val">25 KWD</span>
+                  <span class="summary_title">{{
+                    "Delivery" | translate
+                  }}</span>
+                  <span class="summary_val">25 {{ "KWD" | translate }}</span>
                 </p>
               </li>
             </ul>
           </div>
           <div class="promocode">
-            <h5 class="promo_title">Promo Code</h5>
+            <h5 class="promo_title">{{ "Promo_Code" | translate }}</h5>
             <div class="form-group">
               <div class="prefix d-flex align-items-center">
                 <input
                   type="number"
                   name="promocode"
                   class="form-control"
-                  placeholder="Enter Promo Code"
+                  placeholder="{{ 'enter' | translate }} {{
+                    'Promo_Code' | translate
+                  }}"
                 />
-                <button type="submit" class="promo_apply">Apply</button>
+                <button type="submit" class="promo_apply">
+                  {{ "Apply" | translate }}
+                </button>
               </div>
             </div>
           </div>
           <div class="total_summary">
-            <h5>Total</h5>
-            <p class="bold_18">25 KWD</p>
+            <h5>{{ "Total" | translate }}</h5>
+            <p class="bold_18">25 {{ "KWD" | translate }}</p>
           </div>
           <button
             class="cust_btn"
             [routerLink]="['/carts/success']"
             routerLinkActive="router-link-active"
           >
-            Proceed To Checkout
+            {{ "Proceed_To_Checkout" | translate }}
           </button>
           <a
             [routerLink]="['/products']"
             routerLinkActive="router-link-active"
             class="continue_btn"
-            >Continue Shopping</a
+            >{{ "Continue_Shopping" | translate }}</a
           >
         </div>
       </div>
@@ -177,7 +187,7 @@
 <ng-template #template>
   <div class="modal-header pb-0" style="border-bottom: 0">
     <h5 class="modal-title font-Medium" style="font-size: 14px">
-      Add a new address
+      {{ "Add_a_new_address" | translate }}
     </h5>
     <button
       type="button"
@@ -192,45 +202,45 @@
   <div class="modal-body">
     <div>
       <div class="form-group">
-        <label for="Address"> Address 1</label>
+        <label for="Address"> {{ "Address" | translate }} 1</label>
         <input
           type="text"
           name="Address"
           class="form-control"
-          placeholder="Enter Address 1"
+          placeholder="{{ 'enter' | translate }} {{ 'Address' | translate }} 1"
           id="Address"
         />
       </div>
       <div class="form-group">
-        <label for="Address2"> Address 2</label>
+        <label for="Address2"> {{ "Address" | translate }} 2</label>
         <input
           type="text"
           name="Address2"
           class="form-control"
-          placeholder="Enter Address 2"
+          placeholder="{{ 'enter' | translate }} {{ 'Address' | translate }} 2"
           id="Address2"
         />
       </div>
       <div class="form-group">
-        <label for="City"> City</label>
+        <label for="City"> {{ "City" | translate }}</label>
         <input
           type="text"
           name="City"
           class="form-control"
-          placeholder="Enter City"
+          placeholder="{{ 'enter' | translate }} {{ 'City' | translate }}"
           id="City"
         />
       </div>
       <div class="row">
         <div class="col-lg-6">
           <div class="form-group">
-            <label for="state"> State/Province/Area</label>
+            <label for="state"> {{ "State_Province_Area" | translate }}</label>
             <input type="text" name="State" class="form-control" id="state" />
           </div>
         </div>
         <div class="col-lg-6">
           <div class="form-group">
-            <label for="zip"> Zip/Postal Code</label>
+            <label for="zip"> {{ "Zip_Postal_Code" | translate }}</label>
             <input type="number" name="zip" class="form-control" id="zip" />
           </div>
         </div>
@@ -239,8 +249,8 @@
   </div>
   <div class="modal-footer">
     <button type="button" class="btn cancle_btn" data-dismiss="modal">
-      Cancel
+      {{ "Cancel" | translate }}
     </button>
-    <button type="button" class="btn cust_btn">Add</button>
+    <button type="button" class="btn cust_btn">{{ "add" | translate }}</button>
   </div>
 </ng-template>

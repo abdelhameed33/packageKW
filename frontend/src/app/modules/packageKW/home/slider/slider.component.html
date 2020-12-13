@@ -24,14 +24,15 @@
                     <li>Print</li>
                     <li>products</li>
                   </ul>
-                  <h1>packagekw</h1>
+                  <h1>{{ "packagekw" | translate }}</h1>
                   <p>
-                    Create personalized products for <br />any event or occasion
+                    {{ "Create_personalized_products_for" | translate }}
+                    <br />{{ "any_event_or_occasion" | translate }}
                   </p>
                   <a
                     [routerLink]="['/products']"
                     routerLinkActive="router-link-active"
-                    >Browse Our Products</a
+                    >{{ "browse_our_products" | translate }}</a
                   >
                 </div>
                 <!--End item_content-->
@@ -50,7 +51,7 @@
 <!--End main_slider-->
 <section class="Products">
   <div class="container">
-    <h2 class="cust_h2">Best Selling Products</h2>
+    <h2 class="cust_h2">{{ "Best_Selling_Products" | translate }}</h2>
 
     <app-product-slider></app-product-slider>
 
@@ -58,7 +59,7 @@
       [routerLink]="['/products']"
       routerLinkActive="router-link-active"
       class="View_all cust_btn m-0"
-      >View All</a
+      >{{ "View_All" | translate }}</a
     >
   </div>
 </section>

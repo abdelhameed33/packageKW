@@ -2,17 +2,17 @@
   <div class="container">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a [routerLink]="['/home']" routerLinkActive="router-link-active"
-          >Home</a
-        >
+        <a [routerLink]="['/home']" routerLinkActive="router-link-active">{{
+          "home" | translate
+        }}</a>
       </li>
       <li class="breadcrumb-item">
-        <a [routerLink]="['/products']" routerLinkActive="router-link-active"
-          >Products</a
-        >
+        <a [routerLink]="['/products']" routerLinkActive="router-link-active">{{
+          "Products" | translate
+        }}</a>
       </li>
       <li class="breadcrumb-item current_page">
-        <a>Business Card Templates & Designs</a>
+        <a>{{ "Business_Card_Templates_Designs" | translate }}</a>
       </li>
     </ol>
   </div>
@@ -22,35 +22,19 @@
     <div class="row">
       <div class="col-md-6">
         <div class="pro_cust_image">
-          <img
-            src="../../../assets/images/slider_image.png"
-            alt="pro_cust_image"
-          />
+          <img src="../../../assets/images/slider_image.png" alt="pro_cust_image" />
           <div class="choose_image mb-3">
             <div class="custom-control custom-radio custom-control-inline">
-              <input
-                type="radio"
-                class="custom-control-input"
-                id="choose1"
-                name="example"
-                value="customEx"
-                checked
-              />
-              <label class="custom-control-label" for="choose1"
-                >Front & Back</label
-              >
+              <input type="radio" class="custom-control-input" id="choose1" name="example" value="customEx" checked />
+              <label class="custom-control-label" for="choose1">{{
+                "Front_Back" | translate
+              }}</label>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
-              <input
-                type="radio"
-                class="custom-control-input"
-                id="choose2"
-                name="example"
-                value="customEx"
-              />
-              <label class="custom-control-label" for="choose2"
-                >Front Only</label
-              >
+              <input type="radio" class="custom-control-input" id="choose2" name="example" value="customEx" />
+              <label class="custom-control-label" for="choose2">{{
+                "Front_Only" | translate
+              }}</label>
             </div>
           </div>
         </div>
@@ -59,34 +43,28 @@
         <div class="cust_description">
           <div class="front_side">
             <h3 class="pro_cust_title bold_18 mt-0">
-              Product customization (Front Side)
+              {{ "Product_customization" | translate }} ({{
+                "Front_Side" | translate
+              }})
             </h3>
             <div class="add_cust_logo">
-              <span class="cust_des_title">Add Your Logo</span>
+              <span class="cust_des_title">{{
+                "Add_Your_Logo" | translate
+              }}</span>
               <div class="upload mx-auto mb-lg-0 mb-4">
-                <div
-                  [ngClass]="{ uploaded: uploadedFile }"
-                  class="upload-file d-flex flex-column justify-content-center mx-auto align-items-center position-relative"
-                >
+                <div [ngClass]="{ uploaded: uploadedFile }"
+                  class="upload-file d-flex flex-column justify-content-center mx-auto align-items-center position-relative">
                   <div class="text-center" *ngIf="!uploadedFile">
-                    <input
-                      id="upload"
-                      type="file"
-                      (change)="uploadFile($event)"
-                      class="p-absolute"
-                      accept=".png,.jpg,.jpeg"
-                    />
-                    <h5>Drag & Drop Logo to upload</h5>
-                    <p>Or</p>
+                    <input id="upload" type="file" (change)="uploadFile($event)" class="p-absolute"
+                      accept=".png,.jpg,.jpeg" />
+                    <h5>{{ "Drag_Drop_to_upload" | translate }}</h5>
+                    <p>{{ "Or" | translate }}</p>
                     <!-- <span>Maximum logo height 50px </span> -->
-                    <button class="btn">Select File</button>
+                    <button class="btn">{{ "Select_File" | translate }}</button>
                   </div>
                   <div class="show-photo" *ngIf="uploadedFile">
                     <div class="icon" (click)="clearFile()">
-                      <img
-                        src="../../assets/images/icons/modal-close.svg"
-                        alt="x"
-                      />
+                      <img src="../../assets/images/icons/modal-close.svg" alt="x" />
                     </div>
                     <!-- end icon-->
                     <img [src]="uploadedFile" alt="photo" />
@@ -96,57 +74,37 @@
               </div>
             </div>
             <div class="select_bg">
-              <span class="cust_des_title">Background</span>
+              <span class="cust_des_title">{{ "Background" | translate }}</span>
               <div class="bg_type">
                 <div class="custom-control custom-radio custom-control-inline">
-                  <input
-                    type="radio"
-                    class="custom-control-input"
-                    id="bg_img"
-                    name="bg_type"
-                    value="customEx"
-                    checked
-                  />
-                  <label class="custom-control-label" for="bg_img">Image</label>
+                  <input type="radio" class="custom-control-input" id="bg_img" name="bg_type" value="customEx"
+                    checked />
+                  <label class="custom-control-label" for="bg_img">{{
+                    "Image" | translate
+                  }}</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
-                  <input
-                    type="radio"
-                    class="custom-control-input"
-                    id="bg_color"
-                    name="bg_type"
-                    value="customEx"
-                    checked
-                  />
-                  <label class="custom-control-label" for="bg_color"
-                    >Color</label
-                  >
+                  <input type="radio" class="custom-control-input" id="bg_color" name="bg_type" value="customEx"
+                    checked />
+                  <label class="custom-control-label" for="bg_color">{{
+                    "Color" | translate
+                  }}</label>
                 </div>
               </div>
               <div class="upload mx-auto mb-lg-0 mb-4">
-                <div
-                  [ngClass]="{ uploaded: uploadedFile2 }"
-                  class="upload-file d-flex flex-column justify-content-center mx-auto align-items-center position-relative"
-                >
+                <div [ngClass]="{ uploaded: uploadedFile2 }"
+                  class="upload-file d-flex flex-column justify-content-center mx-auto align-items-center position-relative">
                   <div class="text-center" *ngIf="!uploadedFile2">
-                    <input
-                      id="upload"
-                      type="file"
-                      (change)="uploadFile2($event)"
-                      class="p-absolute"
-                      accept=".png,.jpg,.jpeg"
-                    />
-                    <h5>Drag & Drop Logo to upload</h5>
-                    <p>Or</p>
+                    <input id="upload" type="file" (change)="uploadFile2($event)" class="p-absolute"
+                      accept=".png,.jpg,.jpeg" />
+                    <h5>{{ "Drag_Drop_to_upload" | translate }}</h5>
+                    <p>{{ "Or" | translate }}</p>
                     <!-- <span>Maximum logo height 50px </span> -->
-                    <button class="btn">Select File</button>
+                    <button class="btn">{{ "Select_File" | translate }}</button>
                   </div>
                   <div class="show-photo" *ngIf="uploadedFile2">
                     <div class="icon" (click)="clearFile2()">
-                      <img
-                        src="../../assets/images/icons/modal-close.svg"
-                        alt="x"
-                      />
+                      <img src="../../assets/images/icons/modal-close.svg" alt="x" />
                     </div>
                     <!-- end icon-->
                     <img [src]="uploadedFile2" alt="photo" />
@@ -157,37 +115,25 @@
             </div>
             <div>
               <div class="form-group mt-3">
-                <label for="name"> Full Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  class="form-control"
-                  placeholder="Enter Full Name"
-                  id="name"
-                />
+                <label for="name">{{ "Full_Name" | translate }}</label>
+                <input type="text" name="name" class="form-control" placeholder="{{ 'enter' | translate }} {{
+                    'Full_Name' | translate
+                  }}" id="name" />
               </div>
               <!-- /form-group -->
               <div class="form-group">
-                <label for="jobTitle">Job Title</label>
-                <input
-                  type="email"
-                  name="email"
-                  class="form-control"
-                  placeholder="Enter Job Title"
-                  id="jobTitle"
-                />
+                <label for="jobTitle">{{ "Job_Title" | translate }}</label>
+                <input type="email" name="email" class="form-control" placeholder="{{ 'enter' | translate }} {{
+                    'Job_Title' | translate
+                  }}" id="jobTitle" />
               </div>
               <!-- /form-group -->
               <div class="form-group">
-                <label for="phone"> Mobile Number</label>
+                <label for="phone"> {{ "Mobile_Number" | translate }}</label>
                 <div class="prefix d-flex align-items-center">
-                  <input
-                    type="tel"
-                    name="phone"
-                    class="form-control"
-                    placeholder="Enter Mobile Number"
-                    id="phone"
-                  />
+                  <input type="tel" name="phone" class="form-control" placeholder="{{ 'enter' | translate }} {{
+                      'Mobile_Number' | translate
+                    }}" id="phone" />
                   <div>
                     <select name="code" class="custom-select-sm">
                       <option value="+965" selected>+965</option>
@@ -198,49 +144,36 @@
               </div>
               <!-- /form-group -->
               <div class="form-group form-group-icon">
-                <label for="email">Email Address</label>
-                <input
-                  type="email"
-                  name="email"
-                  class="form-control"
-                  placeholder="Enter Email Address"
-                />
+                <label for="email">{{ "email_address" | translate }}</label>
+                <input type="email" name="email" class="form-control" placeholder="{{ 'enter' | translate }} {{
+                    'email_address' | translate
+                  }}" />
               </div>
               <!-- /form-group -->
             </div>
           </div>
           <div class="back_side">
             <h3 class="pro_cust_title bold_18">
-              Product Customization (Back Side)
+              {{ "Product_customization" | translate }} ({{
+                "Back_Side" | translate
+              }})
             </h3>
             <div class="select_bg">
-              <span class="cust_des_title">Background</span>
+              <span class="cust_des_title">{{ "Background" | translate }}</span>
               <div class="bg_type">
                 <div class="custom-control custom-radio custom-control-inline">
-                  <input
-                    type="radio"
-                    class="custom-control-input"
-                    id="bg_img2"
-                    name="bg_type_back"
-                    value="customEx"
-                    checked
-                  />
-                  <label class="custom-control-label" for="bg_img2"
-                    >Image</label
-                  >
+                  <input type="radio" class="custom-control-input" id="bg_img2" name="bg_type_back" value="customEx"
+                    checked />
+                  <label class="custom-control-label" for="bg_img2">{{
+                    "Image" | translate
+                  }}</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
-                  <input
-                    type="radio"
-                    class="custom-control-input"
-                    id="bg_color2"
-                    name="bg_type_back"
-                    value="customEx"
-                    checked
-                  />
-                  <label class="custom-control-label" for="bg_color2"
-                    >Color</label
-                  >
+                  <input type="radio" class="custom-control-input" id="bg_color2" name="bg_type_back" value="customEx"
+                    checked />
+                  <label class="custom-control-label" for="bg_color2">{{
+                    "Color" | translate
+                  }}</label>
                 </div>
               </div>
               <div class="color_code">
@@ -249,12 +182,9 @@
             </div>
           </div>
           <div class="customize_product">
-            <span class="cust_des_title">Select Size</span>
+            <span class="cust_des_title">{{ "Select_Size" | translate }}</span>
             <div class="cust_pro_size">
-              <img
-                src="../../assets/images/icons/dropdown.svg"
-                alt="dropdown"
-              />
+              <img src="../../assets/images/icons/dropdown.svg" alt="dropdown" />
               <select>
                 <option>9*5 CM</option>
                 <option>9*5 CM</option>
@@ -263,72 +193,41 @@
               </select>
             </div>
 
-            <div
-              class="sale_detail d-flex align-items-center justify-content-between"
-            >
+            <div class="sale_detail d-flex align-items-center justify-content-between">
               <div class="Qty">
-                <span class="detail_title">Qty</span>
+                <span class="detail_title">{{ "Qty" | translate }}</span>
                 <div class="incr_decr">
-                  <button
-                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
-                    class="minus"
-                  >
+                  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus">
                     <i class="fas fa-minus"></i>
                   </button>
-                  <input
-                    class="quantity"
-                    name="quantity"
-                    value="1"
-                    type="number"
-                  />
-                  <button
-                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
-                    class="plus"
-                  >
+                  <input class="quantity" name="quantity" value="1" type="number" />
+                  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus">
                     <i class="fas fa-plus"></i>
                   </button>
                 </div>
               </div>
-              <h3 class="sale_num">40 KWD</h3>
+              <h3 class="sale_num">40 {{ "KWD" | translate }}</h3>
             </div>
-            <span class="cust_des_title">Note</span>
+            <span class="cust_des_title">{{ "Note" | translate }}</span>
             <div class="form-group form-group-icon">
-              <textarea
-                placeholder="Add Note"
-                rows="5"
-                id="Review"
-                class="form-control"
-              ></textarea>
+              <textarea placeholder="{{ 'add' | translate }} {{ 'Note' | translate }}" rows="5" id="Review"
+                class="form-control"></textarea>
             </div>
             <div class="custom-control custom-checkbox">
-              <input
-                type="checkbox"
-                class="custom-control-input"
-                id="see_copy"
-                name="see_copy"
-                checked
-              />
-              <label class="custom-control-label" for="see_copy"
-                >I want to see a copy before printing all copies</label
-              >
+              <input type="checkbox" class="custom-control-input" id="see_copy" name="see_copy" checked />
+              <label class="custom-control-label" for="see_copy">{{
+                "see_copy" | translate
+              }}</label>
             </div>
           </div>
-          <div
-            class="cust_des_action d-flex align-items-center justify-content-end"
-          >
-            <button
-              class="cancle_btn font-Medium"
-              [routerLink]="['/business-card']"
-              routerLinkActive="router-link-active"
-            >
-              Cancel
+          <div class="cust_des_action d-flex align-items-center justify-content-end">
+            <button class="cancle_btn font-Medium" [routerLink]="['/business-card']"
+              routerLinkActive="router-link-active">
+              {{ "Cancel" | translate }}
             </button>
-            <button
-              class="add_btn cust_btn"
-              [routerLink]="['/checkout']"
-              routerLinkActive="router-link-active"
-            >
-              Add To Cart <span class="ml-2"><i class="fas fa-check"></i></span>
+            <button class="add_btn cust_btn" [routerLink]="['/checkout']" routerLinkActive="router-link-active">
+              {{ "Add_To_Cart" | translate
+              }}<span class="ml-2"><i class="fas fa-check"></i></span>
             </button>
           </div>
         </div>

@@ -9,11 +9,15 @@
       </div>
       <div class="col-sm-10 col-md-9">
         <div class="subs_content">
-          <h3>Sign up to receive our newsletter</h3>
-          <p>Receive updates on the latest news and promotions.</p>
+          <h3>{{ "receive_our_newsletter" | translate }}</h3>
+          <p>{{ "Receive_promotions" | translate }}.</p>
           <form class="subs_form">
-            <input type="email" placeholder="Enter email address" />
-            <button type="submit" class="cust_btn">Subscribe</button>
+            <input type="email" placeholder="{{ 'enter' | translate }} {{
+                'email_address' | translate
+              }}" />
+            <button type="submit" class="cust_btn">
+              {{ "Subscribe" | translate }}
+            </button>
           </form>
           <!--End subs_form-->
         </div>

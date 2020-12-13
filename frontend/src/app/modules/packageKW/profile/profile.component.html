@@ -1,8 +1,12 @@
 <div class="breadcrumb_product breadcrumb_general" aria-label="breadcrumb">
   <div class="container">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="#">Home</a></li>
-      <li class="breadcrumb-item current_page"><a>My Profile</a></li>
+      <li class="breadcrumb-item">
+        <a href="#">{{ "home" | translate }}</a>
+      </li>
+      <li class="breadcrumb-item current_page">
+        <a>{{ "My_Profile" | translate }}</a>
+      </li>
     </ol>
   </div>
 </div>
@@ -13,57 +17,41 @@
         <div class="user_profile_tabs">
           <div class="user_info">
             <div class="user_logo">
-              <img
-                src="../../../assets/images/icons/user_profile.svg"
-                alt="user_logo"
-              />
+              <img src="../../../assets/images/icons/user_profile.svg" alt="user_logo" />
               <p>
-                Welcome, <span class="user_name font-Medium">Badr Ragab</span>
+                {{ "Welcome" | translate }},
+                <span class="user_name font-Medium">Badr Ragab</span>
               </p>
             </div>
           </div>
           <ul class="user_profile_list">
             <li [routerLink]="['order']" routerLinkActive="active">
-              <img
-                src="../../../assets/images/icons/order.svg"
-                alt="order_icon"
-              />
-              <span class="font-Medium">My Orders</span>
+              <img src="../../../assets/images/icons/order.svg" alt="order_icon" />
+              <span class="font-Medium">{{ "My_Orders" | translate }}</span>
             </li>
             <li [routerLink]="['save-address']" routerLinkActive="active">
-              <img
-                src="../../../assets/images/icons/address.svg"
-                alt="order_icon"
-              />
-              <span class="font-Medium">Saved Addresses</span>
+              <img src="../../../assets/images/icons/address.svg" alt="order_icon" />
+              <span class="font-Medium">{{
+                "Saved_Addresses" | translate
+              }}</span>
             </li>
             <li [routerLink]="['favorites']" routerLinkActive="active">
-              <img
-                src="../../../assets/images/icons/favorit.svg"
-                alt="order_icon"
-              />
-              <span class="font-Medium">Favorites</span>
+              <img src="../../../assets/images/icons/favorit.svg" alt="order_icon" />
+              <span class="font-Medium">{{ "Favorites" | translate }}</span>
             </li>
             <li [routerLink]="['edit-profile']" routerLinkActive="active">
-              <img
-                src="../../../assets/images/icons/edit.svg"
-                alt="order_icon"
-              />
-              <span class="font-Medium">Edit Profile</span>
+              <img src="../../../assets/images/icons/edit.svg" alt="order_icon" />
+              <span class="font-Medium">{{ "Edit_Profile" | translate }}</span>
             </li>
             <li [routerLink]="['reset-password']" routerLinkActive="active">
-              <img
-                src="../../../assets/images/icons/password.svg"
-                alt="order_icon"
-              />
-              <span class="font-Medium">Reset Password</span>
+              <img src="../../../assets/images/icons/password.svg" alt="order_icon" />
+              <span class="font-Medium">{{
+                "Reset_Password" | translate
+              }}</span>
             </li>
             <li [routerLink]="['/login']" routerLinkActive="active">
-              <img
-                src="../../../assets/images/icons/signout.svg"
-                alt="order_icon"
-              />
-              <span class="font-Medium">Sign Out</span>
+              <img src="../../../assets/images/icons/signout.svg" alt="order_icon" />
+              <span class="font-Medium">{{ "Sign_Out" | translate }}</span>
             </li>
           </ul>
           <!--End user_profile_list-->
@@ -71,9 +59,7 @@
         <!--End user_profile_tabs-->
       </div>
       <div class="col-lg-9">
-        <main
-          [@routing]="outletRef.isActivated ? outletRef.activatedRoute : ''"
-        >
+        <main [@routing]="outletRef.isActivated ? outletRef.activatedRoute : ''">
           <router-outlet #outletRef="outlet"></router-outlet>
         </main>
       </div>

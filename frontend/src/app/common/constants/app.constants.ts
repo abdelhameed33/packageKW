@@ -7,3 +7,7 @@ export const categoryUrl = {
 export const productUrl = {
     baseUrl: APP_URL + '/api/products/'
 };
+
+export const promotionUrl = {
+    baseUrl: APP_URL + '/promotions'
+};

@@ -12,28 +12,28 @@ export class CartComponent implements OnInit {
       img: '../../../assets/images/pro5.png',
       name: 'Notebook',
       dec: 'Ref: 10145444645',
-      checkoutAmount: '40 KWD',
+      checkoutAmount: '40',
     },
     {
       img: '../../../assets/images/pro6.png',
       name: 'Notebook',
       dec: 'Ref: 10145444645',
-      checkoutAmount: '40 KWD',
+      checkoutAmount: '40',
     },
     {
       img: '../../../assets/images/pro7.png',
       name: 'Notebook',
       dec: 'Ref: 10145444645',
-      checkoutAmount: '40 KWD',
+      checkoutAmount: '40',
     },
     {
       img: '../../../assets/images/pro8.png',
       name: 'Notebook',
       dec: 'Ref: 10145444645',
-      checkoutAmount: '40 KWD',
+      checkoutAmount: '40',
     },
   ];
-  constructor(public translate: TranslateService) {}
+  constructor(public translate: TranslateService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }

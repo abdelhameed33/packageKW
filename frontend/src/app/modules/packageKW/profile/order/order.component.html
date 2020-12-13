@@ -1,13 +1,13 @@
 <div class="profile_table">
-  <h3 class="cust_h2 text-left">My Orders</h3>
+  <h3 class="cust_h2 text-left">{{ "My_Orders" | translate }}</h3>
   <div class="responsive_table">
     <table class="order_table">
       <thead class="table_head">
         <tr class="table_head_row">
-          <th class="table_head_cell">Order Number</th>
-          <th class="table_head_cell">Qty</th>
-          <th class="table_head_cell">Date</th>
-          <th class="table_head_cell">Status</th>
+          <th class="table_head_cell">{{ "Order_Number" | translate }}</th>
+          <th class="table_head_cell">{{ "Qty" | translate }}</th>
+          <th class="table_head_cell">{{ "Date" | translate }}</th>
+          <th class="table_head_cell">{{ "Status" | translate }}</th>
           <th class="table_head_cell"></th>
         </tr>
       </thead>
@@ -16,43 +16,67 @@
           <td class="table_body_cell">#10145444645</td>
           <td class="table_body_cell">20</td>
           <td class="table_body_cell">15/11/2020</td>
-          <td class="table_body_cell"><span class="table_btns sucess_btn">Completed</span></td>
-          <td class="table_body_cell"><span style="cursor: pointer"><img src="../../../../assets/images/icons/delete.svg"></span></td>
+          <td class="table_body_cell">
+            <span class="table_btns sucess_btn">Completed</span>
+          </td>
+          <td class="table_body_cell">
+            <span style="cursor: pointer"><img src="../../../../assets/images/icons/delete.svg" /></span>
+          </td>
         </tr>
         <tr class="table_body_row">
           <td class="table_body_cell">#10145444645</td>
           <td class="table_body_cell">20</td>
           <td class="table_body_cell">15/11/2020</td>
-          <td class="table_body_cell"><span class="table_btns warn_btn">In Progress</span></td>
-          <td class="table_body_cell"><span style="cursor: pointer"><img src="../../../../assets/images/icons/delete.svg"></span></td>
+          <td class="table_body_cell">
+            <span class="table_btns warn_btn">In Progress</span>
+          </td>
+          <td class="table_body_cell">
+            <span style="cursor: pointer"><img src="../../../../assets/images/icons/delete.svg" /></span>
+          </td>
         </tr>
         <tr class="table_body_row">
           <td class="table_body_cell">#10145444645</td>
           <td class="table_body_cell">20</td>
           <td class="table_body_cell">15/11/2020</td>
-          <td class="table_body_cell"><span class="table_btns cancled_btn">Canceled</span></td>
-          <td class="table_body_cell"><span style="cursor: pointer"><img src="../../../../assets/images/icons/delete.svg"></span></td>
+          <td class="table_body_cell">
+            <span class="table_btns cancled_btn">Canceled</span>
+          </td>
+          <td class="table_body_cell">
+            <span style="cursor: pointer"><img src="../../../../assets/images/icons/delete.svg" /></span>
+          </td>
         </tr>
         <tr class="table_body_row">
           <td class="table_body_cell">#10145444645</td>
           <td class="table_body_cell">20</td>
           <td class="table_body_cell">15/11/2020</td>
-          <td class="table_body_cell"><span class="table_btns sucess_btn">Completed</span></td>
-          <td class="table_body_cell"><span style="cursor: pointer"><img src="../../../../assets/images/icons/delete.svg"></span></td>
+          <td class="table_body_cell">
+            <span class="table_btns sucess_btn">Completed</span>
+          </td>
+          <td class="table_body_cell">
+            <span style="cursor: pointer"><img src="../../../../assets/images/icons/delete.svg" /></span>
+          </td>
         </tr>
         <tr class="table_body_row">
           <td class="table_body_cell">#10145444645</td>
           <td class="table_body_cell">20</td>
           <td class="table_body_cell">15/11/2020</td>
-          <td class="table_body_cell"><span class="table_btns warn_btn">In Progress</span></td>
-          <td class="table_body_cell"><span style="cursor: pointer"><img src="../../../../assets/images/icons/delete.svg"></span></td>
+          <td class="table_body_cell">
+            <span class="table_btns warn_btn">In Progress</span>
+          </td>
+          <td class="table_body_cell">
+            <span style="cursor: pointer"><img src="../../../../assets/images/icons/delete.svg" /></span>
+          </td>
         </tr>
         <tr class="table_body_row">
           <td class="table_body_cell">#10145444645</td>
           <td class="table_body_cell">20</td>
           <td class="table_body_cell">15/11/2020</td>
-          <td class="table_body_cell"><span class="table_btns cancled_btn">Canceled</span></td>
-          <td class="table_body_cell"><span style="cursor: pointer"><img src="../../../../assets/images/icons/delete.svg"></span></td>
+          <td class="table_body_cell">
+            <span class="table_btns cancled_btn">Canceled</span>
+          </td>
+          <td class="table_body_cell">
+            <span style="cursor: pointer"><img src="../../../../assets/images/icons/delete.svg" /></span>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -66,6 +90,7 @@
         <li>4</li>
       </ul>
       <span class="right_pagn"><i class="fas fa-chevron-right"></i></span>
-    </div><!--End pagination-->
+    </div>
+    <!--End pagination-->
   </div>
 </div>

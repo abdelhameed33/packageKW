@@ -1,12 +1,14 @@
 <div class="breadcrumb_product breadcrumb_general" aria-label="breadcrumb">
   <div class="container">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a [routerLink]="['/home']">Home</a></li>
       <li class="breadcrumb-item">
-        <a [routerLink]="['/products']">Products</a>
+        <a [routerLink]="['/home']">{{ "home" | translate }}</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a [routerLink]="['/products']">{{ "Products" | translate }}</a>
       </li>
       <li class="breadcrumb-item current_page">
-        <a>Business Card Templates & Designs</a>
+        <a>{{ "Business_Card_Templates_Designs" | translate }}</a>
       </li>
     </ol>
   </div>
@@ -15,7 +17,7 @@
   <div class="container">
     <div class="mes_content">
       <p class="w-100">
-        (MOO Hardcover BusinessCards) has been added to your cart successfully.
+        (MOO Hardcover BusinessCards) {{ "has_successfully" | translate }}.
       </p>
       <span class="close_mes"><i class="fas fa-times"></i></span>
     </div>
@@ -67,34 +69,25 @@
             </p>
 
             <div class="to_cart">
-              <a
-                [routerLink]="['/business-custom']"
-                routerLinkActive="router-link-active"
-                class="add_btn cust_btn"
-                >Customize This Product</a
-              >
+              <a [routerLink]="['/business-custom']" routerLinkActive="router-link-active"
+                class="add_btn cust_btn">{{ "Customize_This_Product" | translate }}</a>
               <span class="like_btn"><i class="far fa-heart"></i></span>
             </div>
             <div class="share_media">
-              <span class="detail_title">Share Product</span>
+              <span class="detail_title">{{
+                "Share_Product" | translate
+              }}</span>
               <ul>
                 <li style="background-color: #3b5998">
-                  <a href="https://www.facebook.com/" target="_blank"
-                    ><i class="fab fa-facebook-f"></i
-                  ></a>
+                  <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
                 </li>
                 <li style="background-color: #00aced">
-                  <a href="https://twitter.com/?lang=en" target="_blank"
-                    ><i class="fab fa-twitter"></i
-                  ></a>
+                  <a href="https://twitter.com/?lang=en" target="_blank"><i class="fab fa-twitter"></i></a>
                 </li>
                 <li style="background-color: #007bb6">
-                  <a href="https://www.linkedin.com/" target="_blank"
-                    ><i class="fab fa-linkedin-in"></i
-                  ></a>
+                  <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                 </li>
-                <li
-                  style="
+                <li style="
                     background: linear-gradient(
                       201deg,
                       #c13584,
@@ -104,11 +97,8 @@
                       #fcaf45,
                       #ffdc80
                     );
-                  "
-                >
-                  <a href="https://www.instagram.com/" target="_blank"
-                    ><i class="fab fa-instagram"></i
-                  ></a>
+                  ">
+                  <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
                 </li>
               </ul>
             </div>
@@ -123,10 +113,12 @@
 <!--End pro_tabs-->
 <section class="Similar_pro BusinessCards pb-5">
   <div class="container">
-    <h2 class="cust_h2">Similar Products</h2>
+    <h2 class="cust_h2">{{ "Similar_Products" | translate }}</h2>
     <div class="Similar_pro_content text-center">
       <app-product-slider></app-product-slider>
-      <a [routerLink]="['/products']" class="View_all cust_btn">View All</a>
+      <a [routerLink]="['/products']" class="View_all cust_btn">{{
+        "View_All" | translate
+      }}</a>
     </div>
   </div>
 </section>

@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { APP_URL, productUrl } from 'src/app/common/constants/app.constants';
 import { ProductService } from 'src/app/common/service/product.service';
+import { PromotionService } from 'src/app/common/service/promotion.service';
 import { Product } from '../model/product.model';
+declare var $: any;
 
 @Component({
   selector: 'app-product-view',
@@ -16,11 +18,12 @@ export class ProductViewComponent implements OnInit {
   images: any[] | undefined = [];
   salePercent = 0;
   newPrice = 0;
-  endDate = new Date();
+  endDate = new Date().toLocaleString();
 
   constructor(
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
+    private promotionService: PromotionService
   ) { }
 
   ngOnInit(): void {
@@ -49,6 +52,29 @@ export class ProductViewComponent implements OnInit {
 
   convertDate(date: any): string {
     return new Date(date).toLocaleString();
+  }
+
+  addSale(): void {
+    if (this.salePercent) {
+      console.log(this.endDate);
+      const promotion = {
+        percent: this.salePercent,
+        start_date: new Date().toISOString(),
+        end_date: new Date(this.endDate).toISOString(),
+        productId: this.product?.id
+      };
+      console.log(promotion);
+      // this.promotionService.save(promotion).subscribe(res => {
+      //   console.log(res);
+      //   $("#add-sale").modal("hide");
+      // }, err => {
+      //   console.log(err);
+      // })
+    }
+  }
+
+  isArray(value): boolean {
+    return Array.isArray(value);
   }
 
   getProductProps(object: string): [] {
