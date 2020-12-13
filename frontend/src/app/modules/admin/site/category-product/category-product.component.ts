@@ -41,9 +41,9 @@ export class CategoryProductComponent implements OnInit {
   }
 
   getCategoryProducts(categoryId: any): void {
-    this.productService.getCategoryProduct(categoryId).subscribe(res => {
+    this.productService.getCategoryProducts(categoryId).subscribe(res => {
       console.log(res);
-      this.products = res;
+      this.products = res.data;
     });
   }
 

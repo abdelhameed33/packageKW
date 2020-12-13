@@ -11,7 +11,7 @@ import { RolesGuard } from 'src/auth/roles.guard';
 import { Roles } from 'src/auth/decorator/roles.decorator';
 import { UserRole } from 'src/auth/user-role.enum';
 
-@Controller('api/products')
+@Controller('products')
 export class ProductController {
 
 
@@ -25,15 +25,9 @@ export class ProductController {
         return this.productService.getProduct(id);
     }
 
-    @Get('/:categoryId/category')
-    getProduct(
-        @Param('categoryId', ParseIntPipe) categoryId: number): Promise<Product[]> {
-        return this.productService.getProducts(categoryId);
-    }
 
 
-
-    @Post('/:categoryId')
+    @Post()
     @Roles(UserRole.ADMIN)
     @UseGuards(AuthGuard(), RolesGuard)
     @UsePipes(new ValidationPipe({ transform: true }))
@@ -51,6 +45,7 @@ export class ProductController {
         return this.productService.deleteProduct(id);
     }
 
+   
     // @Patch('/:id')
     // updateProduct(
     //     @Param('id', ParseIntPipe) id: number,

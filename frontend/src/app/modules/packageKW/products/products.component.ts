@@ -1,6 +1,7 @@
 import { TranslateService } from '@ngx-translate/core';
 import { Component, OnInit } from '@angular/core';
 import { Options } from '@angular-slider/ngx-slider';
+import { ProductService } from 'src/app/common/service/product.service';
 
 @Component({
   selector: 'app-products',
@@ -70,7 +71,20 @@ export class ProductsComponent implements OnInit {
     floor: 0,
     ceil: 100,
   };
-  constructor(public translate: TranslateService) { }
 
-  ngOnInit(): void { }
+  products: any[]
+  constructor(public translate: TranslateService,
+    public productService: ProductService) { }
+
+  ngOnInit(): void { 
+    this.getCategoryProducts(1);
+  }
+
+
+  getCategoryProducts(categoryId: any): void {
+    this.productService.getCategoryProducts(categoryId).subscribe(res => {
+      console.log(res);
+      this.products = res?.data;
+    });
+  }
 }

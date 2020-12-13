@@ -1,5 +1,6 @@
-import { Controller, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { Controller, Delete, Param, Post, Query, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { unlink } from 'fs';
 import { diskStorage } from 'multer'
 import { Observable, of } from 'rxjs';
 
@@ -15,16 +16,27 @@ export const storage = {
     })
 }
 
-@Controller('api/image')
+@Controller('images')
 export class ImageController {
 
 
-    @Post('/upload')
+    @Post()
     // @Roles('admin')
     // @UseGuards(AuthGuard(), RolesGuard)
     @UseInterceptors(FileInterceptor('file', storage))
     uploadFile(@UploadedFile() file): Observable<Object> {
         return of({ imagePath: file.filename });
+    }
+
+    @Delete('/:image_name')
+    deleteFile(@Param('image_name') image_name: string){
+        console.log(image_name)
+        unlink('./uploads/'+image_name, (err) => {
+            if (err) {
+              console.error(err)
+              return
+            }
+        });
     }
 
 }

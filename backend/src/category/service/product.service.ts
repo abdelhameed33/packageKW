@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Like } from 'typeorm';
 import { CreateProductDto } from '../dto/create-product.dto';
 import { Product } from '../product.entity';
 import { ProductRepository } from '../repository/product.repository';
@@ -27,6 +28,26 @@ export class ProductService {
         return await this.productRepository.find();
     }
 
+
+    async findAll(categoyID: number, query?): Promise<any> {
+        const take = query?.take || 20
+        const skip = query?.skip || 0
+        const keyword = query?.keyword || ''
+        const [result, total] = await this.productRepository.findAndCount(
+            {
+                where:{'category': categoyID,title:Like('%' + keyword + '%') },
+                take: take,
+                skip: skip,
+                order: { created_at: "DESC" }
+
+            }
+        );
+    
+        return {
+            data: result,
+            count: total
+        }
+    }
     async getProduct(id: number): Promise<Product> {
         const found = await this.productRepository.findOne({ id });
         if (!found) {

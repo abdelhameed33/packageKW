@@ -78,13 +78,13 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-4 mb-4" *ngFor="let item of productObject">
+            <div class="col-md-4 mb-4" *ngFor="let item of products">
               <div class="card Products_item" [ngClass]="{ sale: item.sale }">
-                <img class="card-img-top swiper-lazy" [src]="item.img" [alt]="item.name" />
+                <img class="card-img-top swiper-lazy" [src]="'http://localhost:3000/'+item.images[0]?.image_name" [alt]="item.title" />
                 <div class="card-body">
-                  <h5 class="card-title cust_h3">{{ item.name }}</h5>
+                  <h5 class="card-title cust_h3">{{ item.title }}</h5>
                   <p class="card-text">
-                    {{ item.dec }}
+                    {{ item.description }}
                   </p>
                   <a [routerLink]="['/business-card/']" class="card_link">{{
                     "View_Details" | translate

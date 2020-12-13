@@ -7,8 +7,9 @@ import { Roles } from 'src/auth/decorator/roles.decorator';
 import { RolesGuard } from 'src/auth/roles.guard';
 import { ProductService } from '../service/product.service';
 import { UserRole } from 'src/auth/user-role.enum';
+import { Product } from '../product.entity';
 
-@Controller('category')
+@Controller('categories')
 export class CategoryController {
     constructor(
         private categoryService: CategoryService,
@@ -52,6 +53,13 @@ export class CategoryController {
         Logger.log(`update cstegory with ${id}`)
         Logger.log(categoryDto);
         return this.categoryService.updateCategory(id, categoryDto);
+    }
+
+   
+    @Get('/:categoryId/products')
+    getProducts( @Param('categoryId', ParseIntPipe) categoryId: number){
+        console.log('called')
+        return this.productService.findAll(categoryId);
     }
 
     @Get('/analytics/data')

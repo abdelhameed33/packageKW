@@ -37,7 +37,9 @@
 	}
 	.card-img-top{
 		border-radius: 30px;
-		
+		height: 130px;
+		width: 100%;
+		object-fit: cover;
 	}
 	.card-body{
 		
