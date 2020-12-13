@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-sm-7 col-md-6 col-lg-3">
           <div class="footer_content">
-            <h3 class="footer_head">packagekw</h3>
+            <h3 class="footer_head">{{ "packagekw" | translate }}</h3>
             <p>
               Duis vestibulum elit vel neque pharetra vulputate. Quisque
               scelerisque nisi urna. Duis rutrum non risus in imperdiet. Proin
@@ -14,13 +14,31 @@
         </div>
         <div class="col-sm-5 col-md-3 col-lg-2">
           <div class="footer_content">
-            <h3 class="footer_head">Products</h3>
+            <h3 class="footer_head">{{ "Products" | translate }}</h3>
             <ul>
-              <li><a [routerLink]="['/products']" >What's new?</a></li>
-              <li><a [routerLink]="['/products']" >Most Popular</a></li>
-              <li><a [routerLink]="['/products']" >View All Products</a></li>
-              <li><a [routerLink]="['/products']" >Special Finishes</a></li>
-              <li><a [routerLink]="['/products']" >Bundles & Offers</a></li>
+              <li>
+                <a [routerLink]="['/products']">{{ "What_new" | translate }}</a>
+              </li>
+              <li>
+                <a [routerLink]="['/products']">{{
+                  "Most_Popular" | translate
+                }}</a>
+              </li>
+              <li>
+                <a [routerLink]="['/products']"
+                  >{{ "View_All" | translate }} {{ "Products" | translate }}</a
+                >
+              </li>
+              <li>
+                <a [routerLink]="['/products']">{{
+                  "Special_Finishes" | translate
+                }}</a>
+              </li>
+              <li>
+                <a [routerLink]="['/products']">{{
+                  "Bundles_Offers" | translate
+                }}</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -28,48 +46,74 @@
           <div class="footer_content">
             <h3 class="footer_head">Learn More</h3>
             <ul>
-              <li><a [routerLink]="['/about']">About us</a></li>
-              <li><a [routerLink]="['/home']">Delivery</a></li>
-              <li><a [routerLink]="['/home']">Paper Information</a></li>
+              <li>
+                <a [routerLink]="['/about']">{{ "about_us" | translate }}</a>
+              </li>
+              <li>
+                <a [routerLink]="['/home']">{{ "Delivery" | translate }}</a>
+              </li>
+              <li>
+                <a [routerLink]="['/home']">{{
+                  "Paper_Information" | translate
+                }}</a>
+              </li>
             </ul>
           </div>
         </div>
         <div class="col-sm-4 col-md-6 col-lg-2">
           <div class="footer_content">
-            <h3 class="footer_head">Here to help</h3>
+            <h3 class="footer_head">{{ "Here_to_help" | translate }}</h3>
             <ul>
-              <li><a [routerLink]="['/home']">FAQ</a></li>
-              <li><a [routerLink]="['/home']">Apply for an account</a></li>
-              <li><a [routerLink]="['/home']">COVID-19 assistance</a></li>
+              <li>
+                <a [routerLink]="['/home']">{{ "FAQ" | translate }}</a>
+              </li>
+              <li>
+                <a [routerLink]="['/home']">{{
+                  "Apply_for_an_account" | translate
+                }}</a>
+              </li>
+              <li>
+                <a [routerLink]="['/home']">{{
+                  "COVID_assistance" | translate
+                }}</a>
+              </li>
             </ul>
           </div>
         </div>
         <div class="col-sm-5 col-md-6 col-lg-3">
           <div class="footer_content">
-            <h3 class="footer_head">Contact</h3>
+            <h3 class="footer_head">{{ "Contact" | translate }}</h3>
             <ul>
               <li>
-                <a><i class="fas fa-phone"></i><span>𝟶𝟶𝟿𝟼𝟻-𝟻𝟷𝟷𝟶𝟶𝟹𝟼𝟶</span></a
-                >
+                <a><i class="fas fa-phone"></i><span>𝟶𝟶𝟿𝟼𝟻-𝟻𝟷𝟷𝟶𝟶𝟹𝟼𝟶</span></a>
               </li>
               <li>
-                <a><i class="far fa-envelope"></i
+                <a
+                  ><i class="far fa-envelope"></i
                   ><span>Packagekw@Gmail.Com</span></a
                 >
               </li>
               <li>
                 <ul class="mini_list">
                   <li>
-                    <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.facebook.com/" target="_blank"
+                      ><i class="fab fa-facebook-f"></i
+                    ></a>
                   </li>
                   <li>
-                    <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://twitter.com/" target="_blank"
+                      ><i class="fab fa-twitter"></i
+                    ></a>
                   </li>
                   <li>
-                    <a href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.youtube.com/" target="_blank"
+                      ><i class="fab fa-youtube"></i
+                    ></a>
                   </li>
                   <li>
-                    <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/" target="_blank"
+                      ><i class="fab fa-instagram"></i
+                    ></a>
                   </li>
                 </ul>
               </li>
@@ -80,7 +124,9 @@
     </div>
     <!--End top_footer-->
     <div class="bottom_footer">
-      <p>&copy; 2020 packagekw. All rights reserved.</p>
+      <p>
+        &copy; 2020 {{ "packagekw" | translate }}. {{ "All_rights_reserved" }}.
+      </p>
     </div>
     <!--End bottom_footer-->
   </div>

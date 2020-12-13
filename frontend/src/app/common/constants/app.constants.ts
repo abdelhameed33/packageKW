@@ -10,4 +10,4 @@ export const productUrl = {
 
 export const promotionUrl = {
     baseUrl: APP_URL + '/promotions'
-}
+};

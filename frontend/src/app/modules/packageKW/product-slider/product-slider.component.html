@@ -7,19 +7,15 @@
     <swiper [config]="config2">
       <div class="item" *ngFor="let item of productObject">
         <div class="card Products_item" [ngClass]="{ sale: item.sale }">
-          <img
-            class="card-img-top swiper-lazy"
-            [src]="item.img"
-            alt="product1"
-          />
+          <img class="card-img-top swiper-lazy" [src]="item.img" alt="product1" />
           <div class="card-body">
             <h5 class="card-title cust_h3">{{ item.name }}</h5>
             <p class="card-text">
               {{ item.dec }}
             </p>
-            <a [routerLink]="['/business-card/']" class="card_link"
-              >View Details</a
-            >
+            <a [routerLink]="['/business-card/']" class="card_link">{{
+              "View_Details" | translate
+            }}</a>
           </div>
         </div>
         <!--End card-->

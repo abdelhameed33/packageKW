@@ -83,7 +83,7 @@ export class ProductComponent implements OnInit {
     });
   }
 
-  addValue(event, attrIndex) {
+  addValue(event, attrIndex): void {
     const value = event.target.value;
     console.log(value);
     if (value && value.trim().length > 0) {
@@ -93,7 +93,7 @@ export class ProductComponent implements OnInit {
       this.productAttributes[attrIndex].value = [...this.multiValues];
     }
   }
-  removeValue(val, attrIndex) {
+  removeValue(val, attrIndex): void {
     this.multiValues.delete(val);
     this.productAttributes[attrIndex].value = [...this.multiValues];
   }

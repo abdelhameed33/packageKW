@@ -1,8 +1,5 @@
-<div
-  class="overlay"
-  (click)="authDropDown = false; cartDropDown = false"
-  [ngClass]="[authDropDown ? 'active' : '', cartDropDown ? 'active' : '']"
-></div>
+<div class="overlay" (click)="authDropDown = false; cartDropDown = false"
+  [ngClass]="[authDropDown ? 'active' : '', cartDropDown ? 'active' : '']"></div>
 <div class="topNav">
   <div class="container" style="position: relative">
     <!-- check out dropdown -->
@@ -10,14 +7,10 @@
       <ul class="your_shoping_cart">
         <li class="your_shoping_item">
           <div class="media d-flex align-items-center">
-            <img
-              class="mr-4"
-              src="../../../assets/images/pro5.png"
-              alt="cart1"
-            />
+            <img class="mr-4" src="../../../assets/images/pro5.png" alt="cart1" />
             <div class="media-body">
               <h6 class="mt-0 font-Medium text-left mb-2">Notebook</h6>
-              <span class="fax_text">Ref: 10145444645</span>
+              <span class="fax_text">{{ "Ref" | translate }}: 10145444645</span>
             </div>
           </div>
           <div class="close_cart">
@@ -26,14 +19,10 @@
         </li>
         <li class="your_shoping_item">
           <div class="media d-flex align-items-center">
-            <img
-              class="mr-4"
-              src="../../../assets/images/pro5.png"
-              alt="cart1"
-            />
+            <img class="mr-4" src="../../../assets/images/pro5.png" alt="cart1" />
             <div class="media-body">
               <h6 class="mt-0 font-Medium text-left mb-2">Notebook</h6>
-              <span class="fax_text">Ref: 10145444645</span>
+              <span class="fax_text">{{ "Ref" | translate }}: 10145444645</span>
             </div>
           </div>
           <div class="close_cart">
@@ -42,54 +31,32 @@
         </li>
       </ul>
       <div class="total_checkout">
-        <span class="font-Medium">Total</span>
-        <span class="checkout_price">80 KWD</span>
+        <span class="font-Medium">{{ "Total" | translate }}</span>
+        <span class="checkout_price">80 {{ "KWD" | translate }}</span>
       </div>
       <div class="checkout_action">
-        <button
-          class="checkout_btn checkout_action_btn"
-          [routerLink]="['/checkout']"
-          (click)="cartDropDown = false"
-        >
-          Checkout
+        <button class="checkout_btn checkout_action_btn" [routerLink]="['/checkout']" (click)="cartDropDown = false">
+          {{ "Checkout" | translate }}
         </button>
-        <button
-          class="cust_btn checkout_action_btn"
-          [routerLink]="['/carts']"
-          (click)="cartDropDown = false"
-        >
-          View Cart
+        <button class="cust_btn checkout_action_btn" [routerLink]="['/carts']" (click)="cartDropDown = false">
+          {{ "View_Cart" | translate }}
         </button>
       </div>
     </div>
 
     <!-- user profile dropdown -->
-    <div
-      class="your_checkout user_profile_list"
-      [ngClass]="{ active: authDropDown }"
-    >
+    <div class="your_checkout user_profile_list" [ngClass]="{ active: authDropDown }">
       <ul class="your_shoping_cart">
         <li class="your_shoping_item">
           <a [routerLink]="['/login']" (click)="authDropDown = !authDropDown">
-            <img
-              src="../../../assets/images/icons/user.svg"
-              alt="user icon"
-              class="mr-3"
-            />
-            <span>Sign In</span>
+            <img src="../../../assets/images/icons/user.svg" alt="user icon" class="mr-3" />
+            <span>{{ "Sign_In" | translate }}</span>
           </a>
         </li>
         <li class="your_shoping_item">
-          <a
-            [routerLink]="['/register']"
-            (click)="authDropDown = !authDropDown"
-          >
-            <img
-              src="../../../assets/images/icons/user.svg"
-              alt="user icon"
-              class="mr-3"
-            />
-            <span>Create a new account</span>
+          <a [routerLink]="['/register']" (click)="authDropDown = !authDropDown">
+            <img src="../../../assets/images/icons/user.svg" alt="user icon" class="mr-3" />
+            <span>{{ "Create_a_new_account" | translate }}</span>
           </a>
         </li>
       </ul>
@@ -111,47 +78,32 @@
         </div>
         <!--End nav_contact-->
         <div class="nav_responsive d-lg-none">
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-            (click)="showMenu = !showMenu"
-          >
-            <i class="fas fa-bars"></i></button
-          ><!--End navbar-toggler-->
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+            (click)="showMenu = !showMenu">
+            <i class="fas fa-bars"></i></button>
+          <!--End navbar-toggler-->
           <a class="navbar-brand" [routerLink]="['/home']">
-            <img src="../../../assets/images/icons/logo.svg" /> </a
-          ><!--End navbar-brand-->
+            <img src="../../../assets/images/icons/logo.svg" /> </a>
+          <!--End navbar-brand-->
         </div>
         <!--End nav_responsive-->
       </div>
       <div class="col-6 col-md-4">
         <div class="nav_action d-flex justify-content-end">
           <ul class="nav_action_list d-flex">
-            <li
-              class="nav_action_item shopping-cart_icon"
-              (click)="cartDropDown = !cartDropDown"
-            >
+            <li class="nav_action_item shopping-cart_icon" (click)="cartDropDown = !cartDropDown">
               <a><i class="fas fa-shopping-cart"></i></a>
             </li>
             <li class="nav_action_item">
               <a>
-                <span *ngIf="lang == 'en'" (click)="changeLanguage('ar')"
-                  >AR
+                <span *ngIf="lang == 'en'" (click)="changeLanguage('ar')">AR
                 </span>
-                <span *ngIf="lang == 'ar'" (click)="changeLanguage('en')"
-                  >EN
+                <span *ngIf="lang == 'ar'" (click)="changeLanguage('en')">EN
                 </span>
               </a>
             </li>
-            <li
-              class="user_icon nav_action_item"
-              (click)="authDropDown = !authDropDown"
-            >
+            <li class="user_icon nav_action_item" (click)="authDropDown = !authDropDown">
               <a><i class="fas fa-user-alt"></i></a>
             </li>
           </ul>
@@ -162,30 +114,19 @@
   </div>
 </div>
 <!--End topNav-->
-<div
-  class="overlay menu"
-  [ngClass]="{ active: showMenu }"
-  (click)="showMenu = false"
-></div>
+<div class="overlay menu" [ngClass]="{ active: showMenu }" (click)="showMenu = false"></div>
 <div class="bottomNav sticky-top">
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
       <a class="navbar-brand d-none d-lg-block" [routerLink]="['/home']">
-        <img src="../../../assets/images/icons/logo.svg" /> </a
-      ><!--End navbar-brand-->
+        <img src="../../../assets/images/icons/logo.svg" /> </a>
+      <!--End navbar-brand-->
 
-      <div
-        class="collapse navbar-collapse nav_list show"
-        id="navbarSupportedContent"
-        [ngClass]="{ active: showMenu }"
-      >
+      <div class="collapse navbar-collapse nav_list show" id="navbarSupportedContent" [ngClass]="{ active: showMenu }">
         <form>
           <div class="user_login d-lg-none" (click)="showMenu = false">
-            <a class="profile_link" [routerLink]="['/login']"
-              ><img
-                src="../../../assets/images/icons/user.svg"
-                alt="user_profile"
-            /></a>
+            <a class="profile_link" [routerLink]="['/login']"><img src="../../../assets/images/icons/user.svg"
+                alt="user_profile" /></a>
             <a class="user_login" [routerLink]="['/login']">Login</a>
             <span><i class="fas fa-times"></i></span>
           </div>
@@ -201,19 +142,13 @@
                   <a [routerLink]="['/business-card']">Classic Business Card</a>
                 </li>
                 <li>
-                  <a [routerLink]="['/business-card']"
-                    >Wild-Format Business Card</a
-                  >
+                  <a [routerLink]="['/business-card']">Wild-Format Business Card</a>
                 </li>
                 <li>
-                  <a [routerLink]="['/business-card']"
-                    >Networker’s Business Card</a
-                  >
+                  <a [routerLink]="['/business-card']">Networker’s Business Card</a>
                 </li>
                 <li>
-                  <a [routerLink]="['/business-card']"
-                    >Typographic Business Card</a
-                  >
+                  <a [routerLink]="['/business-card']">Typographic Business Card</a>
                 </li>
               </ul>
             </div>
@@ -227,19 +162,13 @@
                   <a [routerLink]="['/business-card']">Classic Business Card</a>
                 </li>
                 <li>
-                  <a [routerLink]="['/business-card']"
-                    >Wild-Format Business Card</a
-                  >
+                  <a [routerLink]="['/business-card']">Wild-Format Business Card</a>
                 </li>
                 <li>
-                  <a [routerLink]="['/business-card']"
-                    >Networker’s Business Card</a
-                  >
+                  <a [routerLink]="['/business-card']">Networker’s Business Card</a>
                 </li>
                 <li>
-                  <a [routerLink]="['/business-card']"
-                    >Typographic Business Card</a
-                  >
+                  <a [routerLink]="['/business-card']">Typographic Business Card</a>
                 </li>
               </ul>
             </div>
@@ -253,19 +182,13 @@
                   <a [routerLink]="['/business-card']">Classic Business Card</a>
                 </li>
                 <li>
-                  <a [routerLink]="['/business-card']"
-                    >Wild-Format Business Card</a
-                  >
+                  <a [routerLink]="['/business-card']">Wild-Format Business Card</a>
                 </li>
                 <li>
-                  <a [routerLink]="['/business-card']"
-                    >Networker’s Business Card</a
-                  >
+                  <a [routerLink]="['/business-card']">Networker’s Business Card</a>
                 </li>
                 <li>
-                  <a [routerLink]="['/business-card']"
-                    >Typographic Business Card</a
-                  >
+                  <a [routerLink]="['/business-card']">Typographic Business Card</a>
                 </li>
               </ul>
             </div>
@@ -279,27 +202,20 @@
                   <a [routerLink]="['/business-card']">Classic Business Card</a>
                 </li>
                 <li>
-                  <a [routerLink]="['/business-card']"
-                    >Wild-Format Business Card</a
-                  >
+                  <a [routerLink]="['/business-card']">Wild-Format Business Card</a>
                 </li>
                 <li>
-                  <a [routerLink]="['/business-card']"
-                    >Networker’s Business Card</a
-                  >
+                  <a [routerLink]="['/business-card']">Networker’s Business Card</a>
                 </li>
                 <li>
-                  <a [routerLink]="['/business-card']"
-                    >Typographic Business Card</a
-                  >
+                  <a [routerLink]="['/business-card']">Typographic Business Card</a>
                 </li>
               </ul>
             </div>
             <!--End mini_menu-->
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/business-card']"
-              >Business Cards
+            <a class="nav-link" [routerLink]="['/business-card']">Business Cards
             </a>
             <!--								if you want show add class open_list-->
             <div class="mini_menu">
@@ -308,19 +224,13 @@
                   <a [routerLink]="['/business-card']">Classic Business Card</a>
                 </li>
                 <li>
-                  <a [routerLink]="['/business-card']"
-                    >Wild-Format Business Card</a
-                  >
+                  <a [routerLink]="['/business-card']">Wild-Format Business Card</a>
                 </li>
                 <li>
-                  <a [routerLink]="['/business-card']"
-                    >Networker’s Business Card</a
-                  >
+                  <a [routerLink]="['/business-card']">Networker’s Business Card</a>
                 </li>
                 <li>
-                  <a [routerLink]="['/business-card']"
-                    >Typographic Business Card</a
-                  >
+                  <a [routerLink]="['/business-card']">Typographic Business Card</a>
                 </li>
               </ul>
             </div>
@@ -334,19 +244,13 @@
                   <a [routerLink]="['/business-card']">Classic Business Card</a>
                 </li>
                 <li>
-                  <a [routerLink]="['/business-card']"
-                    >Wild-Format Business Card</a
-                  >
+                  <a [routerLink]="['/business-card']">Wild-Format Business Card</a>
                 </li>
                 <li>
-                  <a [routerLink]="['/business-card']"
-                    >Networker’s Business Card</a
-                  >
+                  <a [routerLink]="['/business-card']">Networker’s Business Card</a>
                 </li>
                 <li>
-                  <a [routerLink]="['/business-card']"
-                    >Typographic Business Card</a
-                  >
+                  <a [routerLink]="['/business-card']">Typographic Business Card</a>
                 </li>
               </ul>
             </div>
@@ -360,19 +264,13 @@
                   <a [routerLink]="['/business-card']">Classic Business Card</a>
                 </li>
                 <li>
-                  <a [routerLink]="['/business-card']"
-                    >Wild-Format Business Card</a
-                  >
+                  <a [routerLink]="['/business-card']">Wild-Format Business Card</a>
                 </li>
                 <li>
-                  <a [routerLink]="['/business-card']"
-                    >Networker’s Business Card</a
-                  >
+                  <a [routerLink]="['/business-card']">Networker’s Business Card</a>
                 </li>
                 <li>
-                  <a [routerLink]="['/business-card']"
-                    >Typographic Business Card</a
-                  >
+                  <a [routerLink]="['/business-card']">Typographic Business Card</a>
                 </li>
               </ul>
             </div>
@@ -386,19 +284,13 @@
                   <a [routerLink]="['/business-card']">Classic Business Card</a>
                 </li>
                 <li>
-                  <a [routerLink]="['/business-card']"
-                    >Wild-Format Business Card</a
-                  >
+                  <a [routerLink]="['/business-card']">Wild-Format Business Card</a>
                 </li>
                 <li>
-                  <a [routerLink]="['/business-card']"
-                    >Networker’s Business Card</a
-                  >
+                  <a [routerLink]="['/business-card']">Networker’s Business Card</a>
                 </li>
                 <li>
-                  <a [routerLink]="['/business-card']"
-                    >Typographic Business Card</a
-                  >
+                  <a [routerLink]="['/business-card']">Typographic Business Card</a>
                 </li>
               </ul>
             </div>
@@ -412,19 +304,13 @@
                   <a [routerLink]="['/business-card']">Classic Business Card</a>
                 </li>
                 <li>
-                  <a [routerLink]="['/business-card']"
-                    >Wild-Format Business Card</a
-                  >
+                  <a [routerLink]="['/business-card']">Wild-Format Business Card</a>
                 </li>
                 <li>
-                  <a [routerLink]="['/business-card']"
-                    >Networker’s Business Card</a
-                  >
+                  <a [routerLink]="['/business-card']">Networker’s Business Card</a>
                 </li>
                 <li>
-                  <a [routerLink]="['/business-card']"
-                    >Typographic Business Card</a
-                  >
+                  <a [routerLink]="['/business-card']">Typographic Business Card</a>
                 </li>
               </ul>
             </div>

@@ -29,10 +29,6 @@ export class ProductViewComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(res => {
       const productId = res.get('id');
-
-      this.promotionService.get(productId).subscribe(res => {
-        console.log(res);
-      })
       this.productService.getOne(productId).subscribe((product: Product) => {
         this.product = product;
         this.images = this.product?.images;
@@ -58,7 +54,7 @@ export class ProductViewComponent implements OnInit {
     return new Date(date).toLocaleString();
   }
 
-  addSale() {
+  addSale(): void {
     if (this.salePercent) {
       console.log(this.endDate);
       const promotion = {
