@@ -7,6 +7,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { ProductComponent } from './product/product.component';
 import { SiteComponent } from './site.component';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   {
@@ -40,9 +41,19 @@ const routes: Routes = [
       {
         path: 'orders/:id',
         component: OrderViewComponent,
+      },
+      {
+        path: 'orders/:id',
+        component: OrderViewComponent,
+      },
+      {
+        path: 'users',
+        component: UsersComponent,
       }
-    ]
-  }
+    ],
+  },
+  // { path: '404', component: NotFoundComponent },
+  // { path: '**', redirectTo: '/admin' }
 ];
 
 @NgModule({

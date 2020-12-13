@@ -35,6 +35,7 @@ export class ProductComponent implements OnInit {
   productAttributes: Property[] = [];
   categoryId: any;
   multiValues = new Set<string>();
+  multiVal = new Map<any, Set<string>>();
 
   typeOptions = [
     { value: 'single', text: 'single value' },
@@ -87,19 +88,29 @@ export class ProductComponent implements OnInit {
     const value = event.target.value;
     console.log(value);
     if (value && value.trim().length > 0) {
+      if (!this.multiVal.has(attrIndex)) {
+        this.multiVal.set(attrIndex, new Set<string>());
+      }
+      const map = this.multiVal.get(attrIndex);
       event.target.value = '';
-      this.multiValues.add(value.trim());
-
-      this.productAttributes[attrIndex].value = [...this.multiValues];
+      map.add(value.trim());
+      this.productAttributes[attrIndex].value = [...map];
     }
   }
   removeValue(val, attrIndex): void {
-    this.multiValues.delete(val);
-    this.productAttributes[attrIndex].value = [...this.multiValues];
+    const map = this.multiVal.get(attrIndex);
+    map.delete(val);
+    this.productAttributes[attrIndex].value = [...map];
   }
   getProductProps(object: any): [] {
     try {
-      return JSON.parse(object);
+      const props = JSON.parse(object);
+      props.forEach((el, index) => {
+        if (el.type === 'multi' && Array.isArray(el.value)) {
+          this.multiVal.set(index, new Set(el.value));
+        }
+      });
+      return props;
     } catch (e) { }
     return [];
   }

@@ -179,7 +179,7 @@
                       placeholder="Value">
                     <small class="form-control-feedback"> Press space to add value</small>
                     <div class="model-note-container tages-container">
-                      <span *ngFor="let val of multiValues" class="single-tage">{{val}}
+                      <span *ngFor="let val of multiVal.get(i)" class="single-tage">{{val}}
                         <i role="button" (click)="removeValue(val,i)" class="fa fa-times-circle"></i>
                       </span>
                     </div>

@@ -5,6 +5,7 @@ import { AuthService } from './auth.service';
 import { Roles } from './decorator/roles.decorator';
 import { AuthCredentialDto } from './dto/auth-credential.dto';
 import { CreateUserDto } from './dto/create-user.dto';
+import { ResUserDto } from './dto/res-user.dto';
 import { GetUser } from './get-user.decerator';
 import { RolesGuard } from './roles.guard';
 import { UserRole } from './user-role.enum';
@@ -38,13 +39,9 @@ export class AuthController {
     @Get('/users')
     @Roles('admin')
     @UseGuards(AuthGuard())
-    async getAll(): Promise<any> {
-        const users = await this.authService.getAllUser().then(res => {
-            return res.length;
-        });
+    async getAll(): Promise<ResUserDto[]> {
+        return await this.authService.getAllUser();
 
-        return {
-            users
-        };
     }
+
 }

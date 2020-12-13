@@ -11,7 +11,7 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
     password: env.KW_DB_PASSWORD,
     database: 'packagekw_db',
     entities: ["dist/**/*.entity{.ts,.js}"],
-    synchronize: true,
+    // synchronize: true,
     logging: true,
     namingStrategy: new SnakeNamingStrategy()
 }
