@@ -47,6 +47,6 @@ export class AuthenticationService {
   }
 
   getUsers(): Observable<any> {
-    return this.http.get(APP_URL + '/auth/users/');
+    return this.http.get(APP_URL + 'auth/users/');
   }
 }

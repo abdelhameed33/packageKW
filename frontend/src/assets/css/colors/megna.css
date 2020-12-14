@@ -11,6 +11,7 @@ Email: niravjoshi87@gmail.com
 File: scss
 */
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700");
+
 /*Theme Colors*/
 /*bootstrap Color*/
 /*Light colors*/
@@ -58,7 +59,8 @@ File: scss
 /*Top bar
 *******************/
 .topbar {
-  background: #00897b;
+  /* background: #00897b; */
+  background: #ec9ca1;
 }
 
 .topbar .top-navbar .navbar-header .navbar-brand .dark-logo {
@@ -70,11 +72,12 @@ File: scss
   color: rgba(255, 255, 255, 0.8);
 }
 
-.topbar .navbar-light .navbar-nav .nav-item > a.nav-link {
+.topbar .navbar-light .navbar-nav .nav-item>a.nav-link {
   color: rgba(255, 255, 255, 0.8) !important;
 }
 
-.topbar .navbar-light .navbar-nav .nav-item > a.nav-link:hover, .topbar .navbar-light .navbar-nav .nav-item > a.nav-link:focus {
+.topbar .navbar-light .navbar-nav .nav-item>a.nav-link:hover,
+.topbar .navbar-light .navbar-nav .nav-item>a.nav-link:focus {
   color: #ffffff !important;
 }
 
@@ -85,7 +88,8 @@ a {
   color: #01c0c8;
 }
 
-a.link:hover, a.link:focus {
+a.link:hover,
+a.link:focus {
   color: #01c0c8 !important;
 }
 
@@ -93,12 +97,12 @@ a.link:hover, a.link:focus {
   background-color: #01c0c8 !important;
 }
 
-.pagination > .active > a,
-.pagination > .active > span,
-.pagination > .active > a:hover,
-.pagination > .active > span:hover,
-.pagination > .active > a:focus,
-.pagination > .active > span:focus {
+.pagination>.active>a,
+.pagination>.active>span,
+.pagination>.active>a:hover,
+.pagination>.active>span:hover,
+.pagination>.active>a:focus,
+.pagination>.active>span:focus {
   background-color: #01c0c8;
   border-color: #01c0c8;
 }
@@ -107,7 +111,8 @@ a.link:hover, a.link:focus {
   background: #01c0c8;
 }
 
-.stylish-table tbody tr:hover, .stylish-table tbody tr.active {
+.stylish-table tbody tr:hover,
+.stylish-table tbody tr.active {
   border-left: 4px solid #01c0c8;
 }
 
@@ -143,7 +148,8 @@ a.link:hover, a.link:focus {
   border: 1px solid #01c0c8;
 }
 
-.btn-themecolor.active, .btn-themecolor:focus,
+.btn-themecolor.active,
+.btn-themecolor:focus,
 .btn-themecolor.disabled.active,
 .btn-themecolor.disabled:focus {
   background: #028ee1;
@@ -160,7 +166,8 @@ a.link:hover, a.link:focus {
   color: #607d8b;
 }
 
-.sidebar-nav ul li a.active, .sidebar-nav ul li a:hover {
+.sidebar-nav ul li a.active,
+.sidebar-nav ul li a:hover {
   color: #00897b;
 }
 
@@ -172,28 +179,32 @@ a.link:hover, a.link:focus {
   color: #99abb4;
 }
 
-.sidebar-nav > ul > li.active > a, .sidebar-nav > ul > li.active:hover > a {
+.sidebar-nav>ul>li.active>a,
+.sidebar-nav>ul>li.active:hover>a {
   color: #ffffff;
   background: #00897b;
 }
 
-.sidebar-nav > ul > li.active > a i, .sidebar-nav > ul > li.active:hover > a i {
+.sidebar-nav>ul>li.active>a i,
+.sidebar-nav>ul>li.active:hover>a i {
   color: #ffffff;
 }
 
-.sidebar-nav > ul > li.active > a:after, .sidebar-nav > ul > li.active:hover > a:after {
+.sidebar-nav>ul>li.active>a:after,
+.sidebar-nav>ul>li.active:hover>a:after {
   border-color: #ffffff;
 }
 
-.sidebar-nav > ul > li > a.active i, .sidebar-nav > ul > li > a:hover i {
+.sidebar-nav>ul>li>a.active i,
+.sidebar-nav>ul>li>a:hover i {
   color: #00897b;
 }
 
-.sidebar-nav > ul > li > a i {
+.sidebar-nav>ul>li>a i {
   color: #99abb4;
 }
 
-.sidebar-nav > ul > li > a.active {
+.sidebar-nav>ul>li>a.active {
   font-weight: 400;
   background: #ffffff;
   color: #01c0c8;
