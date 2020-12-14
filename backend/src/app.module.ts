@@ -12,6 +12,7 @@ import { OrderModule } from './order/order.module';
 import { AddressModule } from './address/address.module';
 import { ImageModule } from './image/image.module';
 import { PromotionModule } from './promotion/promotion.module';
+import { NotificationGateway } from './notification.gateway';
 
 @Module({
   imports: [
@@ -30,6 +31,6 @@ import { PromotionModule } from './promotion/promotion.module';
     PromotionModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [NotificationGateway],
 })
 export class AppModule {}

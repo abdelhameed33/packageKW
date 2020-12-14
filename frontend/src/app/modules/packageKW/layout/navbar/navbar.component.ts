@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { NotificationService } from 'src/app/common/service/notification.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,10 +13,15 @@ export class NavbarComponent implements OnInit {
   lang = '';
   overlay = true;
   showMenu = false;
-  constructor(public translate: TranslateService) { }
+  constructor(
+    public translate: TranslateService,
+    private notificationService: NotificationService
+  ) { }
 
   ngOnInit(): void {
     this.lang = localStorage.getItem('lang');
+
+    this.notificationService.sendChat('Hello from the hello');
   }
 
   changeLanguage(lang): void {

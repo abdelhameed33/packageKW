@@ -14,9 +14,9 @@ export class MainService {
 
   getAnalyticsData(): Observable<any[]> {
     return forkJoin([
-      this.http.get(APP_URL + '/auth/users/'),
-      this.http.get(APP_URL + '/orders'),
-      this.http.get(categoryUrl.baseUrl + '/analytics/data')
+      this.http.get(APP_URL + 'auth/users/'),
+      this.http.get(APP_URL + 'orders'),
+      this.http.get(categoryUrl.baseUrl + 'analytics/data')
     ]);
     // return { users, orders, categories };
   }

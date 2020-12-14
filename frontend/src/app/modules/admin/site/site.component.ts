@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NotificationService } from 'src/app/common/service/notification.service';
 
 @Component({
   selector: 'app-site',
@@ -8,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class SiteComponent implements OnInit {
 
   fullYear = new Date().getFullYear();
-  constructor() { }
+  constructor(
+    private notifactionService: NotificationService
+  ) { }
 
   ngOnInit(): void {
+    this.notifactionService.receiveChat().subscribe(res => {
+      console.log(res + ' ------------------------------');
+    });
   }
 
 }

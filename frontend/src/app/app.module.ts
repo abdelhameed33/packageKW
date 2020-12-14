@@ -11,6 +11,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './common/interceptor/error.interceptor';
 import { ErrorInterceptor } from './common/interceptor/jwt.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { SERVER } from './common/constants/app.constants';
+const config: SocketIoConfig = { url: SERVER, options: {} };
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PackgeKWModule,
     AdminModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SocketIoModule.forRoot(config)
   ],
   providers: [
     {
