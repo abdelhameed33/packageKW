@@ -11,8 +11,11 @@ import { routingAnimation } from './router.animations';
 })
 export class PackagekwComponent implements OnInit {
   title = 'kw';
-  constructor(private router: Router, public translate: TranslateService) { }
+  constructor(private router: Router, public translate: TranslateService) {}
   ngOnInit(): void {
+    document.querySelector('#admin-bs').remove();
+    document.querySelector('#admin-style').remove();
+    document.querySelector('#theme').remove();
     const currentLang = localStorage.getItem('lang');
     if (!currentLang) {
       localStorage.setItem('lang', 'en');
@@ -62,6 +65,3 @@ export class PackagekwComponent implements OnInit {
     htmlEl.setAttribute('lang', props.lang);
   }
 }
-
-
-
