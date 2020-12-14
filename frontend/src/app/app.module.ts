@@ -13,6 +13,9 @@ import { ErrorInterceptor } from './common/interceptor/jwt.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { SERVER } from './common/constants/app.constants';
+import { ToastrModule } from 'ngx-toastr';
+
+
 const config: SocketIoConfig = { url: SERVER, options: {} };
 
 @NgModule({
@@ -26,6 +29,7 @@ const config: SocketIoConfig = { url: SERVER, options: {} };
     AdminModule,
     FormsModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(), // ToastrModule added
     SocketIoModule.forRoot(config)
   ],
   providers: [

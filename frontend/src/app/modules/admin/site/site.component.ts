@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NotificationService } from 'src/app/common/service/notification.service';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-site',
@@ -10,12 +12,13 @@ export class SiteComponent implements OnInit {
 
   fullYear = new Date().getFullYear();
   constructor(
-    private notifactionService: NotificationService
+    private notifactionService: NotificationService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
     this.notifactionService.receiveChat().subscribe(res => {
-      console.log(res + ' ------------------------------');
+      this.toastr.success('Hello world!', 'Toastr fun!');
     });
   }
 
