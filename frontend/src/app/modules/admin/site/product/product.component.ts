@@ -38,8 +38,9 @@ export class ProductComponent implements OnInit {
   multiVal = new Map<any, Set<string>>();
 
   typeOptions = [
-    { value: 'single', text: 'single value' },
-    { value: 'multi', text: 'multi value' },
+    { value: 'single', text: 'Single value' },
+    { value: 'multi', text: 'Multi value' },
+    { value: 'image', text: 'Image' },
   ];
 
   constructor(
