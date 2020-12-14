@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Logger, Param, ParseIntPipe, Patch, Post, UploadedFile, UploadedFiles, UseGuards, UseInterceptors, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Logger, Param, ParseIntPipe, Patch, Post, Query, UploadedFile, UploadedFiles, UseGuards, UseInterceptors, UsePipes, ValidationPipe } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { Product } from '../product.entity';
 import { ProductService } from '../service/product.service';
@@ -10,6 +10,7 @@ import { ProductValidationPipe } from '../pipes/product-create-validation.pipe';
 import { RolesGuard } from 'src/auth/roles.guard';
 import { Roles } from 'src/auth/decorator/roles.decorator';
 import { UserRole } from 'src/auth/user-role.enum';
+import { GetProductsFilterDto } from '../dto/get-products-filter.dto';
 
 @Controller('products')
 export class ProductController {
@@ -26,18 +27,6 @@ export class ProductController {
     }
 
 
-
-    @Post()
-    @Roles(UserRole.ADMIN)
-    @UseGuards(AuthGuard(), RolesGuard)
-    @UsePipes(new ValidationPipe({ transform: true }))
-    createProduct(
-        @Param('categoryId', ParseIntPipe) categoryId: number,
-        @Body(ProductValidationPipe) createProductDto: CreateProductDto): Promise<Product> {
-        Logger.log(createProductDto);
-        return this.productService.createOrUpdateProduct(categoryId, createProductDto);
-    }
-
     @Delete('/:id')
     @Roles(UserRole.ADMIN)
     @UseGuards(AuthGuard(), RolesGuard)
@@ -45,7 +34,16 @@ export class ProductController {
         return this.productService.deleteProduct(id);
     }
 
+    
+    // @Get()
+    // getProducts(){
+    //     return this.productService.getAllProducts();
+    // }
    
+    @Get()
+    getProducts(@Query() filterDto: GetProductsFilterDto):Promise<{data:Product[],count:number}>{
+        return this.productService.getProductsWithFilter(filterDto);
+    }
     // @Patch('/:id')
     // updateProduct(
     //     @Param('id', ParseIntPipe) id: number,

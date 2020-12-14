@@ -77,11 +77,11 @@ export class ProductsComponent implements OnInit {
     public productService: ProductService) { }
 
   ngOnInit(): void { 
-    this.getCategoryProducts(1);
+    this.getProducts();
   }
 
 
-  getCategoryProducts(categoryId: any): void {
+  getProducts(categoryId?: any): void {
     this.productService.getCategoryProducts(categoryId).subscribe(res => {
       console.log(res);
       this.products = res?.data;

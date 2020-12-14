@@ -8,6 +8,8 @@ import { RolesGuard } from 'src/auth/roles.guard';
 import { ProductService } from '../service/product.service';
 import { UserRole } from 'src/auth/user-role.enum';
 import { Product } from '../product.entity';
+import { ProductValidationPipe } from '../pipes/product-create-validation.pipe';
+import { CreateProductDto } from '../dto/create-product.dto';
 
 @Controller('categories')
 export class CategoryController {
@@ -59,7 +61,19 @@ export class CategoryController {
     @Get('/:categoryId/products')
     getProducts( @Param('categoryId', ParseIntPipe) categoryId: number){
         console.log('called')
-        return this.productService.findAll(categoryId);
+        return this.productService.getCategoryProducts(categoryId);
+    }
+
+    
+    @Post('/:categoryId/products')
+    @Roles(UserRole.ADMIN)
+    @UseGuards(AuthGuard(), RolesGuard)
+    @UsePipes(new ValidationPipe({ transform: true }))
+    createProduct(
+        @Param('categoryId', ParseIntPipe) categoryId: number,
+        @Body(ProductValidationPipe) createProductDto: CreateProductDto): Promise<Product> {
+        Logger.log(createProductDto);
+        return this.productService.createOrUpdateProduct(categoryId, createProductDto);
     }
 
     @Get('/analytics/data')

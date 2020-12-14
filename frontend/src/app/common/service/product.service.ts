@@ -16,7 +16,7 @@ export class ProductService {
 
 
   save(product: Product, id: any): Observable<any> {
-    return this.http.post(productUrl.baseUrl + id, { ...product }, {});
+    return this.http.post(categoryUrl.baseUrl + id + '/products', { ...product }, {});
   }
 
   getOne(id: any): Observable<any> {
@@ -28,11 +28,11 @@ export class ProductService {
   }
 
   getCategoryProducts(categoryId: any): Observable<any> {
-    return this.http.get(categoryUrl.baseUrl + categoryId + '/products');
+    return this.http.get(productUrl.baseUrl);
   }
 
   imageUpload(image: FormData): Observable<any> {
-    return this.http.post(APP_URL + '/api/images', image);
+    return this.http.post(APP_URL + 'images', image);
   }
 
   removeImage(image: string): Observable<any> {

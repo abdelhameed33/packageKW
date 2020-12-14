@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Like } from 'typeorm';
 import { CreateProductDto } from '../dto/create-product.dto';
+import { GetProductsFilterDto } from '../dto/get-products-filter.dto';
 import { Product } from '../product.entity';
 import { ProductRepository } from '../repository/product.repository';
 import { CategoryService } from './category.service';
@@ -24,12 +25,34 @@ export class ProductService {
         // return category.products;
     }
 
-    async getAllProducts(): Promise<Product[]> {
-        return await this.productRepository.find();
+    async getProductsWithFilter(filterDto:GetProductsFilterDto): Promise<{data:Product[],count:number}> {
+        // const category =  await this.categoryService.getCategory(categoyID);
+        return await this.productRepository.getProductsWithFilter(filterDto);
+        // return category.products;
+    }
+
+    async getAllProducts(query?): Promise<any> {
+        const take = query?.take || 20
+        const skip = query?.skip || 0
+        const keyword = query?.keyword || ''
+        const [result, total] = await this.productRepository.findAndCount(
+            {
+                where:{title:Like('%' + keyword + '%') },
+                take: take,
+                skip: skip,
+                order: { created_at: "DESC" }
+
+            }
+        );
+    
+        return {
+            data: result,
+            count: total
+        }
     }
 
 
-    async findAll(categoyID: number, query?): Promise<any> {
+    async getCategoryProducts(categoyID: number, query?): Promise<any> {
         const take = query?.take || 20
         const skip = query?.skip || 0
         const keyword = query?.keyword || ''
@@ -48,6 +71,7 @@ export class ProductService {
             count: total
         }
     }
+    
     async getProduct(id: number): Promise<Product> {
         const found = await this.productRepository.findOne({ id });
         if (!found) {
