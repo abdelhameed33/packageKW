@@ -36,7 +36,6 @@ export class ProductService {
   }
 
   removeImage(image: string): Observable<any> {
-    // return this.http.delete(APP_URL + '/api/image/', image);
-    return of({ image });
+    return this.http.delete(APP_URL + 'images/' + image);
   }
 }

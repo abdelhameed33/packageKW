@@ -118,7 +118,7 @@
               <div class="col-lg-3 col-md-6" *ngFor="let path of images">
                 <div class="card">
                   <div class="el-card-item">
-                    <div class="el-card-avatar el-overlay-1"> <img [src]="APP_URL+'/'+path" alt="user" />
+                    <div class="el-card-avatar el-overlay-1"> <img [src]="SERVER+path" alt="user" />
                       <div class="el-overlay">
                         <ul class="el-info">
                           <li><a (click)="removeImage(path)" class="btn default btn-outline"

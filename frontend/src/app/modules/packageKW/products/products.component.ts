@@ -72,11 +72,13 @@ export class ProductsComponent implements OnInit {
     ceil: 100,
   };
 
-  products: any[]
-  constructor(public translate: TranslateService,
-    public productService: ProductService) { }
+  products: any[];
+  constructor(
+    public translate: TranslateService,
+    public productService: ProductService
+  ) { }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.getProducts();
   }
 

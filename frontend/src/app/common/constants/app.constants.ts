@@ -1,4 +1,5 @@
-export const APP_URL = 'http://localhost:3000/api/';
+export const SERVER = 'http://localhost:3000/';
+export const APP_URL = SERVER + 'api/';
 
 export const categoryUrl = {
     baseUrl: APP_URL + 'categories/'

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { APP_URL, productUrl } from 'src/app/common/constants/app.constants';
+import { SERVER } from 'src/app/common/constants/app.constants';
 import { ProductService } from 'src/app/common/service/product.service';
 import { PromotionService } from 'src/app/common/service/promotion.service';
 import { Product } from '../model/product.model';
@@ -14,7 +14,7 @@ declare var $: any;
 export class ProductViewComponent implements OnInit {
 
   product: any = null;
-  APP_URL = APP_URL;
+  SERVER = SERVER;
   images: any[] | undefined = [];
   salePercent = 0;
   newPrice = 0;

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { APP_URL } from 'src/app/common/constants/app.constants';
+import { SERVER } from 'src/app/common/constants/app.constants';
 import { ProductService } from 'src/app/common/service/product.service';
 import { Category } from '../model/category.model';
 import { Product } from '../model/product.model';
@@ -29,7 +29,7 @@ export class ProductComponent implements OnInit {
   error?: string;
   categories: Category[] = [];
   selectedFile!: File;
-  APP_URL = APP_URL;
+  SERVER = SERVER;
   mode = 'create';
   productId!: string | null;
   productAttributes: Property[] = [];
